@@ -154,6 +154,7 @@
 	            <systemsettings>systemsettings</systemsettings>
 		    <updatesettings>updatesettings</updatesettings>
 	            <modsettings>modsettings</modsettings>
+							<editfiles>editfiles</editfiles>
 			</system>
 			<setting_update>update_local</setting_update>
 	    </settings>

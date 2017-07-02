@@ -348,6 +348,7 @@ var firewall_label_upnp_setting = "UPnP Settings";
 var firewall_help_upnp_setting = "Universal plug and play (UPnP) is used to realize the intellectual interconnection.";
 var firewall_label_upnp_status = "UPnP status";
 var system_label_system = "System";
+var system_label_edit_files = "Edit files"; 
 var system_label_device_information = "Device Information";
 var system_label_software_version = "Software version";
 var system_label_hardware_version = "Hardware version";

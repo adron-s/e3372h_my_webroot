@@ -985,6 +985,9 @@ function checkModuleEnable(current_page) {
         case "modsettings":
             checkGotoHome(g_module.modsettings_enabled && checkObjectExist(g_PageUrlTree, "settings", "system", "modsettings"));
             break;
+		   case "editfiles":
+            checkGotoHome(checkObjectExist(g_PageUrlTree, "settings", "system", "editfiles"));
+            break;
         default:
             gotoPageWithoutHistory(HOME_PAGE_URL);
             break;
@@ -1851,6 +1854,13 @@ function showleftMenu() {
                 } else {
                     $('#modsettings').remove();
                 }              
+
+                if (checkLeftMenu(g_PageUrlTree.settings.system.editfiles)) {
+                    $('#label_edit_files').attr('title', system_label_edit_files);
+                    $('#label_edit_files').text(system_label_edit_files);
+                } else {
+                    $('#editfiles').remove();
+                }
 
                 if (g_module.cbs_enabled && checkLeftMenu(g_PageUrlTree.settings.cbssettings)) {
                     $('#label_cbssettings').attr('title', IDS_CBS_Settings_setting);
