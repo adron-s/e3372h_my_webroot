@@ -3,9 +3,9 @@
     <data_enable>1</data_enable>
     <apn_retry>0</apn_retry>
     <!--apn_retry_interval>300</apn_retry_interval-->
-    <connect_mode>0</connect_mode>
-    <roam_connect>0</roam_connect>
-    <max_idle_time>600</max_idle_time>
+    <connect_mode>1</connect_mode>
+    <roam_connect>1</roam_connect>
+    <max_idle_time>0</max_idle_time>
     <mtu_size>1500</mtu_size>
     <dataswitch>1</dataswitch>
     <auto_dial_enabled>0</auto_dial_enabled>
