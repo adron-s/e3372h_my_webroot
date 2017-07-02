@@ -6,4 +6,6 @@
     <Item plmn="25039" shortdescr="Rostelecom"/>
     <Item plmn="25011" shortdescr="YOTA"/>
     <Item plmn="25027" shortdescr="Letai"/>
+    <Item plmn="25060" shortdescr="Volna Mobile"/>
+    <Item plmn="25032" shortdescr="WIN Mobile"/>
 </OperatorList>
