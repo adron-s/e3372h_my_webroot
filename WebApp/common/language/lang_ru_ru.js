@@ -271,6 +271,7 @@ var wlan_label_encryption = "Шифрование";
 var wlan_label_wlan_off = "Wi-Fi выкл.";
 var wlan_label_wlan_on = "Wi-Fi вкл.";
 var file_edit_menu = "Редактирование файлов"; 
+var dhcp_owl_check_fault = "Указанные значения выходили за допустимые пределы!<br>Была произведена коррекция: ";
 var dhcp_label_dhcp = "DHCP";
 var dhcp_label_ip_address = "IP-адрес";
 var dhcp_label_subnet_mask = "Маска подсети";

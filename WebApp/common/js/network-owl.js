@@ -115,6 +115,30 @@ function get_bimask(mask){
 };//---------------------------------------------------------------------------------------
 
 //*****************************************************************************************
+/*
+ * Конвертирует маску из бинарного вида в числовой 0xFFFFFF00 -> 24
+ */
+function get_bi2str_mask(mask){
+	var a = 0;
+  for(a = 0; a < 32; a++){
+		mask <<= 1;
+		if(mask == 0)
+			break;
+	}
+	return (a + 1).toString();
+};//---------------------------------------------------------------------------------------
+
+//*****************************************************************************************
+/*
+ * Конвертирует маску из строкового(24-30) вида -> октетный(255.255.255.x)
+ */
+function get_str2oct_str_mask(mask){
+	mask = Number(mask);
+	var bi_mask = ~get_bimask(mask);
+	return my_inet_ntoa(my_htonl(bi_mask));
+};//---------------------------------------------------------------------------------------
+
+//*****************************************************************************************
 /* 
  * Преобразует uint32_t из network в byte order
  * 
@@ -183,3 +207,75 @@ function dig2hex(dig){
 	}
 	return "0x" + res;
 };//---------------------------------------------------------------------------------------
+
+//*****************************************************************************************
+//выплевывает в document блоки option с масками подсети для тега select
+function write_subnet_mask_content(start, end){
+	for(var a = start; a <= end; a++){
+		document.write("<option value=\"" + a.toString() + "\">");
+		var mask = ~get_bimask(a);
+		var s_mask = my_inet_ntoa(my_htonl(mask));
+		document.write(s_mask + " -> /" + a.toString());
+		document.write("</option>");
+	}
+}//----------------------------------------------------------------------------------------
+
+//*****************************************************************************************
+//делает выбранным пункт с указанной маской у элемента <select>
+function select_item_in_subnet_mask_select(select_item, so_mask){
+	var s_mask = get_bi2str_mask(my_ntohl(my_inet_addr(so_mask))); //маска вида /24
+	select_item.children().each(function(){
+		var item = $(this);
+		if(item.val() == s_mask)
+			item.attr("selected", "selected");
+	});
+}//----------------------------------------------------------------------------------------
+
+//*****************************************************************************************
+/*
+ * рассчитывает предельные значения ip адресов для подсети с заданной маской
+	 параметры: ip адрес модема, маска подсети модема
+ */
+function calc_network_limits(s_ipaddr, s_mask){
+	s_mask = s_mask.toString();
+	var so_mask = my_inet_ntoa(my_htonl(~get_bimask(s_mask))); //маска вида 255.255.255.0
+
+	var ipaddr = my_ntohl(my_inet_addr(s_ipaddr));
+	var mask = ~get_bimask(s_mask);
+	var subnet = ipaddr & mask;
+	var minip = subnet + 1; //минимальный ip в сети
+	var maxip = (subnet | ~mask) - 1; //максимальный ip в сети
+	var modem_ip = 0;
+	var gw = 0;
+
+	//рассчет ведомственного шлюза
+	if(Number(s_mask) <= 24){
+		//для /24 и ниже: 251 - резерв, 252-терминал/модем, 253-vipnet, 254-шлюз: 4 штуки!
+		//адреса для клиентов: 1..250
+		gw = maxip;
+		modem_ip = maxip - 2;
+		maxip = gw - 4; //4 штуки^
+		minip++;
+	}else{
+		//для /25 и выше: первый(шлюз)..клиенты..последний(терминал/модем)
+		gw = minip;
+		modem_ip = maxip;
+		minip++;
+		maxip--;
+	}
+
+	//console.log(dig2hex(ipaddr));
+	//console.log(dig2bi(ipaddr));
+	//console.log("subnet:", my_inet_ntoa(my_htonl(subnet)));
+	//console.log("minip:", my_inet_ntoa(my_htonl(minip)));
+	//console.log("maxip:", my_inet_ntoa(my_htonl(maxip)));
+	//console.log("gw:", my_inet_ntoa(my_htonl(gw)));
+	var res = { };
+	res.modem_ip = modem_ip;
+	res.subnet = subnet;
+	res.mask = mask;
+	res.minip = minip;
+	res.maxip = maxip;
+	res.gw = gw;
+	return res;
+}//----------------------------------------------------------------------------------------

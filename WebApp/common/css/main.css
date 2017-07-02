@@ -5370,10 +5370,6 @@ margin-left:60px;
 	width:35px !important;
 	height:27px;
 }
-#input_dhcp_subnet_mask input{
-	width:35px !important;
-	height:27px;
-}
 
 .payment_label{
 	height: 27px;
@@ -5414,6 +5410,11 @@ margin-left:60px;
 	border:none;
 	border:1px solid #a1a1a1;
 	line-height:100%;
+}
+#input_dhcp_subnet_mask {
+	width:250px !important;
+	height:29px;
+	padding:0;
 }
 .success_phone_number_sms{
 	width:450px !important;

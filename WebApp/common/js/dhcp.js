@@ -8,7 +8,6 @@ var DHCP_PING_INTERVA = 50000;
 var DHCP_MIN_LEASE_TIME = 86400;
 var DHCP_MAX_LEASE_TIME = 604800;
 var DHCP_DEFAULT_LEASE_TIME = 86400;
-var g_dhcpSubmark = '';
 function createIpDialogHtml(){
 	var startIpDialogHtml ="<input type='text'  id='input_dhcp_startip'  size='4' maxlength='3'/>"; 
 	var endIpDialogHtml = "<input type='text'  id='input_dhcp_endip'  size='4' maxlength='3'/>";
@@ -92,21 +91,16 @@ function initPageData() {
         {
             dhcp_value = ret.response;
             dhcp_value.DhcpStatus = parseInt(dhcp_value.DhcpStatus, 10);
-            g_dhcpSubmark = dhcp_value.DhcpLanNetmask;
             var dhcpIPAddress = dhcp_value.DhcpIPAddress;
             var dhcpIPAddresslists = dhcpIPAddress.split(".");
             var dhcpSubnetMask = dhcp_value.DhcpLanNetmask;
-            var dhcpSubnetMasklists = dhcpSubnetMask.split(".");
 
             $('#input_dhcp_ipaddr_first').val(dhcpIPAddresslists[0]);
             $('#input_dhcp_ipaddr_second').val(dhcpIPAddresslists[1]);
             $('#input_dhcp_ipaddr_third').val(dhcpIPAddresslists[2]);
             $('#input_dhcp_ipaddr_forth').val(dhcpIPAddresslists[3]);
 
-            $('#input_dhcp_subnet_mask_first').val(dhcpSubnetMasklists[0]);
-            $('#input_dhcp_subnet_mask_second').val(dhcpSubnetMasklists[1]);
-            $('#input_dhcp_subnet_mask_third').val(dhcpSubnetMasklists[2]);
-            $('#input_dhcp_subnet_mask_forth').val(dhcpSubnetMasklists[3]);
+						select_item_in_subnet_mask_select($("#input_dhcp_subnet_mask"), dhcpSubnetMask);
 
             $("input[name='radio_dhcp_status'][value=" + dhcp_value.DhcpStatus + ']').attr('checked', true);
             if (g_DHCP_SERVER_ENABLE == dhcp_value.DhcpStatus)
@@ -127,13 +121,8 @@ function postData() {
     var dhcpIPAddresssThird = $('#input_dhcp_ipaddr_third').val();
     var dhcpIPAddresssForth = $('#input_dhcp_ipaddr_forth').val();
 
-    var dhcpSubnetMasksFirst = $('#input_dhcp_subnet_mask_first').val();
-    var dhcpSubnetMasksSecond = $('#input_dhcp_subnet_mask_second').val();
-    var dhcpSubnetMasksThird = $('#input_dhcp_subnet_mask_third').val();
-    var dhcpSubnetMasksForth = $('#input_dhcp_subnet_mask_forth').val();
-
     dhcp_value.DhcpIPAddress = dhcpIPAddresssFirst + '.' + dhcpIPAddresssSecond + '.' + dhcpIPAddresssThird + '.' + dhcpIPAddresssForth; 
-    dhcp_value.DhcpLanNetmask = dhcpSubnetMasksFirst + '.' + dhcpSubnetMasksSecond + '.' + dhcpSubnetMasksThird + '.' + dhcpSubnetMasksForth; 
+    dhcp_value.DhcpLanNetmask = get_str2oct_str_mask($("#input_dhcp_subnet_mask").val());
     dhcp_value.DhcpStatus = $("input[name='radio_dhcp_status']:checked").val();
     dhcp_value.DhcpStartIPAddress =dhcpIPAddresssFirst + '.' + dhcpIPAddresssSecond + '.' + dhcpIPAddresssThird + '.' +  $('#input_dhcp_startip').val();
     dhcp_value.DhcpEndIPAddress = dhcpIPAddresssFirst + '.' + dhcpIPAddresssSecond + '.' + dhcpIPAddresssThird + '.' + $('#input_dhcp_endip').val();
@@ -180,6 +169,64 @@ function isBetweenStartIPAndEndIP(ipAddress, startIP, endIP) {
     }
 }
 
+/****** мои ограничениянакладываемые на адрес модема, маску и диапазон ip адресов dhcp ******/
+function checkOwlNetworkLimits(dhcpIPAddresss, dhcpStartIPAddress, dhcpEndIPAddress, dhcpLanNetmask2Dig, dhcpStatus){
+	var ret = "";
+	//рассчитаем пределы для этой подсети
+	var sl = calc_network_limits(dhcpIPAddresss, dhcpLanNetmask2Dig);
+
+	dhcpIPAddresss = my_ntohl(my_inet_addr(dhcpIPAddresss));
+	/* если нужно проверять значения для dhcp */
+	if(dhcpStatus == 1){
+		/* проверим пределы для dhcp и скорректируем их в случае необходимости */
+		dhcpStartIPAddress = my_ntohl(my_inet_addr(dhcpStartIPAddress));
+		if(dhcpStartIPAddress < sl.minip || dhcpStartIPAddress > sl.maxip){
+			dhcpStartIPAddress = sl.minip;
+			$('#input_dhcp_startip').val((sl.minip & 0xFF).toString());
+	    getDhcpIPAddressRange();
+			ret += (ret == "" ? "" : ", ") + "1";
+		}
+		dhcpEndIPAddress = my_ntohl(my_inet_addr(dhcpEndIPAddress));
+		if(dhcpEndIPAddress < sl.minip || dhcpEndIPAddress > sl.maxip){
+			dhcpEndIPAddress = sl.maxip;
+			$('#input_dhcp_endip').val((sl.maxip & 0xFF).toString());
+	    getDhcpIPAddressRange();
+			ret += (ret == "" ? "" : ", ") + "2";
+		}
+	}
+	//адрес модема жестко должен совпадать с нашими требованиями
+	var octs = null;
+	if(dhcpIPAddresss != sl.modem_ip || dhcpIPAddresss <= sl.subnet || dhcpIPAddresss >= (sl.subnet | ~sl.mask)){
+		//для подсети /24 допустим x.x.x.1 адрес модема
+		if(Number(dhcpLanNetmask2Dig) == 24 && (sl.subnet + 1 == dhcpIPAddresss)){
+		}else{
+			//коррекция
+			dhcpIPAddresss = sl.modem_ip;
+			octs = my_inet_ntoa(my_htonl(sl.modem_ip)).split(".");
+			ret += (ret == "" ? "" : ", ") + "3";
+		}
+	}
+	//если адрес модема лежит в диапазоне dhcp пула.
+	if(dhcpStatus == 1 && (dhcpIPAddresss >= dhcpStartIPAddress && dhcpIPAddresss <= dhcpEndIPAddress)){
+		//коррекция
+		dhcpIPAddresss = sl.modem_ip;
+		octs = my_inet_ntoa(my_htonl(sl.modem_ip)).split(".");
+		ret += (ret == "" ? "" : ", ") + "4";
+	}
+	if(octs != null){
+		$('#input_dhcp_ipaddr_first').val(octs[0]);
+    $('#input_dhcp_ipaddr_second').val(octs[1]);
+    $('#input_dhcp_ipaddr_third').val(octs[2]);
+    $('#input_dhcp_ipaddr_forth').val(octs[3]);
+	  getDhcpIPAddressRange();
+	}
+
+	/* console.log("minip:", my_inet_ntoa(my_htonl(sl.minip)));
+	console.log("maxip:", my_inet_ntoa(my_htonl(sl.maxip)));
+	console.log("modem_ip:", my_inet_ntoa(my_htonl(sl.modem_ip))); */
+	return ret;
+}
+
 function verifyUserInput() {
 	var dhcpIPAddresssFirst = $('#input_dhcp_ipaddr_first').val();
 	var dhcpIPAddresssSecond = $('#input_dhcp_ipaddr_second').val();
@@ -188,10 +235,17 @@ function verifyUserInput() {
     var dhcpIPAddresss = dhcpIPAddresssFirst + '.'  + dhcpIPAddresssSecond + '.'  + dhcpIPAddresssThird + '.'  + dhcpIPAddresssForth;
     var dhcpStartIPAddress = dhcpIPAddresssFirst + '.' + dhcpIPAddresssSecond + '.' + dhcpIPAddresssThird + '.' +  $('#input_dhcp_startip').val();
     var dhcpEndIPAddress = dhcpIPAddresssFirst + '.' + dhcpIPAddresssSecond + '.' + dhcpIPAddresssThird + '.' + $('#input_dhcp_endip').val();
-	var dhcpLanNetmask = g_dhcpSubmark;
+	var dhcpLanNetmask2Dig = $("#input_dhcp_subnet_mask").val(); //маска вида /24
+	var dhcpLanNetmask = get_str2oct_str_mask(dhcpLanNetmask2Dig);
 	var dhcpStatus = $("input[name='radio_dhcp_status']:checked").val();
 	var dhcpLeaseTime = $('#input_dhcp_leasetime').val();
 	clearAllErrorLabel();
+	var ret = checkOwlNetworkLimits(dhcpIPAddresss, dhcpStartIPAddress, dhcpEndIPAddress, dhcpLanNetmask2Dig, dhcpStatus);
+	if(ret != ""){ /* сначала прогоним наш валидатор/фиксер а затем уже остальные */
+    showErrorUnderTextbox('input_dhcp_ipaddr', dhcp_owl_check_fault + ret.toString());
+		return false;
+	}
+
 	 if (!isValidIpAddress(dhcpIPAddresss))
     {
         showErrorUnderTextbox('input_dhcp_ipaddr', dialup_hint_ip_address_empty);
@@ -223,17 +277,15 @@ function verifyUserInput() {
 //enable DHCP server
     if (1 == dhcpStatus)
     {
-        /*if ((!isValidIpAddress(dhcpStartIPAddress)) || (dhcpIPAddresss == dhcpStartIPAddress))
+        if ((!isValidIpAddress(dhcpStartIPAddress)) || (dhcpIPAddresss == dhcpStartIPAddress))
         {
             showErrorUnderTextbox('input_dhcp_ip', dhcp_hint_start_ip_address_invalid);
-						console.log("zzzz1", isValidIpAddress(dhcpStartIPAddress));
             $('#input_dhcp_startip').focus();
             return false;
         }
         if (!isBroadcastOrNetworkAddress(dhcpStartIPAddress, dhcpLanNetmask))
         {
             showErrorUnderTextbox('input_dhcp_ip', dhcp_hint_start_ip_address_invalid);
-						console.log("zzzz2");
             $('#input_dhcp_startip').focus();
             return false;
         }
@@ -248,7 +300,7 @@ function verifyUserInput() {
             showErrorUnderTextbox('input_dhcp_ip', dhcp_hint_end_ip_address_invalid);
             $('#input_dhcp_endip').focus();
             return false;
-        }*/
+        }
         if (!isSameSubnetAddrs(dhcpStartIPAddress, dhcpIPAddresss, dhcpLanNetmask))
         {
             showErrorUnderTextbox('input_dhcp_ip', dhcp_hint_start_ip_address_same_subnet);
@@ -261,12 +313,12 @@ function verifyUserInput() {
             $('#input_dhcp_endip').focus();
             return false;
         }
-        /*if (!compareStartIpAndEndIp(dhcpStartIPAddress, dhcpEndIPAddress))
+        if (!compareStartIpAndEndIp(dhcpStartIPAddress, dhcpEndIPAddress))
         {
             showErrorUnderTextbox('input_dhcp_ip', dhcp_hint_end_ip_greater_start_ip);
             $('#input_dhcp_endip').focus();
             return false;
-        }*/
+        }
         if (-1 != dhcpLeaseTime.indexOf('.'))
         {
             showErrorUnderTextbox('input_dhcp_leasetime', dhcp_hint_dhcp_lease_time_integer);
@@ -298,6 +350,8 @@ function verifyUserInput() {
             return false;
         }
     }
+
+    //showErrorUnderTextbox('input_dhcp_ipaddr', "Все OK!"); return false; /* заглушка для отладки */
     return true;
 }
 function onApply() {
@@ -322,6 +376,12 @@ $(document).ready(function() {
             button_enable('apply', '1');
        }
     });
+    $('#input_dhcp_subnet_mask').bind('change', function(e) {
+        if(MACRO_KEYCODE != e.keyCode){
+            button_enable('apply', '1');
+       }
+    });
+
     button_enable('apply', '0');
     
     $('#apply').click(function() {

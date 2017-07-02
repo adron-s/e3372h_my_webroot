@@ -17,6 +17,7 @@
 <script type="text/javascript" src="../js/checklogin.js"></script>
 <script type="text/javascript" src="../js/validation.js"></script>
 <script type="text/javascript" src="../js/ping.js"></script>
+<script type="text/javascript" src="../js/network-owl.js"></script>
 <script type="text/javascript" src="../js/dhcp.js"></script>
 <script type="text/javascript">
 </script>
@@ -56,14 +57,10 @@
                             <tr>
                                 <td width="182" height="42" valign="top"><script type="text/javascript">dw(dhcp_label_subnet_mask+common_colon);</script></td>
                                 <td width="396" valign="top">
-                                	<div id="input_dhcp_subnet_mask">
-                                		<input type="text"  size="3" id="input_dhcp_subnet_mask_first" maxlength="3"/>
-                                		<label>.</label>
-                                		<input type="text"  size="3" id="input_dhcp_subnet_mask_second" maxlength="3"/>
-                                		<label>.</label>
-                                		<input type="text"  size="3" id="input_dhcp_subnet_mask_third" maxlength="3"/>
-                                		<label>.</label>
-                                		<input type="text"  size="3" id="input_dhcp_subnet_mask_forth" maxlength="3"/>
+                                	<div>
+																		<select id="input_dhcp_subnet_mask" class="input_select" data-modsettings="true">
+																			<script type="text/javascript">write_subnet_mask_content(24, 29);</script>
+																		</select>
                                 	</div>
                                 </td>
                             </tr>

@@ -270,6 +270,7 @@ var wlan_label_authentication = "Authentication";
 var wlan_label_encryption = "Encryption";
 var wlan_label_wlan_off = "WLAN off";
 var wlan_label_wlan_on = "WLAN on";
+var dhcp_owl_check_fault = "The specified values went beyond possible limits!<br>A correction was made: ";
 var dhcp_label_dhcp = "DHCP";
 var dhcp_label_ip_address = "IP Address";
 var dhcp_label_subnet_mask = "Subnet mask";
