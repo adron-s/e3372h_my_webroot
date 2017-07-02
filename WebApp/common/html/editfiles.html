@@ -1,51 +1,126 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-        <link rel="stylesheet" href="../css/main.css" type="text/css" />
-        <script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
-        <script type="text/javascript" src="../lib/log4javascript_lite.js"></script>
-        <script type="text/javascript" src="../lib/jquery.qtip.js"></script>
-        <script type="text/javascript" src="../lib/jquery.corner.js"></script>
-        <script type="text/javascript" src="../lib/aes.js"></script>
-        <script type="text/javascript" src="../lib/hmac-sha256.js"></script>
-        <script type="text/javascript" src="../lib/pbkdf2.js"></script>
-        <script type="text/javascript" src="../lib/scram.js"></script>
-        <script type="text/javascript" src="../js/changelang.js"></script>
-        <script type="text/javascript" src="../js/main.js"></script>
-        <script type="text/javascript" src="../js/checklogin.js"></script>
-        <title></title>
-    </head>
-
-    <body>
-        <div id="all_content" class="body_bg">
-            <div id="wrapper" class="wrapper_dim">
-                <div class="wrapper_dim wrapper_filter">
-                    <div id="header" class="header">
-                    </div>
-                    <div class="content">
-                        <div class="main_left">
-                            <div id="settings_menu">
-                            </div>
-                        </div>
-                        <div class="content_right">
-                            <div class="maintitle">
-                                <h1>
-                                <script type="text/javascript">dw(system_label_backup_restore);</script>
-                                </h1>
-                            </div>
-                            <div class="main_content">
-															Hello from OwL
-                            </div>
-                            <!--main_content end-->
-                        </div>
-                    </div>
-                    <!--content end-->
-                </div>
-                <div id="footer" class="footer">
-                </div>
-            </div>
-        </div>
-    </body>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<link rel="stylesheet" href="../css/main.css" type="text/css" />
+		<script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="../lib/log4javascript_lite.js"></script>
+		<script type="text/javascript" src="../lib/jquery.qtip.js"></script>
+		<script type="text/javascript" src="../lib/jquery.corner.js"></script>
+		<script type="text/javascript" src="../lib/aes.js"></script>
+		<script type="text/javascript" src="../lib/hmac-sha256.js"></script>
+		<script type="text/javascript" src="../lib/pbkdf2.js"></script>
+		<script type="text/javascript" src="../lib/scram.js"></script>
+		<script type="text/javascript" src="../js/changelang.js"></script>
+		<script type="text/javascript" src="../js/main.js"></script>
+		<script type="text/javascript" src="../js/checklogin.js"></script>
+		<script type="text/javascript" src="../js/reboot.js"></script>
+		<script type="text/javascript" src="../js/editfiles.js"></script>
+		<title></title>
+		<style type="text/css">
+			#edit_file_content {
+				width: 100%;
+				height: 380px;
+				text-align: left;
+				font-size: 14pt;
+				font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+				font-style: normal;
+				font-variant: normal;
+				color: black;
+			}
+			.button_float_left {
+				float: left;
+			}
+			.button_float_right {
+				float: right;
+			}
+			.editfile_ops_button {
+				margin-left: 0;
+			}
+			.editfile_ops_button input {
+				min-width: 250px;
+				margin-left: 0;
+			}
+			.editfile_ops_button .button_wrapper {
+				margin-right: 0;
+				height: auto;
+			}
+			.editfile_apply_button {
+				margin-top: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="all_content" class="body_bg">
+			<div id="wrapper" class="wrapper_dim">
+				<div class="wrapper_dim wrapper_filter">
+					<div id="header" class="header">
+					</div>
+					<div class="content">
+						<div class="main_left">
+							<div id="settings_menu">
+							 </div>
+						</div>
+						<div class="content_right">
+							<div class="maintitle">
+								<h1>
+									<script type="text/javascript">dw(system_label_edit_files);</script>
+								</h1>
+							</div>
+							<div class="main_content">
+								<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+									<tbody>
+										<tr id="tr_editfile" style="">
+											<td height="42" valign="top" align="left">
+												<script type="text/javascript">
+													dw(editfiles_label_file_to_edit);
+													dw(common_colon);
+												</script>
+											</td>
+											<td height="42" valign="top" align="right">
+												<select id="file_to_edit" class="input_select" data-modsettings="true">
+													<option value="9999">
+														<script type="text/javascript">
+															dw(editfiles_label_file_not_selected);
+														</script>
+													</option>
+												</select>
+											</td>
+										</tr>
+										<tr id="tr_editfile" style="">
+											<td height="42" valign="top" align="left">
+												<div class="main_button editfile_ops_button">
+													<label id="reload_file">
+														<script type="text/javascript">create_button(editfiles_label_reload_file, "edit_files_reload_file");</script>
+													</label>
+												</div>
+											</td>
+											<td height="42" valign="top" align="right">
+												<div class="main_button editfile_ops_button">
+													<label id="save_file">
+														<script type="text/javascript">create_button(editfiles_label_save_file, "edit_files_save_file");</script>
+													</label>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<textarea id="edit_file_content" spellcheck=false></textarea>
+								<div class="apply_button editfile_apply_button">
+									<label id="button_reboot">
+										<script type="text/javascript">create_button(system_label_reboot,"reboot_apply_button");</script>
+									</label>
+								</div>
+							</div>
+							<!--main_content end-->
+						</div>
+					</div>
+					<!--content end-->
+				</div>
+				<div id="footer" class="footer">
+				</div>
+			</div>
+		</div>
+	</body>
 </html>
