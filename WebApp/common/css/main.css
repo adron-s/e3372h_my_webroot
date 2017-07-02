@@ -5370,6 +5370,10 @@ margin-left:60px;
 	width:35px !important;
 	height:27px;
 }
+#input_dhcp_subnet_mask input{
+	width:35px !important;
+	height:27px;
+}
 
 .payment_label{
 	height: 27px;

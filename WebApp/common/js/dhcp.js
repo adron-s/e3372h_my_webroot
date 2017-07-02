@@ -95,10 +95,19 @@ function initPageData() {
             g_dhcpSubmark = dhcp_value.DhcpLanNetmask;
             var dhcpIPAddress = dhcp_value.DhcpIPAddress;
             var dhcpIPAddresslists = dhcpIPAddress.split(".");
+            var dhcpSubnetMask = dhcp_value.DhcpLanNetmask;
+            var dhcpSubnetMasklists = dhcpSubnetMask.split(".");
+
             $('#input_dhcp_ipaddr_first').val(dhcpIPAddresslists[0]);
             $('#input_dhcp_ipaddr_second').val(dhcpIPAddresslists[1]);
             $('#input_dhcp_ipaddr_third').val(dhcpIPAddresslists[2]);
             $('#input_dhcp_ipaddr_forth').val(dhcpIPAddresslists[3]);
+
+            $('#input_dhcp_subnet_mask_first').val(dhcpSubnetMasklists[0]);
+            $('#input_dhcp_subnet_mask_second').val(dhcpSubnetMasklists[1]);
+            $('#input_dhcp_subnet_mask_third').val(dhcpSubnetMasklists[2]);
+            $('#input_dhcp_subnet_mask_forth').val(dhcpSubnetMasklists[3]);
+
             $("input[name='radio_dhcp_status'][value=" + dhcp_value.DhcpStatus + ']').attr('checked', true);
             if (g_DHCP_SERVER_ENABLE == dhcp_value.DhcpStatus)
             {
@@ -113,12 +122,18 @@ function initPageData() {
 }
 
 function postData() {
-     var dhcpIPAddresssFirst = $('#input_dhcp_ipaddr_first').val();
-     var dhcpIPAddresssSecond = $('#input_dhcp_ipaddr_second').val();
-     var dhcpIPAddresssThird = $('#input_dhcp_ipaddr_third').val();
-     var dhcpIPAddresssForth = $('#input_dhcp_ipaddr_forth').val();
+    var dhcpIPAddresssFirst = $('#input_dhcp_ipaddr_first').val();
+    var dhcpIPAddresssSecond = $('#input_dhcp_ipaddr_second').val();
+    var dhcpIPAddresssThird = $('#input_dhcp_ipaddr_third').val();
+    var dhcpIPAddresssForth = $('#input_dhcp_ipaddr_forth').val();
+
+    var dhcpSubnetMasksFirst = $('#input_dhcp_subnet_mask_first').val();
+    var dhcpSubnetMasksSecond = $('#input_dhcp_subnet_mask_second').val();
+    var dhcpSubnetMasksThird = $('#input_dhcp_subnet_mask_third').val();
+    var dhcpSubnetMasksForth = $('#input_dhcp_subnet_mask_forth').val();
+
     dhcp_value.DhcpIPAddress = dhcpIPAddresssFirst + '.' + dhcpIPAddresssSecond + '.' + dhcpIPAddresssThird + '.' + dhcpIPAddresssForth; 
-    dhcp_value.DhcpLanNetmask = g_dhcpSubmark;
+    dhcp_value.DhcpLanNetmask = dhcpSubnetMasksFirst + '.' + dhcpSubnetMasksSecond + '.' + dhcpSubnetMasksThird + '.' + dhcpSubnetMasksForth; 
     dhcp_value.DhcpStatus = $("input[name='radio_dhcp_status']:checked").val();
     dhcp_value.DhcpStartIPAddress =dhcpIPAddresssFirst + '.' + dhcpIPAddresssSecond + '.' + dhcpIPAddresssThird + '.' +  $('#input_dhcp_startip').val();
     dhcp_value.DhcpEndIPAddress = dhcpIPAddresssFirst + '.' + dhcpIPAddresssSecond + '.' + dhcpIPAddresssThird + '.' + $('#input_dhcp_endip').val();
@@ -208,15 +223,17 @@ function verifyUserInput() {
 //enable DHCP server
     if (1 == dhcpStatus)
     {
-        if ((!isValidIpAddress(dhcpStartIPAddress)) || (dhcpIPAddresss == dhcpStartIPAddress))
+        /*if ((!isValidIpAddress(dhcpStartIPAddress)) || (dhcpIPAddresss == dhcpStartIPAddress))
         {
             showErrorUnderTextbox('input_dhcp_ip', dhcp_hint_start_ip_address_invalid);
+						console.log("zzzz1", isValidIpAddress(dhcpStartIPAddress));
             $('#input_dhcp_startip').focus();
             return false;
         }
         if (!isBroadcastOrNetworkAddress(dhcpStartIPAddress, dhcpLanNetmask))
         {
             showErrorUnderTextbox('input_dhcp_ip', dhcp_hint_start_ip_address_invalid);
+						console.log("zzzz2");
             $('#input_dhcp_startip').focus();
             return false;
         }
@@ -231,7 +248,7 @@ function verifyUserInput() {
             showErrorUnderTextbox('input_dhcp_ip', dhcp_hint_end_ip_address_invalid);
             $('#input_dhcp_endip').focus();
             return false;
-        }
+        }*/
         if (!isSameSubnetAddrs(dhcpStartIPAddress, dhcpIPAddresss, dhcpLanNetmask))
         {
             showErrorUnderTextbox('input_dhcp_ip', dhcp_hint_start_ip_address_same_subnet);
@@ -244,12 +261,12 @@ function verifyUserInput() {
             $('#input_dhcp_endip').focus();
             return false;
         }
-        if (!compareStartIpAndEndIp(dhcpStartIPAddress, dhcpEndIPAddress))
+        /*if (!compareStartIpAndEndIp(dhcpStartIPAddress, dhcpEndIPAddress))
         {
             showErrorUnderTextbox('input_dhcp_ip', dhcp_hint_end_ip_greater_start_ip);
             $('#input_dhcp_endip').focus();
             return false;
-        }
+        }*/
         if (-1 != dhcpLeaseTime.indexOf('.'))
         {
             showErrorUnderTextbox('input_dhcp_leasetime', dhcp_hint_dhcp_lease_time_integer);
