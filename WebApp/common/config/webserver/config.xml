@@ -5,10 +5,10 @@
         <username>admin</username>
         <password>ONGAmF0bLnpgFBkOLL08lnQIg3GINU7JPSe/2G0JoBcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</password>
         <password_with_session>OGM2OTc2ZTViNTQxMDQxNWJkZTkwOGJkNGRlZTE1ZGZiMTY3YTljODczZmM0YmI4YTgxZjZmMmFiNDQ4YTkxOA==</password_with_session>
-        <passwordencryped>3</passwordencryped>
+        <passwordencryped>4</passwordencryped>
         <!--密码强度状态  -->
         <remindstate>0</remindstate>
-        <hilink_login>0</hilink_login>
+        <hilink_login>1</hilink_login>
         <!--重定向页面  -->
         <main_page>/html/index.html</main_page>
         <tokenenable>1</tokenenable>
