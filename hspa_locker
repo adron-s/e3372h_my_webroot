@@ -1,0 +1,38 @@
+#!/system/bin/busybox sh
+
+start() {
+	if ! busybox start-stop-daemon -Ktp /var/run/hspa_locker.pid &> /dev/null; then
+		echo -n 'Starting HSPA Locker... '
+		busybox start-stop-daemon -Sbx /app/webroot/oping -mp /var/run/hspa_locker.pid -- -i 0.2 8.8.8.8
+		if busybox start-stop-daemon -Ktp /var/run/hspa_locker.pid &> /dev/null; then
+			echo 'OK'
+		else
+			echo 'ERROR'
+		fi
+	else
+		echo 'Error: HSPA Locker is already started'
+		return 1
+	fi
+}
+
+stop() {
+	if busybox start-stop-daemon -Ktp /var/run/hspa_locker.pid &> /dev/null; then
+		echo -n 'Stopping HSPA Locker... '
+		busybox start-stop-daemon -Kp /var/run/hspa_locker.pid
+		rm /var/run/hspa_locker.pid
+	else
+		echo "Error: HSPA Locker isn't started"
+		return 1
+	fi
+}
+
+usage() {
+	echo 'usage: hspa_locker <start|stop|restart>'
+}
+
+case "$@" in
+	start) start;;
+	stop) stop;;
+	restart) stop; start;;
+	*) usage; exit 1;;
+esac

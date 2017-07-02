@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <link rel="stylesheet" href="../css/main.css" type="text/css" />
+    <script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../lib/log4javascript_lite.js"></script>
+    <script type="text/javascript" src="../lib/jquery.qtip.js"></script>
+    <script type="text/javascript" src="../lib/jquery.form.js"></script>
+    <script type="text/javascript" src="../lib/jquery.corner.js"></script>
+    <script type="text/javascript" src="../lib/aes.js"></script>
+    <script type="text/javascript" src="../lib/hmac-sha256.js"></script>
+    <script type="text/javascript" src="../lib/pbkdf2.js"></script>
+    <script type="text/javascript" src="../lib/scram.js"></script>
+    <script type="text/javascript" src="../js/changelang.js"></script>
+    <script type="text/javascript" src="../js/main.js"></script>
+    <script type="text/javascript" src="../js/checklogin.js"></script>
+    <script type="text/javascript" src="../js/redirect.js"></script>
+    <script type="text/javascript" src="../js/phonebook.js"></script>
+    <script type="text/javascript" src="../js/validation.js"></script>
+    <title></title>
+</head>
+<body>
+<div id="all_content" class="body_bg">
+    <div id="wrapper" class="wrapper_dim">
+        <div class="wrapper_dim wrapper_filter">
+            <div id="header" class="header"></div>
+            <div class="content">
+                <div class="main_left">
+                    <div class="menu_group clr_blue_click clr_blue_hover clr_blue_click_label clr_blue_click_b">
+                        <ul><li id="pb_new_group"><span><img src='../res/new_group.gif'/><script type="text/javascript">dw(pb_label_new_group);</script></span></li></ul>
+                        <ul class="menu_pb clr_bold_a" id="pb_group_list"></ul>
+                        <ul id="pb_add_group"></ul>
+                    </div>
+                </div>
+                <div class="content_right_pb">
+                    <div class="maintitle"><h1 id="cur_group_type"></h1></div>
+                    <div class="pb_main_content">
+                        <div class="sms_btn_bg">
+                            <script type="text/javascript">create_button(common_new,'btn_new_contact');</script>
+                            <script type="text/javascript">create_button(pb_send_message,'btn_send_msg');</script>
+                            <script type="text/javascript">create_button(common_delete,'btn_del_contact');</script>
+                            <script type="text/javascript">create_button(common_move,'btn_move_to_group');</script>
+                            <script type="text/javascript">create_button(strid_sms_label_import,'btn_pb_import');</script>
+                        </div>
+                        <div class="pb_contact">
+                            <table border="0" cellpadding="0" cellspacing="0" class="pb_table">
+                                <tr>
+                                    <td width="200px" class="pb_search">
+                                        <img id ="pb_img_search" src='../res/search.gif'/><input type='text' id="pb_search" name="pb_search" class="pb_search_init clr_gray"/>
+                                    </td>
+                                    <td width="443px">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <th height="30px">
+                                        &nbsp;<input type='checkbox' id="pb_check_all" />&nbsp;&nbsp;<label><script type="text/javascript">dw(common_name);</script></label>
+                                    </th>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                   <td class="pb_list clr_bold_a" valign="top"><ul id="list_contacts" ></ul></td>
+                                   <td valign="top" height="428px"><div id= "div_local_detail" class="pb_contact_right_top"></div></td>
+                                </tr>
+                                <tr class="pb_tfoot">
+                                   <td width="200px">
+                                        <div class="pb_pagination" id='pb_pagination'>
+                                            <div class="pb_page_jump">
+                                                <span class="pb_page_tool">
+                                                <span class="pb_span"><a class="pageBegin" id="pageBegin">&nbsp;</a></span>
+                                                <span class="pb_span"><a class="prePage" id="prePage">&nbsp;</a></span>
+                                                <span class="page_num clr_bold_a" id="page_num"></span>
+                                                <span class="pb_span"><a class="nextPage" id="nextPage">&nbsp;</a></span>
+                                                <span class="pb_span"><a class="pageLast" id="pageLast"></a></span>
+                                                </span>
+                                                <br/>
+                                                <table width="190px" border="0" cellpadding="0" cellspacing="0" class="pb_jump">
+                                                    <tr>
+                                                        <td>
+                                                            <span class="pb_page_list">
+                                                            <label id="curPbPage"></label>
+                                                            &nbsp;
+                                                            <b>
+                                                            <script type="text/javascript">dw(sms_label_page);dw(common_colon);</script>
+                                                            </b>
+                                                            </span>
+                                                            <input type="text" size="2" maxlength="3" id="jump_page_index"/>
+                                                            <script type="text/javascript">create_button(common_go,'jump_page',"pb_go");</script>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                   </td>
+                                   <td valign="middle" class="pb_contact_right_bottom">
+                                        <div>
+                                            <script type="text/javascript">create_button(common_save,'btn_save_contact');</script>
+                                            <script type="text/javascript">create_button(common_delete,'btn_del_contact_b');</script>
+                                            <script type="text/javascript">create_button(common_edit,'btn_edit_contact');</script>
+                                            <script type="text/javascript">create_button(common_cancel,'btn_cancel_contact');</script>
+                                        </div>
+                                   </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="footer" class="footer"></div>
+        </div>
+    </div>
+</div>
+<noscript><div class="noscript_text">Your browser does not support JavaScript.</div></noscript>
+</body>
+</html>

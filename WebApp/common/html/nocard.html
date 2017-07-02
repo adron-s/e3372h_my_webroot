@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <link type="text/css" rel="stylesheet" href="../css/main.css" />
+        <script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="../lib/log4javascript_lite.js"></script>
+        <script type="text/javascript" src="../lib/jquery.qtip.js"></script>
+        <script type="text/javascript" src="../lib/jquery.corner.js"></script>
+        <script type="text/javascript" src="../lib/aes.js"></script>
+        <script type="text/javascript" src="../lib/hmac-sha256.js"></script>
+        <script type="text/javascript" src="../lib/pbkdf2.js"></script>
+        <script type="text/javascript" src="../lib/scram.js"></script>
+        <script type="text/javascript">
+        if(($.browser.safari) || ($.browser.opera))
+         {
+	        var mainLoad = false;
+	        var redirectLoad = false;
+	        var noCardLoad = false;
+	        var changeLangLoad = false;
+	        function reloadPage(){
+	        	if(mainLoad == false || redirectLoad == false || noCardLoad == false || changeLangLoad == false)
+	         	{
+	         		location.reload();
+	         	}
+	        }
+	        function mainLoaded()
+	        {
+	        	mainLoad = true;
+	        }
+	        function redirectLoaded()
+	        {
+	        	redirectLoad = true;
+	        }
+	        function noCardLoaded()
+	        {
+	        	noCardLoad = true;
+	        }
+	        function changeLangLoaded()
+	        {
+	        	changeLangLoad = true;
+	        }
+	    }else {
+	        function mainLoaded(){};
+	        function changeLangLoaded(){};
+	        function redirectLoaded(){};
+	        function noCardLoaded(){};
+	        function reloadPage(){};
+	    }
+        </script>    
+		<script type="text/javascript" src="../js/changelang.js" onload="changeLangLoaded();"></script>
+		<script type="text/javascript" src="../js/main.js" onload="mainLoaded()"></script>
+        <script type="text/javascript" src="../js/redirect.js" onload="redirectLoaded();"></script>
+        <script type="text/javascript" src="../js/nocard.js" onload="noCardLoaded();"></script>  
+        <title></title>
+        
+    </head>
+
+    <body onload="reloadPage();">
+        <div id="all_content" class="body_bg">
+            <div class="login_head_div login_head_dim">
+                <div class="login_head_dim login_head_filter">
+                     <div id="header" class="header" >
+                    </div>
+                </div>
+            </div>
+            <div class="content_box">
+                <div id="nocard_message" class="nocard_message">
+                    <div id="nocard_img" class="nocard_img">
+                    </div>
+                    <div id="nocard_content" class="nocard_content">
+                        <table>
+                            <tr>
+                                <td>
+                                <h1>
+                                <script type="text/javascript">dw(ID_INSERT_SIM);</script>
+                                </h1>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="bottom_button">
+                        <script type="text/javascript">create_button(IDS_pinrequired_btn_gohome, "link_login_nocard");</script>
+                    </div>
+                </div>
+
+            </div>
+            <div id="footer"  class="footer">
+            </div>
+        </div>
+        <noscript>
+            <div class="noscript_text">
+                Your browser does not support JavaScript.
+            </div>
+        </noscript>
+    </body>
+</html>

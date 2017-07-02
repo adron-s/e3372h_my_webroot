@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <link type="text/css" rel="stylesheet" href="../css/main.css" />
+        <script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="../lib/log4javascript_lite.js"></script>
+        <script type="text/javascript" src="../lib/jquery.qtip.js"></script>
+        <script type="text/javascript" src="../lib/jquery.corner.js"></script>
+        <script type="text/javascript" src="../lib/aes.js"></script>
+        <script type="text/javascript" src="../lib/hmac-sha256.js"></script>
+        <script type="text/javascript" src="../lib/pbkdf2.js"></script>
+        <script type="text/javascript" src="../lib/scram.js"></script>
+        <script type="text/javascript" src="../js/changelang.js"></script>
+        <script type="text/javascript" src="../js/main.js"></script>
+        <script type="text/javascript" src="../js/redirect.js"></script>
+        <script type="text/javascript" src="../js/validation.js"></script>
+        <script type="text/javascript" src="../js/checklogin.js"></script>
+        <script type="text/javascript" src="../js/ethernetstatus.js"></script>
+        <title></title>
+    </head>
+
+    <body>
+        <div id="all_content" class="body_bg">
+            <div class="wrapper_dim wrapper_filter">
+                <div id="header" class="header">
+                </div>
+                <div class="content">
+                    <div class="main_left">
+                        <div id="settings_menu">
+                        </div>
+                    </div>
+                    <div class="content_right">
+                        <div class="maintitle">
+                            <h1>
+                            <script type="text/javascript">dw(IDS_ethernet_label_ethernet_status);</script>
+                            </h1>
+                        </div>
+                        <div class="main_content">
+                            <div id="status_top">
+                            <table width="600" border="0" cellspacing="0" cellpadding="0" class="connection_content_list">
+                                <tr valign="middle" height="32">
+                                    <td valign="middle" class="padding_title" height="28" width="220">
+                                    <script type="text/javascript">
+                                    	dw(dialup_label_duration);
+                                        dw(common_colon);
+                                    </script>
+                                    </td>
+                                    <td valign="middle" id="label_duration" height="28" >
+                                    
+                                    </td>
+                                </tr>
+                                <tr valign="middle" height="32">
+                                    <td valign="middle" class="padding_title" height="28" width="220">
+                                    <script type="text/javascript">
+                                    	dw(dialup_label_connection_status);
+                                        dw(common_colon);
+                                    </script>
+                                    </td>
+                                    <td valign="middle" id="label_conn_status" height="28" >
+                                    </td>
+                                </tr>
+                                <tr valign="middle"  height="32">
+                                    <td valign="middle" class="padding_title" height="28" width="220" >
+                                    <script type="text/javascript">
+                                        dw(wlan_label_mac_address);
+                                        dw(common_colon);
+                                    </script>
+                                    </td>
+                                    <td valign="middle" id="label_mac_address" class="Arabic_dialupNumber" height="28" >
+                                    
+                                    </td>
+                                </tr>
+                              	<tr valign="middle"  height="32">
+                                    <td valign="middle" class="padding_title" height="28" width="220">
+                                    <script type="text/javascript">
+                                        dw(dialup_label_connection_mode);
+                                        dw(common_colon);
+                                    </script>
+                                    </td>
+                                    <td valign="middle" height="28"  id="label_conn_mode">
+                                    <label id="connection_mode"></label><label id="dialing_mode"></label>
+                                    </td>
+                                </tr>
+                              	<tr valign="middle"  height="32">
+                                    <td valign="middle" class="padding_title" height="28" width="220">
+                                    <script type="text/javascript">
+                                        dw(dialup_label_ip_address);
+                                        dw(common_colon);
+                                    </script>
+                                    </td>
+                                    <td valign="middle" height="28" id="label_ip_address">
+                                    
+                                    </td>
+                                </tr>
+                                <tr valign="middle"  height="32">
+                                    <td valign="middle" class="padding_title" height="28" width="220">
+                                    <script type="text/javascript">
+                                        dw(dhcp_label_subnet_mask);
+                                        dw(common_colon);
+                                    </script>
+                                    </td>
+                                    <td valign="middle" height="28" id="label_subnet_mask">
+                                    
+                                    </td>
+                                </tr>
+                                <tr valign="middle"  height="32">
+                                    <td valign="middle" class="padding_title" height="28" width="220">
+                                    <script type="text/javascript">
+                                        dw(IDS_advanced_settings_default_gateway);
+                                        dw(common_colon);
+                                    </script>
+                                    </td>
+                                    <td valign="middle" height="28" id="label_gateway_address">
+                                    </td>
+                                </tr>
+                                <tr valign="middle" height="32">
+                                    <td valign="middle" class="padding_title" height="28" width="220">
+                                    <script type="text/javascript">
+                                        dw(IDS_advanced_settings_primary_dns_server);
+                                        dw(common_colon);
+                                    </script>
+                                    </td>
+                                    <td valign="middle" height="28" id="primary_dns_id">
+                                    </td>
+                                </tr>
+                                <tr valign="middle" height="32">
+                                    <td valign="middle" class="padding_title" height="28" width="220">
+                                    <script type="text/javascript">
+                                        dw(IDS_advanced_settings_secondary_dns_server);
+                                        dw(common_colon);
+                                    </script>
+                                    </td>
+                                    <td valign="middle" height="28" id="secondary_dns_id">
+                                    </td> 
+                                </tr>
+                            </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="footer" class="footer">
+            </div>
+        </div>
+        <noscript>
+			<div class="noscript_text">
+				Your browser does not support JavaScript.
+			</div>
+		</noscript>
+    </body>
+</html>

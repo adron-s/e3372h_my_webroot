@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <link rel="stylesheet" href="../css/main.css" type="text/css" />
+        <script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="../lib/log4javascript_lite.js"></script>
+        <script type="text/javascript" src="../lib/jquery.qtip.js"></script>
+        <script type="text/javascript" src="../lib/jquery.corner.js"></script>
+        <script type="text/javascript" src="../lib/aes.js"></script>
+        <script type="text/javascript" src="../lib/hmac-sha256.js"></script>
+        <script type="text/javascript" src="../lib/pbkdf2.js"></script>
+        <script type="text/javascript" src="../lib/scram.js"></script>
+        <script type="text/javascript" src="../js/changelang.js"></script>
+        <script type="text/javascript" src="../js/main.js"></script>
+        <script type="text/javascript" src="../js/checklogin.js"></script>
+        <script type="text/javascript" src="../js/modsettings.js"></script>
+        <title></title>
+    </head>
+
+    <body>
+        <div id="all_content" class="body_bg">
+            <div id="wrapper" class="wrapper_dim">
+                <div class="wrapper_dim wrapper_filter">
+                    <div id="header" class="header">
+                    </div>
+                    <div class="content">
+                        <div class="main_left">
+                            <div id="settings_menu">
+                            </div>
+                        </div>
+                        <div class="content_right">
+                            <div class="maintitle">
+                                <h1>
+                                <script type="text/javascript">dw(system_label_modsettings);</script>
+                                </h1>
+                            </div>
+                            <div class="main_content">
+                                <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                    <tr id="tr_fix_ttl" style="display:none;">
+                                        <td width="218" height="42" valign="top">
+                                        <script type="text/javascript">
+                                            dw(modsettings_label_ttl_fix);
+                                            dw(common_colon);
+                                        </script>
+                                        </td>
+                                        <td width="238" height="42" valign="top">
+                                        <select id="fix_ttl" class="input_select">
+                                        <option value="0">
+                                        <script type="text/javascript">
+                                            dw(modsettings_label_ttl_fix_modes_turn_off);
+                                        </script>
+                                        </option>
+                                        <option value="1">
+                                        <script type="text/javascript">
+                                            dw(modsettings_label_ttl_fix_modes_turn_on_64);
+                                        </script>
+                                        </option>
+                                        <option value="128">
+                                        <script type="text/javascript">
+                                            dw(modsettings_label_ttl_fix_modes_turn_on_128);
+                                        </script>
+                                        </option>
+                                        <option value="other">
+                                        <script type="text/javascript">
+                                            dw(modsettings_label_modes_other);
+                                        </script>
+                                        </option>
+                                        </select>
+                                        </td>
+                                        <td width="144" height="42" valign="top">&nbsp;</td>
+                                    </tr>
+                                    <tr id="tr_autoswitch" style="display:none;">
+                                        <td height="42" valign="top">
+                                        <script type="text/javascript">
+                                            dw(modsettings_label_autoswitch);
+                                            dw(common_colon);
+                                        </script>
+                                        </td>
+                                        <td height="42" valign="top">
+                                        <select id="autoswitch" class="input_select">
+                                        <option value="0">
+                                        <script type="text/javascript">
+                                            dw(modsettings_label_autoswitch_modes_none);
+                                        </script>
+                                        </option>
+                                        <option value="1">
+                                        <script type="text/javascript">
+                                            dw(modsettings_label_autoswitch_modes_work_rndis);
+                                        </script>
+                                        </option>
+                                        <option value="2">
+                                        <script type="text/javascript">
+                                            dw(modsettings_label_autoswitch_modes_work_cdc);
+                                        </script>
+                                        </option>
+                                        <option value="3">
+                                        <script type="text/javascript">
+                                            dw(modsettings_label_autoswitch_modes_gateway);
+                                        </script>
+                                        </li>
+                                        <option value="4">
+                                        <script type="text/javascript">
+                                            dw(modsettings_label_autoswitch_modes_gateway_ncm);
+                                        </script>
+                                        </option>
+                                        <option value="5">
+                                        <script type="text/javascript">
+                                            dw(modsettings_label_autoswitch_modes_debug);
+                                        </script>
+                                        </option>
+                                        <option value="other">
+                                        <script type="text/javascript">
+                                            dw(modsettings_label_modes_other);
+                                        </script>
+                                        </option>
+                                        </select>
+                                        </td>
+                                        <td height="42" valign="top">&nbsp;</td>
+                                    </tr>
+                                    <tr id="tr_autoswitch_dly" style="display:none;">
+                                        <td height="42" valign="top">
+                                        <script type="text/javascript">
+                                            dw(modsettings_label_autoswitch_delay);
+                                            dw(common_colon);
+                                        </script>
+                                        </td>
+                                        <td height="42" valign="top">
+                                        <input id="autoswitch_dly" type="text" size="25"/>
+                                        </td>
+                                        <td height="42" valign="top">&nbsp;</td>
+                                    </tr>
+                                    <tr id="tr_datalock" style="display:none;">
+                                        <td height="42" valign="top">
+                                        <script type="text/javascript">
+                                            dw(modsettings_label_datalock);
+                                            dw(common_colon);
+                                        </script>
+                                        </td>
+                                        <td height="42" valign="top">
+                                        <input id="datalock" type="text" size="25"/>
+                                        </td>
+                                        <td height="42" valign="top">&nbsp;</td>
+                                    </tr>
+                                    <tr id="tr_device_name" style="display:none;">
+                                        <td height="42" valign="top">
+                                        <script type="text/javascript">
+                                            dw(system_label_device_name);
+                                            dw(common_colon);
+                                        </script>
+                                        </td>
+                                        <td height="42" valign="top">
+                                        <input id="device_name" type="text" size="25"/>
+                                        </td>
+                                        <td height="42" valign="top">&nbsp;</td>
+                                    </tr>
+                                    <tr id="tr_serial_number" style="display:none;">
+                                        <td height="42" valign="top">
+                                        <script type="text/javascript">
+                                            dw(system_label_serial_number);
+                                            dw(common_colon);
+                                        </script>
+                                        </td>
+                                        <td height="42" valign="top">
+                                        <input id="serial_number" type="text" size="25"/>
+                                        </td>
+                                        <td height="42" valign="top">&nbsp;</td>
+                                    </tr>
+                                    <tr id="tr_imei" style="display:none;">
+                                        <td height="42" valign="top">
+                                        <script type="text/javascript">
+                                            dw(system_label_imei);
+                                            dw(common_colon);
+                                        </script>
+                                        </td>
+                                        <td height="42" valign="top">
+                                        <input id="imei" type="text" size="25"/>
+                                        </td>
+                                        <td height="42" valign="top">&nbsp;</td>
+                                    </tr>
+                                    <tr id="tr_imei_generator_model" style="display:none;">
+                                        <td height="42" valign="top">
+                                        <script type="text/javascript">
+                                            dw(modsettings_label_imei_generator_model);
+                                            dw(common_colon);
+                                        </script>
+                                        </td>
+                                        <td height="42" valign="top">
+                                        <input id="imei_generator_model" type="text" size="25"/>
+                                        </td>
+                                        <td height="42" valign="top">&nbsp;</td>
+                                    </tr>
+                                    <tr id="tr_imei_generator" style="display:none;">
+                                        <td height="42" valign="top">
+                                        <script type="text/javascript">
+                                            dw(modsettings_label_imei_generator);
+                                            dw(common_colon);
+                                        </script>
+                                        </td>
+                                        <td height="42" valign="top">
+                                        <span id="imei_generator"></span>
+                                        </td>
+                                        <td height="42" valign="top">&nbsp;</td>
+                                    </tr>
+                                    <tr id="tr_backup_imei" style="display:none;">
+                                        <td height="42" valign="top">
+                                        <script type="text/javascript">
+                                            dw(modsettings_label_backup_imei);
+                                            dw(common_colon);
+                                        </script>
+                                        </td>
+                                        <td height="42" valign="top">
+                                        <select id="backup_imei" class="input_select">
+                                        <option value="none">
+                                        <script type="text/javascript">
+                                            dw(modsettings_label_backup_imei_modes_none);
+                                        </script>
+                                        </option>
+                                        <option value="nvbackup">
+                                        <script type="text/javascript">
+                                            dw('AT^NVBACKUP');
+                                        </script>
+                                        </option>
+                                        <option value="inforbu">
+                                        <script type="text/javascript">
+                                            dw('AT^INFORBU');
+                                        </script>
+                                        </option>
+                                        <option value="backup_imei">
+                                        <script type="text/javascript">
+                                            dw('backup_imei');
+                                        </script>
+                                        </option>
+                                        </select>
+                                        </td>
+                                        <td height="42" valign="top">&nbsp;</td>
+                                    </tr>
+                                    <tr id="tr_autorun_imei_generator" style="display:none;">
+                                        <td height="42" valign="top">
+                                        <script type="text/javascript">
+                                            dw(modsettings_label_autorun_imei_generator);
+                                            dw(common_colon);
+                                        </script>
+                                        </td>
+                                        <td height="42" valign="top">
+                                        <select id="autorun_imei_generator" class="input_select">
+                                        <option value="false">
+                                        <script type="text/javascript">
+                                            dw(modsettings_label_modes_false);
+                                        </script>
+                                        </option>
+                                        <option value="true">
+                                        <script type="text/javascript">
+                                            dw(modsettings_label_modes_true);
+                                        </script>
+                                        </option>
+                                        </select>
+                                        </td>
+                                        <td height="42" valign="top">&nbsp;</td>
+                                    </tr>
+                                    <tr id="tr_hspa_locker" style="display:none;">
+                                        <td height="42" valign="top">
+                                        <script type="text/javascript">
+                                            dw(modsettings_label_hspa_locker);
+                                            dw(common_colon);
+                                        </script>
+                                        </td>
+                                        <td height="42" valign="top">
+                                        <select id="hspa_locker" class="input_select">
+                                        <option value="false">
+                                        <script type="text/javascript">
+                                            dw(modsettings_label_modes_false);
+                                        </script>
+                                        </option>
+                                        <option value="true">
+                                        <script type="text/javascript">
+                                            dw(modsettings_label_modes_true);
+                                        </script>
+                                        </option>
+                                        </select>
+                                        </td>
+                                        <td height="42" valign="top">&nbsp;</td>
+                                    </tr>
+                                    <tr id="tr_webui_mode" style="display:none;">
+                                        <td height="42" valign="top">
+                                        <script type="text/javascript">
+                                            dw(modsettings_label_webui_mode);
+                                            dw(common_colon);
+                                        </script>
+                                        </td>
+                                        <td height="42" valign="top">
+                                        <select id="webui_mode" class="input_select" data-reload="true">
+                                        <option value="new">
+                                        <script type="text/javascript">
+                                            dw(modsettings_label_webui_mode_new);
+                                        </script>
+                                        </option>
+                                        <option value="old">
+                                        <script type="text/javascript">
+                                            dw(modsettings_label_webui_mode_old);
+                                        </script>
+                                        </option>
+                                        </select>
+                                        </td>
+                                        <td height="42" valign="top">&nbsp;</td>
+                                    </tr>
+                                    <tr id="tr_search" style="display:none;">
+                                        <td height="42" valign="top">
+                                        <script type="text/javascript">
+                                            dw(modsettings_label_search);
+                                            dw(common_colon);
+                                        </script>
+                                        </td>
+                                        <td height="42" valign="top">
+                                        <select id="search" class="input_select">
+                                        <option value="yandex">
+                                        <script type="text/javascript">
+                                            dw(modsettings_label_search_yandex);
+                                        </script>
+                                        </option>
+                                        <option value="google">
+                                        Google
+                                        </option>
+                                        </select>
+                                        </td>
+                                        <td height="42" valign="top">&nbsp;</td>
+                                    </tr>
+                                    <tr id="tr_force_new" style="display:none;">
+                                        <td height="42" valign="top">
+                                        <script type="text/javascript">
+                                            dw(modsettings_label_force_new);
+                                            dw(common_colon);
+                                        </script>
+                                        </td>
+                                        <td height="42" valign="top">
+                                        <ul>
+                                        <li>
+                                        <input type="checkbox" id="force_new_home">
+                                        <script type="text/javascript">
+                                            dw(common_home);
+                                        </script>
+                                        </li>
+                                        <li>
+                                        <input type="checkbox" id="force_new_statistic">
+                                        <script type="text/javascript">
+                                            dw(connection_hilink_label_traffic_statistics);
+                                        </script>
+                                        </li>
+                                        <li>
+                                        <input type="checkbox" id="force_new_sms" data-reload="true">
+                                        <script type="text/javascript">
+                                            dw(sms_lable_sms);
+                                        </script>
+                                        </li>
+                                        <li>
+                                        <input type="checkbox" id="force_new_ussd" data-reload="true">
+                                        <script type="text/javascript">
+                                            dw(ussd_label_ussd);
+                                        </script>
+                                        </li>
+                                        </ul>
+                                        <br/>
+                                        </td>
+                                        <td height="42" valign="top">&nbsp;</td>
+                                    </tr>
+                                    <tr id="tr_force_old" style="display:none;">
+                                        <td height="42" valign="top">
+                                        <script type="text/javascript">
+                                            dw(modsettings_label_force_old);
+                                            dw(common_colon);
+                                        </script>
+                                        </td>
+                                        <td height="42" valign="top">
+                                        <ul>
+                                        <li>
+                                        <input type="checkbox" id="force_old_home">
+                                        <script type="text/javascript">
+                                            dw(common_home);
+                                        </script>
+                                        </li>
+                                        <li>
+                                        <input type="checkbox" id="force_old_statistic">
+                                        <script type="text/javascript">
+                                            dw(connection_hilink_label_traffic_statistics);
+                                        </script>
+                                        </li>
+                                        <li>
+                                        <input type="checkbox" id="force_old_sms" data-reload="true">
+                                        <script type="text/javascript">
+                                            dw(sms_lable_sms);
+                                        </script>
+                                        </li>
+                                        <li>
+                                        <input type="checkbox" id="force_old_ussd" data-reload="true">
+                                        <script type="text/javascript">
+                                            dw(ussd_label_ussd);
+                                        </script>
+                                        </li>
+                                        </ul>
+                                        <br/>
+                                        </td>
+                                        <td height="42" valign="top">&nbsp;</td>
+                                    </tr>
+                                    <tr id="tr_force_both" style="display:none;">
+                                        <td height="42" valign="top">
+                                        <script type="text/javascript">
+                                            dw(modsettings_label_force_both);
+                                            dw(common_colon);
+                                        </script>
+                                        </td>
+                                        <td height="42" valign="top">
+                                        <ul>
+                                        <li>
+                                        <input type="checkbox" id="force_both_statistic">
+                                        <script type="text/javascript">
+                                            dw(connection_hilink_label_traffic_statistics);
+                                        </script>
+                                        </li>
+                                        </ul>
+                                        <br/>
+                                        </td>
+                                        <td height="42" valign="top">&nbsp;</td>
+                                    </tr>
+                                </table>
+                                <div class="apply_button">
+                                    <script type="text/javascript">create_button(common_apply,"apply_button");</script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="footer" class="footer">
+                </div>
+            </div>
+        </div>
+        <noscript>
+			<div class="noscript_text">
+				Your browser does not support JavaScript.
+			</div>
+		</noscript>
+    </body>
+</html>

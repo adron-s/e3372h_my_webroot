@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="initial-scale=0.4;user-scalable=yes" />
+        <link type="text/css" rel="stylesheet" href="../css/main.css" />
+        <script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="../lib/log4javascript_lite.js"></script>
+        <script type="text/javascript" src="../lib/jquery.qtip.js"></script>
+        <script type="text/javascript" src="../lib/jquery.corner.js"></script>
+        <script type="text/javascript" src="../lib/aes.js"></script>
+        <script type="text/javascript" src="../lib/hmac-sha256.js"></script>
+        <script type="text/javascript" src="../lib/pbkdf2.js"></script>
+        <script type="text/javascript" src="../lib/scram.js"></script>
+        <script type="text/javascript" src="../js/changelang.js"></script>
+        <script type="text/javascript" src="../js/main.js"></script>
+        <script type="text/javascript" src="../js/redirect.js"></script>
+        <title>Commends</title>
+        <script type="text/javascript">
+            var redirectFlag = false;
+            var hardwarePlatform = navigator.platform.toLowerCase();
+            var agent = navigator.userAgent.toLowerCase();
+                
+            var isIpod = hardwarePlatform.indexOf("ipod") != -1;
+            var isIphone = hardwarePlatform.indexOf("iphone") != -1;
+            var isIpad =  hardwarePlatform.indexOf("ipad") != -1;
+            var isAndroid = agent.indexOf("android") !=-1;            
+        $(document).ready(function() {                                             
+            if(g_main_convergedStatus.CurrentLanguage == "zh-cn") {
+                $(".commends_title_chinese").show();
+                $(".commends_welcome").css("font-weight","bolder");
+                $(".Chinese_E5").show();
+                $(".commends_content").css("margin-top","60px");
+                $(".commends_button").css("margin-top","240px");                
+                $(".commends_head").css("margin-top","20px");                
+            }else {
+                $(".commends_title_other").show();
+                $(".commends_welcomes").css("color","gray");
+                $(".Other_E5").show();
+                $(".commends_content").css("margin-top","40px");
+                if(g_main_convergedStatus.CurrentLanguage == "ru-ru" || g_main_convergedStatus.CurrentLanguage == "pl-pl" || g_main_convergedStatus.CurrentLanguage == "hu-hu"
+                 || g_main_convergedStatus.CurrentLanguage == "bg-bg" || g_main_convergedStatus.CurrentLanguage == "mk-mk") {
+                    $(".commends_head").css("margin-top","5px");
+                    $(".commends_button").css("margin-top","180px");                    
+                }else {
+                    $(".commends_head").css("margin-top","20px");
+                    $(".commends_button").css("margin-top","160px");                    
+                }
+            }
+            if(g_main_convergedStatus.CurrentLanguage == "ar-sa" || g_main_convergedStatus.CurrentLanguage == "he-il" || g_main_convergedStatus.CurrentLanguage == "fa-fa") {
+                $(".arrow1").show();
+            }else {
+                $(".arrow").show();
+            }            
+            $("#Android_download").click(function() {
+                if (g_main_convergedStatus.CurrentLanguage == "zh-cn") {
+                    document.getElementById("app_for_android").setAttribute("href", g_feature.appmanagements.hilink.domestic);
+                } else {
+                    document.getElementById("app_for_android").setAttribute("href", g_feature.appmanagements.hilink.foreign);
+                }                
+            });
+            $("#web_page,#get_into").click(function() {
+                redirectFlag = redirectOnCondition();
+                if(!redirectFlag) {
+                    getAjaxData("api/device/basic_information", function($xml) {
+                        var basic_ret = xml2object($xml);
+                        if('response' == basic_ret.type) {
+                            var basic_info = basic_ret.response;
+                            if(basic_info.restore_default_status == '1' && basic_info.classify != 'hilink') {
+                               document.getElementById("web_page").setAttribute("href", "../html/quicksetup.html");
+                               document.getElementById("get_into").setAttribute("href", "../html/quicksetup.html");
+                           }else {
+                               document.getElementById("web_page").setAttribute("href", "../html/home.html");
+                               document.getElementById("get_into").setAttribute("href", "../html/home.html");
+                           }
+                        }
+                    },{
+                        sync: true
+                    });                    
+                }                
+            });                        
+        });
+        </script>        
+    </head>
+    <body class="commends_page">
+        <div class="commends_all">
+            <div class="commends_title_chinese" style="display: none;">
+                <img class="commends_logo" src="../res/logo.gif"/><span class="commends_welcome"><script type="text/javascript">dw(Commend_welcome);</script></span>
+            </div>
+            <div class="commends_title_other" style="display: none;" width="720px">
+                <img class="commends_logos" src="../res/logo.gif"/><img class="commends_line" src="../res/line.png" />&nbsp;<span class="commends_welcomes"><script type="text/javascript">dw(IDS_stastics__mobileBroadband);</script></span>
+            </div>
+            <div class="commends_body">
+                <div class="commends_describe">
+                    <div class="commends_head">
+                        <table class="head_table">
+                            <tr>
+                                <td></td>
+                            </tr>
+                            <tr class="Chinese_E5" style="display: none;">
+                                <td><h1><span class="commends_e5"></span></h1></td>
+                            </tr>
+                            <tr class="Other_E5" style="display: none;" height="80px">
+                                <td><span class="commends_E5"></span></td>
+                            </tr>
+                        </table>    
+                    </div>
+                    <div class="commends_content">
+                        <table class="content_table">
+                            <tr height="40px">
+                                <td></td>
+                            </tr>
+                            <tr height="40px">
+                                <td></td>
+                            </tr>
+                            <tr height="40px">
+                                <td></td>
+                            </tr>
+                            <tr height="40px">
+                                <td></td>
+                            </tr>
+                        </table> 
+                    </div>
+                </div>
+                <div class="commends_button">                  
+                        <div class="Android_downloads">
+                            <a id="app_for_android" href="" target="_blank">
+                                <span id="Android_download"><script type="text/javascript">dw(IDS_common_download);</script></span>
+                            </a>
+                        </div>
+                </div>
+            </div>
+            <div class="commends_final">
+                <script type="text/javascript">dw(Commend_enter);</script>&nbsp;<a id="web_page" href="javascript:void(0);"><script type="text/javascript">dw(Commend_web_page);</script></a><a id="get_into" href="javascript:void(0);"><img class="arrow" style="display: none;" src="../res/arrow.png"/><img class="arrow1" style="display: none;" src="../res/arrow1.png"/></a>
+            </div>
+        </div>        
+    </body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<link rel="stylesheet" href="../css/main.css" type="text/css" />
+<script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../lib/log4javascript_lite.js"></script>
+<script type="text/javascript" src="../lib/jquery.qtip.js"></script>
+<script type="text/javascript" src="../lib/jquery.corner.js"></script>
+<script type="text/javascript" src="../lib/aes.js"></script>
+<script type="text/javascript" src="../lib/hmac-sha256.js"></script>
+<script type="text/javascript" src="../lib/pbkdf2.js"></script>
+<script type="text/javascript" src="../lib/scram.js"></script>
+<script type="text/javascript" src="../js/changelang.js"></script>
+<script type="text/javascript" src="../js/main.js"></script>
+<script type="text/javascript" src="../js/checklogin.js"></script>
+<script type="text/javascript" src="../js/validation.js"></script>
+<script type="text/javascript" src="../js/table.js"></script>
+<script type="text/javascript" src="../js/specialapplication.js"></script>
+</head>
+
+<body>
+<div id="all_content" class="body_bg">
+<div id="wrapper" class="wrapper_dim">
+	<div class="wrapper_dim wrapper_filter">
+	    <div id="header" class="header"></div>
+	    <div class="content">
+	        <div class="main_left">
+	            <div id="settings_menu"></div>
+	        </div>
+	        <div class="content_right">
+	            <div class="maintitle">
+	                <h1><script type="text/javascript">dw(firewall_label_special_application);</script></h1>
+	            </div>
+	            <div id = "specialapplication_table" class="main_content_special">
+                	<p><script type="text/javascript">dw(firewall_help_special_application);</script></p>
+	                <ul class="text_list clr_bold_li">
+						<li><script type="text/javascript">dw("<strong>" + firewall_label_trigger_protocol + common_colon + "</strong>" + " " + firewall_help_trigger_protocol);</script></li>
+						<li><script type="text/javascript">dw("<strong>" + firewall_label_trigger_port + common_colon + "</strong>" + " " + firewall_help_trigger_port);</script></li>						
+						<li><script type="text/javascript">dw("<strong>" + firewall_label_open_protocol + common_colon + "</strong>" + " " + firewall_help_open_protocol);</script></li>
+						<li><script type="text/javascript">dw("<strong>" + firewall_label_open_port + common_colon + "</strong>" + " " + firewall_help_open_port);</script></li>
+						<li><script type="text/javascript">dw("<strong>" + common_note + common_colon + "</strong>" + " " + firewall_help_settings_take_effect);</script></li>
+					</ul>
+			 <h2 class="v_servers_list">
+		        		<script type="text/javascript">
+							dw(firewall_label_special_applications_list);
+						</script>
+		        </h2>
+	                <table cellpadding="0" cellspacing="0" border="1" id="service_list">
+	                    <tr>
+	                        <th width="85" height="30">
+				        		<script type="text/javascript">
+				        			dw(firewall_label_name);
+				        		</script>
+			        		</th>
+	                        <th width="72">
+				        		<script type="text/javascript">
+				        			dw(firewall_label_status);
+				        		</script>
+			        		</th>
+	                        <th width="95">
+		                		<script type="text/javascript">
+		                			dw(firewall_label_trigger_port);
+		                		</script>
+		                	</th>
+	                        <th width="90">
+		                		<script type="text/javascript">
+		                			dw(firewall_label_trigger_protocol);
+		                		</script>
+		                	</th>
+	                        <th width="85">                        	
+		                		<script type="text/javascript">
+		                			dw(firewall_label_open_protocol);
+		                		</script>
+	                        </th>
+	                        <th width="98">                        	
+		                		<script type="text/javascript">
+		                			dw(firewall_label_open_port);
+		                		</script>
+	                        </th>
+	                        <th width="100">
+			                    <script type="text/javascript">
+				        			dw(common_options);
+				        		</script>
+	                        </th>
+	                    </tr>
+	                    <tr class="add_item_control">
+	                        <td width='85' style='word-break: break-all;'><input type="text" id="sa_trigger_name" maxlength="30" /></td>
+                            <td><select id = "sa_trigger_status" style="width:70px"></select></td>
+	                        <td><input type="text" id="sa_trigger_port" size="20" /></td>
+                            <td><select id = "sa_trigger_protocol"></select></td>
+                            <td><select id = "sa_open_protocol"></select></td>
+	                        <td><input type="text" id="sa_open_port" size="20" /></td>
+	                        <td class="user_options clr_blue_a clr_blue_hover">
+								<a href="javascript:void(0);" id="add_item_ok"><script type="text/javascript">dw(common_ok);</script></a>
+								<a href="javascript:void(0);" id="add_item_cancel"><script type="text/javascript">dw(common_cancel);</script></a>
+		                	</td>
+	                    </tr>
+	                </table><br />
+					<script type="text/javascript">create_button(common_add,"add_item");</script>
+                    <div class="apply_button"> 
+                        <script type="text/javascript">
+							create_button(common_apply,"apply");
+						</script> 
+                    </div>
+	            </div>
+	        </div>
+	    </div>
+	    <!--content end-->
+	    <div id="footer" class="footer"></div>
+	</div>
+</div>
+</div>
+</body>
+</html>

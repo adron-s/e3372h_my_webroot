@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<config>
+<!--<profile>
+        <profile_name>MTS Internet</profile_name>
+        <apn>internet.mts.ru</apn>
+        <dialup_num>*99#</dialup_num>
+        <username>mts</username>
+        <password>mts</password>
+        <auth_mode>2</auth_mode>
+        <ip_type>0</ip_type>
+</profile>-->
+</config>

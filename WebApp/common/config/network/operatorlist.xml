@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<OperatorList>
+    <Item plmn="25099" shortdescr="Beeline"/>
+    <Item plmn="25002" shortdescr="MegaFon"/>
+    <Item plmn="25001" shortdescr="MTS RUS"/>
+    <Item plmn="25039" shortdescr="Rostelecom"/>
+    <Item plmn="25011" shortdescr="YOTA"/>
+    <Item plmn="25027" shortdescr="Letai"/>
+</OperatorList>

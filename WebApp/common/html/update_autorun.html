@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <link type="text/css" rel="stylesheet" href="../css/main.css" />
+        <script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="../lib/log4javascript_lite.js"></script>
+        <script type="text/javascript" src="../lib/jquery.corner.js"></script>
+        <script type="text/javascript" src="../lib/aes.js"></script>
+        <script type="text/javascript" src="../lib/hmac-sha256.js"></script>
+        <script type="text/javascript" src="../lib/pbkdf2.js"></script>
+        <script type="text/javascript" src="../lib/scram.js"></script>
+        <script type="text/javascript" src="../js/changelang.js"></script>
+        <script type="text/javascript" src="../js/main.js"></script>
+        <script type="text/javascript" src="../js/update_autorun.js"></script>
+        <title></title>
+        <style type="text/css">
+            .apply_button .button_wrapper {
+                margin-left:10px;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <div id="all_content" class="body_bg">
+            <div class="login_head_div login_head_dim">
+                <div class="login_head_dim login_head_filter">
+                    <div id="header" class="header" >
+                    </div>
+                </div>
+            </div>
+            <div class="content_box">
+                <div class="pin_code clr_gray">
+                    <div class="update_title">
+                        <script type="text/javascript">dw(common_autorun);</script>
+                    </div>
+                    <div class="update_img update_img_dim">
+                        <div class="update_img_dim update_img_filter">
+                            &nbsp;
+                        </div>
+                    </div>
+                    <div class="title_info">
+                        <div class="update_notice clr_blue">
+                            <script type="text/javascript">dw(update_pc_assistant_update);</script>
+                        </div>
+                    </div>
+                    <div class="apply_button">
+                        <script type="text/javascript">create_button(IDS_common_download, "pc_assistant_update_download");</script>
+                        <script type="text/javascript">create_button(IDS_pinrequired_btn_gohome, "link_login");</script>
+                    </div>
+                </div>
+            </div>
+            <div id="footer"  class="footer">            </div>
+        </div>
+        <noscript>
+            <div class="noscript_text">
+                Your browser does not support JavaScript.
+            </div>
+        </noscript>
+    </body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <link type="text/css" rel="stylesheet" href="../css/main.css" />
+        <script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="../lib/log4javascript_lite.js"></script>
+        <script type="text/javascript" src="../lib/jquery.qtip.js"></script>
+        <script type="text/javascript" src="../lib/jquery.corner.js"></script>
+        <script type="text/javascript" src="../lib/aes.js"></script>
+        <script type="text/javascript" src="../lib/hmac-sha256.js"></script>
+        <script type="text/javascript" src="../lib/pbkdf2.js"></script>
+        <script type="text/javascript" src="../lib/scram.js"></script>
+        <script type="text/javascript" src="../js/select.js"></script>
+        <script type="text/javascript" src="../js/changelang.js"></script>
+        <script type="text/javascript" src="../js/main.js"></script>
+        <script type="text/javascript" src="../js/redirect.js"></script>
+        <script type="text/javascript" src="../js/ussd.js"></script>
+        <script type="text/javascript" src="../js/validation.js"></script>
+        <title></title>
+    </head>
+
+    <body>
+        <div id="new_smsmenu_list" class="new_ussd_menu" style="display:none;">
+            <ul>
+                <li class="new_sms_menu">
+                    <span id="new_all_sms" class="active">
+                        <a href="smsinbox.html" class="gray_color_font"></a>
+                    </span>
+                    <ul>
+                        <!--<li id="new_unread_sms">
+                            <a href="smsinbox.html#unread" class="gray_color_font"></a>
+                        </li>-->
+                        <!--<li id="new_read_sms">
+                            <a href="smsinbox.html#read" class="gray_color_font"></a>
+                        </li>-->
+                        <li id="new_received_sms">
+                            <a href="smsinbox.html#received" class="gray_color_font"></a>
+                        </li>
+                        <li id="new_sent_sms">
+                            <a href="smsinbox.html#sent" class="gray_color_font"></a>
+                        </li>
+                    </ul>
+                </li>
+                <li id="new_ussd_menu">
+                    <span id="new_ussd">
+                        <a href="ussd.html" class="red_color_font"></a>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div id="new_ussd_command" style="display:none;">
+            <div id="new_ussd_command_title"></div>
+            <div id="new_ussd_command_input">
+                <span id="general_command_select">
+                </span>
+            </div>
+            <div id="new_ussd_command_select">
+                <span id="new_usssd_select_1" value="1"></span>
+                <span id="new_usssd_select_2" value="2"></span>
+                <span id="new_usssd_select_3" value="3"></span>
+                <span id="new_usssd_select_4" value="4"></span>
+                <span id="new_usssd_select_5" value="5"></span>
+                <span id="new_usssd_select_6" value="6"></span>
+                <span id="new_usssd_select_7" value="7"></span>
+                <span id="new_usssd_select_8" value="8"></span>
+                <span id="new_usssd_select_9" value="9"></span>
+                <span id="new_usssd_select_x" value="*"></span>
+                <span id="new_usssd_select_0" value="0"></span>
+                <span id="new_usssd_select_y" value="#"></span>
+                <input id="new_ussd_sent" type="button">
+                <div id="new_ussd_select_tip" class="gray_color_font"></div>
+            </div>
+            <div id="new_ussd_command_reply">
+                <span></span>
+                <div class="ussd_general_result" id="general_result" style="overflow: auto">
+                    <table id="general_result_table" class="general_result_table"></table>
+                </div>
+            </div>
+        </div>
+        <div id="new_ussd_receive" style="display:none;">
+            <div id="new_ussd_receive_title"></div>
+            <div id="new_ussd_receive_content"></div>
+        </div>
+    
+    
+        <div id="all_content" class="body_bg">
+            <div id="wrapper" class="wrapper_dim">
+            <div class="wrapper_dim wrapper_filter">
+                <div id="header" class="header"></div>
+                <div class="content">
+                    <div class="main_left">
+                        <div id="ussd_setting_menu">
+                        </div>
+                    </div>
+                    <div class="content_right">
+                        <div class="maintitle">
+                            <h1 id="cur_ussd_type"></h1>
+                        </div>
+                        <div class="main_content">
+                            <div class="ussd_content">
+                                <div id="fun_activateInternetService">
+                                    <p>
+                                        <label id="activate_internet_service_description" class="clr_blue_a clr_blue_hover">
+                                        </label>
+                                    </p>
+                                    <div id="activate_internet_service">
+                                        <table cellpadding="0" cellspacing="0" border="0" width="500" >
+                                        </table>
+                                    </div>
+                                </div>
+                                
+                                <div id="fun_balanceInquiry">
+                                </div>
+                                
+                                <div id="fun_charge">
+                                </div>
+                                
+                                <div id="fun_general">
+                                    <div id="general">
+                                        <table cellpadding="0" cellspacing="0" border="0" width="500" >
+                                            <tr>
+                                                <td colspan="2">
+                                                <div class="ussd_general_result" id="general_result" style="overflow-x:hidden;overflow-y:scroll">
+                                                    <table id="general_result_table" class="general_result_table">
+                                                    </table>
+                                                </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td height="32" colspan="2">
+                                                <label id="general_description">
+                                                </label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                <span id="general_command_select" class="general_command_select"></span>
+                                                </td>
+                                                <td  class="align_right" id="general_action" width="120"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                <input type="hidden" id="general_hint" />
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="footer" class="footer"></div>
+            </div>
+        </div>
+        </div>
+        <noscript>
+            <div class="noscript_text">
+                Your browser does not support JavaScript.
+            </div>
+        </noscript>
+    </body>
+</html>

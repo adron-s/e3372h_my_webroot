@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <link rel="stylesheet" href="../css/main.css" type="text/css" />
+        <script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="../lib/log4javascript_lite.js"></script>
+        <script type="text/javascript" src="../lib/jquery.qtip.js"></script>
+        <script type="text/javascript" src="../lib/jquery.form.js"></script>
+        <script type="text/javascript" src="../lib/jquery.corner.js"></script>
+        <script type="text/javascript" src="../lib/aes.js"></script>
+        <script type="text/javascript" src="../lib/hmac-sha256.js"></script>
+        <script type="text/javascript" src="../lib/pbkdf2.js"></script>
+        <script type="text/javascript" src="../lib/scram.js"></script>
+        <script type="text/javascript" src="../js/changelang.js"></script>
+        <script type="text/javascript" src="../js/main.js"></script>
+        <script type="text/javascript" src="../js/redirect.js"></script>
+        <script type="text/javascript" src="../js/checklogin.js"></script>
+        <script type="text/javascript" src="../js/update.js"></script>
+        <title></title>
+    </head>
+
+    <body>
+        <div id="div_wrapper">
+        </div>
+        <div class="update_dialog" id="upload_success">
+            <div class="dialog_content">
+                <div class="dialog_header">
+                    <span class="dialog_header_left clr_white">
+                        <script type="text/javascript">dw(common_confirm);</script>
+                    </span>
+                    <span class="dialog_header_right">
+                        <a class="dialog_close_btn clr_gray" href="javascript:void(0);">
+                        	<script type="text/javascript">createCanvas("upload_success","sucessUpload");</script>
+                        </a>
+                    </span>
+                </div>
+                <div class="dialog_table">
+                    <script type="text/javascript">dw(system_up_to_date);</script>
+                </div>
+                <div class="dialog_table_bottom">
+                    <script type="text/javascript">create_button(common_ok,"success_ok");</script>
+                </div>
+            </div>
+        </div>
+        <div class="update_dialog" id="update_download">
+            <div class="dialog_content">
+                <div class="dialog_header">
+                    <span class="dialog_header_left clr_white">
+                        <script type="text/javascript">dw(IDS_update_label_downloading);</script>
+                    </span>
+                    <span class="dialog_header_right"></span>
+                </div>
+                <div class="dialog_table">
+                    <table cellspacing="0" cellpadding="0" class="get_table" width="400">
+                        <tbody>
+                            <tr>
+                                <td class="up_get"></td>
+                            </tr>
+                            <tr>
+                                <td class="up_device clr_red">
+                                <script type="text/javascript">dw(STRID_update_hint_dont_close_browse);</script>
+                                </td>
+                            </tr>
+                            <tr id="auto_download_prompt" style="display:none;">
+                                <td class="up_device clr_red">
+                                <script type="text/javascript">dw(IDS_common_autoupdate_prompt);</script>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                <div class="graph">
+                                    <div class="persent_download">
+                                        <img src="../res/persent_download.jpg" class="press"/>
+                                    </div>
+                                </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                <span id="downloadProcess"></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="dialog_table_bottom">
+                    <script type="text/javascript">create_button(common_cancel,"DownloadProgressing_Cancel");</script>
+                </div>
+            </div>
+        </div>
+        <div class="update_dialog" id="update_failed">
+            <div class="dialog_content">
+                <div class="dialog_header">
+                    <span class="dialog_header_left clr_white">
+                        <script type="text/javascript">dw(common_confirm);</script>
+                    </span>
+                    <span class="dialog_header_right">
+                        <a class="dialog_close_btn clr_gray" href="javascript:void(0);">
+                        	<script type="text/javascript">createCanvas("update_failed","faildUpload");</script>
+                        </a>
+                    </span>
+                </div>
+                <div class="dialog_table">
+                    <script type="text/javascript">dw(update_label_failed);</script>
+                </div>
+                <div class="dialog_table_bottom">
+                    <script type="text/javascript">create_button(common_ok, "pop_Cancel", "pop_Cancel");</script>
+                </div>
+            </div>
+        </div>
+        <div class="update_dialog" id="update_battery_low">
+            <div class="dialog_content">
+                <div class="dialog_header">
+                    <span class="dialog_header_left clr_white">
+                        <script type="text/javascript">dw(common_confirm);</script>
+                    </span>
+                    <span class="dialog_header_right">
+                        <a class="dialog_close_btn clr_gray" href="javascript:void(0);">
+                        	<script type="text/javascript">createCanvas("update_battery_low","batterylow");</script>
+                        </a>
+                    </span>
+                </div>
+                <div class="dialog_table" id="battery_low_replace">
+                    <script type="text/javascript">dw(IDS_update_battery_low_warning);</script>
+                </div>
+                <div class="dialog_table_bottom">
+                    <script type="text/javascript">create_button(common_ok, "pop_Cancel", "pop_Cancel");</script>
+                </div>
+            </div>
+        </div>
+        <div id="all_content" class="body_bg">
+            <div id="wrapper" class="wrapper_dim">
+                <div class="wrapper_dim wrapper_filter">
+                    <div id="header" class="header">
+                    </div>
+                    <div class="content">
+                        <div class="main_left" id="left_menu_div">
+                            <div id="settings_menu">
+                            </div>
+                        </div>
+                        <div class="content_right">
+                            <div class="maintitle clr_blue_title_h2">
+                                <h1>
+                                <script type="text/javascript">dw(common_updates);</script>
+                                </h1>
+                            </div>
+                            <div class="main_content">
+                                <span id="online_update" >
+                                	<div class="up_currentVersion" id="up_currentVersion">
+                                        <table class="version_table">
+                                            <tr class="current_version" height="40px">
+                                                <td><script type="text/javascript">dw(common_current_version);</script></td>
+                                                <td></td>                                                
+                                            </tr>
+                                            <tr class="software" height="30px">
+                                                <td><script type="text/javascript">dw(system_label_software_version);dw(common_colon);</script></td>
+                                                <td class="software_version"></td>
+                                            </tr>
+                                             <tr class="webui" height="30px">
+                                                <td><script type="text/javascript">dw(system_label_webui_version);dw(common_colon);</script></td>
+                                                <td class="ui_version"></td>
+                                            </tr>
+                                            <tr height="40px">
+                                                <td><script type="text/javascript">create_button(common_check_version,"check_now");</script></td>  
+                                                <td></td>                                              
+                                            </tr>                                            
+                                        </table>                                        
+                                    </div> 
+                                    <div class="up_content" id="up_content">
+                                        <span class="downloading">
+                                            <img src="../res/waiting.gif" />
+                                        </span>
+                                        <span class="version_mid">
+                                            <script type="text/javascript">dw(newest_label_newest_version);</script>
+                                        </span>
+                                    </div>
+                                    <div class="up_version" id="up_version" >
+                                        <div class="check_table">
+                                            <table cellspacing="0" cellpadding="0" class="cancel_table" id="cancel_table">
+                                            </table>
+                                            <div class="update_text">
+                                                <textarea class="update_textarea" readonly="readonly">
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                        <div class="up_hr">
+                                            <script type="text/javascript">create_button(common_update_now,"update_now");</script>
+                                        </div>
+                                        <div class="update_prompt">
+                                            <script type="text/javascript">dw(STRID_update_hint_dont_close_browse);</script>
+                                        </div>
+                                        <div class="update_remind">
+                                            <script type="text/javascript">dw(IDS_update_reboot_info);</script>
+                                        </div>
+                                    </div>
+                                    <div class="up_system" id="up_system">
+                                        <div class = "clr_bold_a">
+                                            <script type="text/javascript">dw(strid_update_hint_checking_failed + "&nbsp;" + "<a id='query_again' href='javascript:void(0);'>" + strid_update_hint_checking_retry + "</a>");</script>
+                                        </div>
+                                    </div>
+                                    <div class="up_now" id="up_now">
+                                        <div class = "clr_bold_a">
+                                            <script type="text/javascript">dw(IDS_download_complete_notes);</script>
+                                            <div class="up_hr">
+                                                <script type="text/javascript">create_button(common_update_now,"install_now");</script>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+                        <!--up_notify end-->
+                    </div>
+                    <!--main_content end-->
+                </div>
+                <!--content end-->
+                <div id="footer" class="footer">
+                </div>
+            </div>
+            <!--wrapper_dim end-->
+        </div>
+        </div>
+        <noscript>
+            <div class="noscript_text">
+                Your browser does not support JavaScript.
+            </div>
+        </noscript>
+    </body>
+</html>

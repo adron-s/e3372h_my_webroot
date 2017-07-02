@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <link type="text/css" rel="stylesheet" href="../css/main.css" />
+        <script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="../lib/log4javascript_lite.js"></script>
+        <script type="text/javascript" src="../lib/jquery.qtip.js"></script>
+        <script type="text/javascript" src="../lib/jquery.corner.js"></script>
+        <script type="text/javascript" src="../lib/aes.js"></script>
+        <script type="text/javascript" src="../lib/hmac-sha256.js"></script>
+        <script type="text/javascript" src="../lib/pbkdf2.js"></script>
+        <script type="text/javascript" src="../lib/scram.js"></script>
+        <script type="text/javascript" src="../js/changelang.js"></script>
+        <script type="text/javascript" src="../js/main.js"></script>
+        <script type="text/javascript" src="../js/redirect.js"></script>
+        <script type="text/javascript" src="../js/validation.js"></script>
+        <script type="text/javascript" src="../js/checklogin.js"></script>
+        <script type="text/javascript" src="../js/statistic.js"></script>
+		<script type="text/javascript" src="../js/home.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('#new_body').html('');
+			});
+		</script>
+        <title></title>
+    </head>
+    <body>
+        <div id="all_content" class="body_bg">
+            <div id="wrapper" class="wrapper_dim">
+                <div class="wrapper_dim wrapper_filter">
+                    <div id="header"></div>
+                    <div class="content" style="display:none;">
+					 <div class = "agile_station_1">
+						    
+							    <table class = "statistics_mobile_table">
+								    <tr class = "statistics_mobile_1">
+									    <td class = "statistics_mobile_td1" >
+										    <div>
+										        <script type="text/javascript">dw(connection_hilink_label_traffic_statistics);</script>
+										    </div>
+										</td>
+										<td>
+										    <div>
+										        <script type="text/javascript">dw(connection_hilink_label_traffic_statistics_speed);</script>
+										    </div>
+										</td>
+									</tr>
+									<tr>
+									    <td class = "statistics_mobile_td2" style="padding-top:30px;" >
+										    <div class = "statistics_mobile_td2_time" style="height:100px;float:left;margin-left:30px;">
+										        <img src="../res/statistic_web.png" style="float:left;">
+												<div style="float:left;padding-left:10px;text-align:left;padding-top:4px;">
+												<div id="new_mobile_current_duration" class="agile_td_ltr"></div>
+												<span style="display:block;margin-top:8px;clear:both;"><script type="text/javascript">dw(statistics_current_session);</script></span>	
+												</div>
+											</div>
+											<div class = "statistics_mobile_td2_data" style="height:100px;float:left;margin-left:45px;">
+										        <img src="../res/statistic_data.png" style="float:left;">
+												<div style="float:left;padding-left:10px;text-align:left;padding-top:4px;">												
+												<div id="revicedsent_date"></div>
+                                                    <label  id="current_download" class="agile_td_ltr">
+                                                    </label>
+                                                    <label class="agile_td_ltr">
+                                                       /
+                                                    </label>
+                                                    <label id="current_upload" class="agile_td_ltr">
+                                                    </label>                                        
+												<span style="display:block;margin-top:8px;clear:left;"><script type="text/javascript">dw(statistics_current_data);</script></span>	
+												</div>
+											</div>
+										</td>
+										<td class = "statistics_mobile_td3" style="padding-top:30px;">										    
+                                            <div class = "statistics_mobile_td3_down_speed" style="height:100px;float:left;margin-left:10px;width:159px;">
+											    
+										        <img src="../res/statistic_down.png" style="float:left;">
+												<div id="mobile_current_down_speed"  class="agile_td_ltr" style="float:left;padding-top:4px;"></div>
+												<div style="clear:right;height:0;"></div>
+												<span style="display:block;float:left;"><script type="text/javascript">dw(dialup_label_download_speed);</script></span>
+												
+											</div> 
+											<div class = "statistics_mobile_td3_up_speed" style="height:100px;float:left;margin-left:10px;width:158px;">
+											   
+										        <img src="../res/statistic_up.png" style="float:left;">
+												<div id="mobile_current_up_speed"  class="agile_td_ltr" style="float:left;padding-top:4px;"></div>
+												<div style="clear:right;height:0;"></div>
+												<span style="display:block;float:left;"><script type="text/javascript">dw(dialup_label_upload_speed);</script></span>
+											</div> 
+										
+										</td>
+									</tr>
+							    </table>
+							
+						 </div>
+						 <div  class = "agile_station_1">
+						 	<table class = "statistics_mobile_table">
+								    <tr class = "statistics_mobile_1">
+									    <td class = "statistics_mobile_td1" style="width:50%;">
+										    <div><script type="text/javascript">dw(statistic_current_speed);</script></div>
+										</td>
+										<td>
+										    <div><script type="text/javascript">dw(statistic_maximum_speed);</script></div>
+										</td>
+									</tr>
+									<tr>
+									    <td class = "statistics_mobile_td2" style="padding:30px 0;" >
+										    <div id="statistic_down" style="float:left;margin:0 20px;">
+					                            <span style="display:block;font-size:15px;width:180px;text-align:center;"><script type="text/javascript">dw(down_label_download);</script></span>
+					                            <img src='../res/a.gif'/>
+					                            <label id="statistic_downvalue" style="display:block;font-size:15px;width:180px;text-align:center;">0bit/s</label>
+					                        </div>
+					                        <div id="statistic_up" style="float:left;margin:0 20px;">
+					                            <span style="display:block;font-size:15px;width:180px;text-align:center;"><script type="text/javascript">dw(sd_label_upload);</script></span>
+					                            <img src='../res/a_.gif'/>
+					                            <label id="statistic_upvalue" style="display:block;font-size:15px;width:180px;text-align:center;">0bit/s</label>
+					                        </div>
+										</td>
+										<td class = "statistics_mobile_td3" style="padding:30px 0;">										    
+                                            <div id="statistic_downl" style="float:left;margin:0 20px;">
+					                            <span style="display:block;font-size:15px;width:180px;text-align:center;"><script type="text/javascript">dw(down_label_download);</script></span>
+					                            <img src='../res/a.gif'/>
+					                            <label id="statistic_downloadvalue" style="display:block;font-size:15px;width:180px;text-align:center;">0bit/s</label>
+					                        </div>
+					                        <div id="statistic_upl" style="float:left;margin:0 20px;">
+					                            <span style="display:block;font-size:15px;width:180px;text-align:center;"><script type="text/javascript">dw(sd_label_upload);</script></span>
+					                            <img src='../res/a_.gif'/>
+					                            <label id="statistic_uploadvalue" style="display:block;font-size:15px;width:180px;text-align:center;">0bit/s</label>
+					                        </div>
+										</td>
+									</tr>
+							    </table>
+						 </div>
+                    </div>
+		    <div id="old_content" style="display:none;">
+                            <div class="status_title clr_blue_title_h2">
+                            <h2>
+                                <script type="text/javascript">
+                                    dw(connection_hilink_label_traffic_statistics);
+                                </script>
+                            </h2>
+                        </div>
+
+                        <div class = "agile_station">
+                            <div id="statistics_mobile">
+                                <h2> <script type="text/javascript">dw(IDS_statistics_aglie_mobile_title);</script></h2>
+                                <table width="800" border="0" cellpadding="0" cellspacing="0" class = "agile_statistics_table">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div>
+                                                    <div class="agile_float">
+                                                        <script type="text/javascript">
+                                                            dw(traffic_label_current_volume);
+                                                            dw(common_colon);
+                                                        </script>
+                                                    </div>
+                                                    <div id="mobile_current_volume" class="agile_td_ltr"></div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <div class="agile_float">
+                                                        <script type="text/javascript">
+                                                            dw(dialup_label_duration);
+                                                            dw(common_colon);
+                                                        </script>
+                                                    </div>
+                                                    <div id="mobile_current_duration" class="agile_td_ltr"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div>
+                                                    <div class="agile_float">
+                                                        <script type="text/javascript">
+                                                            dw(traffic_label_history_volume);
+                                                            dw(common_colon);
+                                                        </script>
+                                                    </div>
+                                                    <div id="mobile_history_volume" class="agile_td_ltr"></div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <div class="agile_float">
+                                                        <script type="text/javascript">
+                                                            dw(dialup_label_duration);
+                                                            dw(common_colon);
+                                                        </script>
+                                                    </div>
+                                                    <div id="mobile_history_duration" class="agile_td_ltr"></div>
+                                                </div>
+                                            </td>
+                                        </tr> 
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div id="statistics_wifi">
+                                <h2 class="agile_station_border_top"> <script type="text/javascript">dw(IDS_statistics_aglie_wifi_title);</script></h2>
+                                <table width="800" border="0" cellpadding="0" cellspacing="0" class = "agile_statistics_table">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div>
+                                                    <div class="agile_float">
+                                                        <script type="text/javascript">
+                                                            dw(traffic_label_current_volume);
+                                                            dw(common_colon);
+                                                        </script>
+                                                    </div>
+                                                    <div id="wifi_current_volume" class="agile_td_ltr"></div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <div class="agile_float">
+                                                        <script type="text/javascript">
+                                                            dw(dialup_label_duration);
+                                                            dw(common_colon);
+                                                        </script>
+                                                    </div>
+                                                    <div id="wifi_current_duration" class="agile_td_ltr"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div>
+                                                <div class="agile_float">
+                                                    <script type="text/javascript">
+                                                        dw(traffic_label_history_volume);
+                                                        dw(common_colon);
+                                                    </script>
+                                                </div>
+                                                <div id="wifi_history_volume" class="agile_td_ltr"></div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <div class="agile_float">
+                                                        <script type="text/javascript">
+                                                            dw(dialup_label_duration);
+                                                            dw(common_colon);
+                                                        </script>
+                                                    </div>
+                                                    <div id="wifi_history_duration" class="agile_td_ltr"></div>
+                                                </div>
+                                            </td>
+                                        </tr> 
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="agile_set_package agile_station_button">
+                            <script type="text/javascript">
+                                create_button(IDS_statistics_aglie_set_package, 'button_set_package');
+                            </script>
+                        </div>
+                        <div id = "agile_lgtab" class="agile_lgtab">
+                            <div class="agile_lgtab_total">
+                                <h2><script type="text/javascript">dw(IDS_statistics_aglie_mobile_title);</script></h2>
+                                <table cellspacing="0" cellpadding="0" class="agile_lgtab_header">
+                                    <tr>
+                                        <td width = "419px" id="agile_ettab_mobile"><script type="text/javascript">dw(IDS_statistics_aglie_mobile_title)</script></td>
+                                        <td width = "420px" id="agile_ettab_wifi"><script type="text/javascript">dw(IDS_statistics_aglie_wifi_title)</script></td>
+                                    </tr>
+                                </table>
+                                <table class='agile_lgtab_body_title'>
+                                    <tr>
+                                        <td width=580px><script type="text/javascript">dw(IDS_statistics_aglie_month_volume)</script></td>
+                                        <td width=200px class="agile_edit_align">
+                                            <script type="text/javascript">
+                                                create_button(IDS_statistics_aglie_edit_month_volue, 'agile_edit_volume');
+                                            </script>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table class="agile_lgtab_body" style="margin-bottom:0px;">
+                                    <tr>
+                                        <td width="640px">
+                                            <div>
+                                                <div class="agile_float">
+                                                    <script type="text/javascript">
+                                                        dw(dialup_label_duration);
+                                                        dw(common_colon);
+                                                    </script>
+                                                </div>
+                                                <div id="month_duration" class="agile_td_ltr"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="640px">
+                                            <div class="agile_progress_bar">
+                                                <div id="agile_used_volume" class="agile_used_bar">
+                                                    <span class="usedspace_bar_left" ></span>
+                                                </div>
+                                                <div id="agile_threshold" class="agile_threshold_bar">
+                                                    <span class="usedspace_bar_left" ></span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table class="agile_lgtab_body">
+                                    <tr>
+                                        <td width="360px">
+                                            <div>
+                                                <div class="agile_float">
+                                                    <script type="text/javascript">
+                                                        dw(IDS_statistics_aglie_month_volume_used);
+                                                        dw(common_colon);
+                                                    </script>
+                                                </div>
+                                                <div id="month_used_value" class="agile_td_ltr"></div>
+                                            </div>
+                                        </td>
+                                        <td width="370px">
+                                            <div>
+                                                <div class="agile_float">
+                                                    <script type="text/javascript">
+                                                        dw(common_label_total);
+                                                        dw(common_colon);
+                                                    </script>
+                                                </div>
+                                                <div id="month_total_value" class="agile_td_ltr"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table class="agile_lgtab_body_title">
+                                <tr>
+                                    <td class="agile_total_volume" width="780px">
+                                        <script type="text/javascript">dw(IDS_statistics_aglie_total_volume)</script>
+                                    </td>
+                                </tr>
+                                </table>
+                                <table class="agile_lgtab_body">
+                                    <tr>
+                                        <td width="730px">
+                                            <div>
+                                                <div class="agile_float">
+                                                    <script type="text/javascript">
+                                                        dw(dialup_label_duration);
+                                                        dw(common_colon);
+                                                    </script>
+                                                </div>
+                                                <div id="total_value_duration" class="agile_td_ltr"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="730px">
+                                            <div>
+                                                <div class="agile_float">
+                                                    <script type="text/javascript">
+                                                        dw(IDS_statistics_aglie_month_volume_used);
+                                                        dw(common_colon);
+                                                    </script>
+                                                </div>
+                                                <div id="total_value_used" class="agile_td_ltr"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+			</div>
+
+                        <div class="traffic_status">
+                            <table width="790" align="center" cellpadding="0" cellspacing="0" class="no_station">
+                                <tr>
+                                    <th width="175">
+                                    <script type="text/javascript">
+                                        dw(common_type);
+
+                                    </script></th>
+                                    <th width="307">
+                                    <script type="text/javascript">
+                                        dw(traffic_label_current_volume);
+
+                                    </script></th>
+                                    <th width="307">
+                                    <script type="text/javascript">
+                                        dw(traffic_label_history_volume);
+
+                                    </script></th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    <script type="text/javascript">
+                                        dw(down_label_download);
+
+                                    </script></td>
+                                    <td id="current_download"></td>
+                                    <td id="history_download"></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    <script type="text/javascript">
+                                        dw(sd_label_upload);
+
+                                    </script></td>
+                                    <td id="current_upload"></td>
+                                    <td id="history_upload"></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    <script type="text/javascript">
+                                        dw(common_label_total);
+
+                                    </script></td>
+                                    <td id="total_current"></td>
+                                    <td id="total_history"></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    <script type="text/javascript">
+                                        dw(dialup_label_duration);
+
+                                    </script></td>
+                                    <td id="current_duration"></td>
+                                    <td id="history_duration"></td>
+                                </tr>
+                            </table>
+                            <table width="790" align="center" cellpadding="0" cellspacing="0" class="have_station">
+                                <tr>
+                                    <th rowspan="2" width="162">
+                                    <script type="text/javascript">
+                                        dw(common_type);
+                                    </script></th>
+                                    <th colspan="2">
+                                    <script type="text/javascript">
+                                        dw(traffic_label_current_volume);
+
+                                    </script></th>
+                                    <th colspan="2">
+                                    <script type="text/javascript">
+                                        dw(traffic_label_history_volume);
+
+                                    </script></th>
+                                </tr>
+                                <tr>
+                                    <th width="137">
+                                    <script type="text/javascript">
+                                        dw(IDS_stastics__mobileBroadband);
+
+                                    </script></th>
+                                    <th width="137">
+                                    <script type="text/javascript">
+                                        dw(wlan_label_wlan);
+
+                                    </script></th>
+                                    <th width="137">
+                                    <script type="text/javascript">
+                                        dw(IDS_stastics__mobileBroadband);
+
+                                    </script></th>
+                                    <th width="137">
+                                    <script type="text/javascript">
+                                        dw(wlan_label_wlan);
+
+                                    </script></th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    <script type="text/javascript">
+                                        dw(down_label_download);
+
+                                    </script></td>
+                                    <td id="current_download"></td>
+                                    <td id="wifi_current_download"></td>
+                                    <td id="history_download"></td>
+                                    <td id="wifi_history_download"></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    <script type="text/javascript">
+                                        dw(sd_label_upload);
+
+                                    </script></td>
+                                    <td id="current_upload"></td>
+                                    <td id="wifi_current_upload"></td>
+                                    <td id="history_upload"></td>
+                                    <td id="wifi_history_upload"></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    <script type="text/javascript">
+                                        dw(common_label_total);
+
+                                    </script></td>
+                                    <td id="total_current"></td>
+                                    <td id="wifi_total_current"></td>
+                                    <td id="total_history"></td>
+                                    <td id="wifi_total_history"></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    <script type="text/javascript">
+                                        dw(dialup_label_duration);
+
+                                    </script></td>
+                                    <td id="current_duration"></td>
+                                    <td id="wifi_current_duration"></td>
+                                    <td id="history_duration"></td>
+                                    <td id="wifi_history_duration"></td>
+                                </tr>
+                            </table>
+                            <div class="note">
+                                <script type="text/javascript">
+                                    dw(strid_stat_hint_declaration_volume);
+                                </script>
+                            </div>
+                            <div id="clear_history" class="clear_history">
+                                <script type="text/javascript">
+                                    create_button(common_clear_history, 'button_clear_history');
+                                </script>
+                                <table width="790" border="0" cellpadding="0" cellspacing="0" class="agile_clear_time">
+                                    <tr>
+                                        <td width="720px" class="agile_td_pre_time">
+                                            <script type="text/javascript">
+                                                dw(IDS_statistics_aglie_clear_time_label);
+                                                dw(common_colon);
+                                            </script>
+                                        </td>
+                                        <td class="agile_clear_td_ltr" id = "last_clear_time"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="status_title clr_blue_title_h2">
+                            <h2>
+                            <script type="text/javascript">
+                                dw(wlan_label_wifi_clients);
+
+                            </script></h2>
+                        </div>
+                        <div class="wifi_table">
+                            <table id="table_wifiClient" class="bottom_table clr_gray_bottom_table_td" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <th class="bottom_id">
+                                    <script type="text/javascript">
+                                        dw(wlan_label_id);
+
+                                    </script></th>
+                                    <th class="bottom_ip">
+                                    <script type="text/javascript">
+                                        dw(dhcp_label_ip_address);
+
+                                    </script></th>
+                                    <th class="bottom_host">
+                                    <script type="text/javascript">
+                                        dw(wlan_label_host_name);
+
+                                    </script></th>
+                                    <th class="bottom_mac">
+                                    <script type="text/javascript">
+                                        dw(wlan_label_mac_address);
+
+                                    </script></th>
+                                    <th class="bottom_associat">
+                                    <script type="text/javascript">
+                                        dw(dialup_label_duration);
+
+                                    </script></th>
+									<th class="bottom_operation">
+									<script type="text/javascript">dw(common_operation);</script>
+									</th>
+								</tr>
+							</table>
+						</div>
+						<div class="status_title clr_blue_title_h2 blacklist" >
+							<h2 id="blacklist_title">
+							<script type="text/javascript">dw(IDS_statistic_blacklists);</script>
+							</h2>
+						</div>
+						<div class="wifi_table">
+							<table id="table_blacklists" class="bottom_table clr_gray_bottom_table_td" cellpadding="0" cellspacing="0">
+								<tr>
+									<th class="bottom_id">
+									<script type="text/javascript">dw(wlan_label_id);</script>
+									</th>
+									<th class="bottom_host">
+									<script type="text/javascript">dw(wlan_label_host_name);</script>
+									</th>
+									<th class="bottom_mac">
+									<script type="text/javascript">dw(wlan_label_mac_address);</script>
+									</th>
+									<th class="bottom_operation">
+									<script type="text/javascript">dw(common_operation);</script>
+									</th>
+                                </tr>
+                            </table>
+                        </div>
+		    </div>
+                    </div>
+                    <div id="footer"></div>
+                </div>
+            </div>
+        </div>
+        <noscript>
+            <div class="noscript_text">
+                Your browser does not support JavaScript.
+            </div>
+        </noscript>
+    </body>
+</html>

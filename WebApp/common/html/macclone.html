@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <link type="text/css" rel="stylesheet" href="../css/main.css" />
+        <script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="../lib/log4javascript_lite.js"></script>
+        <script type="text/javascript" src="../lib/jquery.qtip.js"></script>
+        <script type="text/javascript" src="../lib/jquery.corner.js"></script>
+        <script type="text/javascript" src="../lib/aes.js"></script>
+        <script type="text/javascript" src="../lib/hmac-sha256.js"></script>
+        <script type="text/javascript" src="../lib/pbkdf2.js"></script>
+        <script type="text/javascript" src="../lib/scram.js"></script>
+        <script type="text/javascript" src="../js/changelang.js"></script>
+        <script type="text/javascript" src="../js/main.js"></script>
+        <script type="text/javascript" src="../js/redirect.js"></script>
+        <script type="text/javascript" src="../js/validation.js"></script>
+        <script type="text/javascript" src="../js/checklogin.js"></script>
+        <script type="text/javascript" src="../js/macclone.js"></script>
+        <title></title>
+    </head>
+
+    <body>
+        <div id="all_content" class="body_bg">
+            <div class="wrapper_dim wrapper_filter">
+                <div id="header" class="header">
+                </div>
+                <div class="content">
+                    <div class="main_left">
+                        <div id="settings_menu">
+                        </div>
+                    </div>
+                    <div class="content_right">
+                        <div class="maintitle">
+                            <h1>
+                            <script type="text/javascript">dw(IDS_ethernet_label_mac_clone);</script>
+                            </h1>
+                        </div>
+                        <div class="main_content">
+                            <table id="mac_clone_table" width="600" border="0" cellspacing="0" cellpadding="0" class="connection_content_list">
+                            		<tr valign="top" >
+                            			<td colspan="2" height="32">
+                            				<script type="text/javascript">dw(IDS_mac_clone_address_to_wan);</script>
+                            			</td>
+                            		</tr>
+                            		<tr valign="top" height="42" id="mac_error_msg">
+                                    <td  valign="middle" width="180" height="28">
+                                    	<script type="text/javascript">
+                                    	dw(IDS_mac_clone_current_mac_address);
+                                        dw(common_colon);
+                                    	</script>
+                                    </td>
+                                    <td valign="middle" class="padding_title" height="28" width="180">
+                                    <input type="text" class="input_style  Arabic_dialupNumber" maxlength="17" id="ethernet_curr_mac_address" style="width:120px;text-align:center;" />
+                                    </td>
+                                    <td valign="middle" class="padding_title" height="28" width="150">
+                                    	<script type="text/javascript">create_button(IDS_mac_clone_reset,"reset_button");</script>
+                                    <td>
+                                	</tr>
+                                	
+                            		<tr valign="top" height="42">
+                            		<td  valign="middle" width="180" height="28">
+                                    	<script type="text/javascript">
+                                    	dw(IDS_ethernet_mac_clone_host_mac);
+                                        dw(common_colon);
+                                    	</script>
+                                    </td>
+                                    <td valign="middle" class="padding_title" height="28" width="180">
+                                    <input type="text"  class="input_style  Arabic_dialupNumber" maxlength="17" id="ethernet_host_mac_address" style="width:120px;text-align:center;" disabled/>
+                                    </td>
+                                    <td valign="middle" class="padding_title" height="28" width="150">
+                                    	<script type="text/javascript">create_button(IDS_mac_clone_label_clone,"clone_button");</script>
+                                    <td>
+                            		</tr>
+                            </table>
+                            <div class="apply_button">
+                                <script type="text/javascript">create_button(common_apply,"apply_button");</script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="footer" class="footer">
+            </div>
+        </div>
+        <noscript>
+			<div class="noscript_text">
+				Your browser does not support JavaScript.
+			</div>
+		</noscript>
+    </body>
+</html>

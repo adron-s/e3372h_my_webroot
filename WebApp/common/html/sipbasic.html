@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<link rel="stylesheet" href="../css/main.css" type="text/css" />
+		<script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="../lib/log4javascript_lite.js"></script>
+		<script type="text/javascript" src="../lib/jquery.qtip.js"></script>
+		<script type="text/javascript" src="../lib/jquery.corner.js"></script>
+        <script type="text/javascript" src="../lib/aes.js"></script>
+        <script type="text/javascript" src="../lib/hmac-sha256.js"></script>
+        <script type="text/javascript" src="../lib/pbkdf2.js"></script>
+        <script type="text/javascript" src="../lib/scram.js"></script>
+		<script type="text/javascript" src="../js/changelang.js"></script>
+		<script type="text/javascript" src="../js/main.js"></script>
+		<script type="text/javascript" src="../js/checklogin.js"></script>
+		<script type="text/javascript" src="../js/validation.js"></script>
+		<script type="text/javascript" src="../js/table.js"></script>
+		<script type="text/javascript" src="../js/sipbasic.js"></script>
+		<title></title>
+	</head>
+	<body>
+		<div id="all_content" class="body_bg">
+			<div id="wrapper" class="wrapper_dim">
+				<div class="wrapper_dim wrapper_filter">
+					<div id="header" class="header">
+					</div>
+					<div class="content">
+						<div class="main_left">
+							<div id="settings_menu">
+							</div>
+						</div>
+						<div class="content_right">
+							<div class="maintitle">
+								<h1>
+								<script type="text/javascript">dw(IDS_VOIP_SIPACCOUNT);</script>
+								</h1>
+								<div class="sip_refresh">
+									<script type="text/javascript">
+										create_button(common_refresh, "sip_refresh");
+									</script>
+								</div>
+							</div>
+							<div class="main_content">
+								<div class="voipinformation">
+									<p>
+										<script type="text/javascript">dw(IDS_VOIP_PageSIPACCOUNTDescription);</script>
+									</p>
+
+								</div>
+								<br />
+								<h2>
+									<script type="text/javascript">dw(IDS_VOIP_SIPID);</script>
+								</h2>
+								<table width="580px" cellpadding="0px" cellspacing="0px" style="table-layout:fixed;word-wrap:break-word">
+
+                                    <tr>
+                                        <td width="30px" height="35px" >
+                                        <input id="callwaitingenable"  type="checkbox" name="Call_Waiting" >
+                                        </td>
+                                        <td>
+                                        <script type="text/javascript">
+                                        	dw(IDS_VOIP_CallWaiting);
+                                        </script></td>
+                                        <td>
+                                        
+                                    </tr>
+
+                                </table>
+								<table id="service_list" cellpadding="0px" cellspacing="0px" border="1">
+									<tr height="30px">
+										<th width="118px"  >
+											<script type="text/javascript">dw(IDS_VOIP_SIPID);</script>
+										</th>
+										<th width="118px">
+											<script type="text/javascript">dw(dialup_label_user_name);</script>
+										</th>
+										<th width="118px">
+											<script type="text/javascript">dw(common_password);</script>
+										</th>
+										<th width="118px">
+											<script type="text/javascript">dw(IDS_VOIP_RegistStatus);</script>
+										</th>
+										<th width="118px">
+											<script type="text/javascript">dw(common_options);</script>
+										</th>
+
+									</tr>
+									<tr class="add_item_control">
+										<td align="center" ><input type="text" id="input_sip_account" value="" maxLength="31"/></td>
+										<td align="center" ><input type="text" id="input_sip_username" value="" maxLength="32"/></td>
+										<td align="center" ><input type="password" autocomplete="off" id="input_sip_password" value="" maxLength="32"/></td>
+										<td align="center" ><input type="text" id="input_sip_registStatus" readonly="true" disabled="disable"/></td>
+										<td class="user_options clr_blue_a clr_blue_hover">
+											<a href="javascript:void(0);" id="add_item_ok" ><script type="text/javascript">dw(common_ok);</script></a>
+                                     		<a href="javascript:void(0);" id="add_item_cancel" ><script type="text/javascript">dw(common_cancel);</script></a>
+										</td>
+									</tr>
+								</table>
+								<br />
+								<label>
+									<script type="text/javascript">
+										create_button(common_add, "add_item");
+									</script>
+								</label>
+                    									
+							</div>
+						</div>
+					</div>
+					<div id="footer" class="footer">
+					</div>
+				</div>
+			</div>
+		</div>
+		<noscript>
+			<div class="noscript_text">
+				Your browser does not support JavaScript.
+			</div>
+		</noscript>
+	</body>
+</html>

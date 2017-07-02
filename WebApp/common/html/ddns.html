@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <link rel="stylesheet" href="../css/main.css" type="text/css" />
+        <script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="../lib/log4javascript_lite.js"></script>
+        <script type="text/javascript" src="../lib/jquery.qtip.js"></script>
+        <script type="text/javascript" src="../lib/jquery.corner.js"></script>
+        <script type="text/javascript" src="../lib/aes.js"></script>
+        <script type="text/javascript" src="../lib/hmac-sha256.js"></script>
+        <script type="text/javascript" src="../lib/pbkdf2.js"></script>
+        <script type="text/javascript" src="../lib/scram.js"></script>
+        <script type="text/javascript" src="../js/changelang.js"></script>
+        <script type="text/javascript" src="../js/main.js"></script>
+        <script type="text/javascript" src="../js/checklogin.js"></script>
+        <script type="text/javascript" src="../js/validation.js"></script>
+        <script type="text/javascript" src="../js/table.js"></script>
+        <script type="text/javascript" src="../js/ddns.js"></script>
+        <title></title>
+    </head>
+    <body>
+        <div id="all_content" class="body_bg">
+            <div id="wrapper" class="wrapper_dim">
+                <div class="wrapper_dim wrapper_filter">
+                    <div id="header" class="header">
+                    </div>
+                    <div class="content">
+                        <div class="main_left">
+                            <div id="settings_menu">
+                            </div>
+                        </div>
+                        <div class="content_right">
+                            <div class="maintitle">
+                                <h1>
+                                <script type="text/javascript">dw(IDS_security_ddns);</script>
+                                </h1>
+                            </div>
+                            <div class="main_content">
+                                <p>
+                                    <script type="text/javascript">dw(IDS_security_help_ddns);</script>
+                                </p>
+                                <div id="ip_table">
+                                    <h2>
+                                    <script type="text/javascript">dw(IDS_security_ddns_status);</script>
+                                    </h2>
+                                    <div class="cut_off_rule" style="margin-bottom:10px;">
+                                    </div>
+                                    <table id="service_list" width="100%" border="1" cellpadding="0" cellspacing="0" >
+                                        <tr height="30px">
+                                            <th width="2%" style="display:none;">Index</th>
+                                            <th width="12%">
+                                            <script type="text/javascript">dw(dialup_label_connection_status);</script>
+                                            </th>
+                                            <th width="15%">
+                                            <script type="text/javascript">dw(IDS_security_ddns_vendor);</script>
+                                            </th>
+                                            <th width="13%">
+                                            <script type="text/javascript">dw(firewall_label_status);</script>
+                                            </th>
+                                            <th width="15%">
+                                            <script type="text/javascript">dw(IDS_security_urlfilter_domain_name);</script>
+                                            </th>
+
+                                            <th width="15%">
+                                            <script type="text/javascript">dw(dialup_label_user_name);</script>
+                                            </th>
+                                            <th width="14%">
+                                            <script type="text/javascript">dw(common_password);</script>
+                                            </th>
+                                            <th width="14%">
+                                            <script type="text/javascript">dw(common_operation);</script>
+                                            </th>
+                                        </tr>
+                                        <tr class="add_item_control">
+                                            <td id="ddns_add_index" style="display:none;">
+                                            <label id="ddns_index">
+                                            </label>
+                                            </td>
+                                            <td>
+                                            <label id="state_icon">
+                                                <img src="../res/not_connected.png" />
+                                            </label>
+                                            </td>
+                                            <td>
+                                            <select id = "ddns_vendor" maxlength="63">
+                                            </select>
+                                            </td>
+                                            <td>
+                                            <select id = "ddns_status">
+                                            </select>
+                                            </td>
+                                            <td>
+                                            <input type="text" id="ddns_domain" maxlength="63"/>
+                                            </td>
+                                            <td>
+                                            <input type="text" id="ddns_user" maxlength="63"/>
+                                            </td>
+                                            <td id='ddns_psd_label'>
+                                            <input type="password" autocomplete="off" id="ddns_psd" maxlength="63"/>
+                                            </td>
+                                            <td class="user_options clr_blue_a clr_blue_hover">
+                                            <a href="javascript:void(0);" id="add_item_ok">
+                                            <script type="text/javascript">dw(common_ok);</script>
+                                            </a>
+                                            <a href="javascript:void(0);" id="add_item_cancel">
+                                            <script type="text/javascript">dw(common_cancel);</script>
+                                            </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <br/>
+                                    <div style="height:13px;">
+                                        <input style="vertical-align:middle;" id="checkid" type='checkbox'/>
+                                        <label >
+                                            <script type="text/javascript">dw(common_show_password);</script>
+                                        </label>
+                                    </div>
+                                    <div style="padding-top:10px;">
+                                        <script type="text/javascript">create_button(common_add, "add_item");</script>
+                                    </div>
+                                </div>
+                                <div class="apply_button">
+                                    <script type="text/javascript">create_button(common_apply, "apply");</script>
+                                </div>
+                            </div>
+                            <!--main_content end-->
+                        </div>
+                    </div>
+                    <!--content end-->
+                </div>
+                <div id="footer" class="footer">
+                </div>
+            </div>
+        </div>
+        <noscript>
+            <div class="noscript_text">
+                Your browser does not support JavaScript.
+            </div>
+        </noscript>
+    </body>
+</html>

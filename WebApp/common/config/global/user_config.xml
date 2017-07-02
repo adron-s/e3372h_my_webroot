@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<datalock></datalock>
+	<device_name></device_name>
+	<imei_generator_model></imei_generator_model>
+	<backup_imei>none</backup_imei>
+	<autorun_imei_generator>false</autorun_imei_generator>
+	<hspa_locker>false</hspa_locker>
+	<webui_mode>new</webui_mode>
+	<search>yandex</search>
+	<force_new></force_new>
+	<force_old></force_old>
+	<force_both></force_both>
+	<force_new_home>false</force_new_home>
+	<force_old_home>false</force_old_home>
+	<force_new_statistic>false</force_new_statistic>
+	<force_old_statistic>false</force_old_statistic>
+	<force_both_statistic>false</force_both_statistic>
+	<force_new_sms>false</force_new_sms>
+	<force_old_sms>false</force_old_sms>
+	<force_new_ussd>false</force_new_ussd>
+	<force_old_ussd>false</force_old_ussd>
+</config>

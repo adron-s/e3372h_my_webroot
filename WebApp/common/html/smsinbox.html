@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="../css/main.css" type="text/css" />
+		<script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="../lib/log4javascript_lite.js"></script>
+		<script type="text/javascript" src="../lib/jquery.qtip.js"></script>
+		<script type="text/javascript" src="../lib/jquery.corner.js"></script>
+        <script type="text/javascript" src="../lib/aes.js"></script>
+        <script type="text/javascript" src="../lib/hmac-sha256.js"></script>
+        <script type="text/javascript" src="../lib/pbkdf2.js"></script>
+        <script type="text/javascript" src="../lib/scram.js"></script>
+		<script type="text/javascript" src="../js/changelang.js"></script>
+		<script type="text/javascript" src="../js/main.js"></script>
+		<script type="text/javascript" src="../js/checklogin.js"></script>
+		<script type="text/javascript" src="../js/redirect.js"></script>
+		<script type="text/javascript" src="../js/sms.js"></script>
+		<script type="text/javascript" src="../js/validation.js"></script>
+		<title></title>
+	</head>
+
+	<body>
+        <div id="new_smsmenu_list" style="display:none;">
+            <ul>
+                <li class="new_sms_menu">
+                    <span id="new_all_sms" class="active">
+                        <a href="smsinbox.html" class="red_color_font"></a>
+                    </span>
+                    <ul>
+                        <!--<li id="new_unread_sms">
+                            <a href="smsinbox.html#unread" class="gray_color_font"></a>
+                        </li>-->
+                        <!--<li id="new_read_sms">
+                            <a href="smsinbox.html#read" class="gray_color_font"></a>
+                        </li>-->
+                        <li id="new_received_sms">
+                            <a href="smsinbox.html#received" class="gray_color_font"></a>
+                        </li>
+                        <li id="new_sent_sms">
+                            <a href="smsinbox.html#sent" class="gray_color_font"></a>
+                        </li>
+                    </ul>
+                </li>
+                <li id="new_ussd_menu">
+                    <span id="new_ussd">
+                        <a href="ussd.html" class="gray_color_font"></a>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div id="new_sms_list" style="display:none;">
+            <input id="message" class="button_dialog" type="button">
+            <!--<span id="new_sms_number"></span>-->
+            <div id="new_sms_class"></div>
+            <div id="new_sms_text_list">
+                <table border="0" cellpadding="0" cellspacing="0" class="sms_table" id="sms_table">
+                    <tr id="new_boxList_title"></tr>
+                </table>
+            </div>
+            <div id="new_sms_boxlist_botton">
+			
+				
+			
+                <input id="select_all_sms" type="checkbox" name="checkbox">
+                <input id="new_del_msg_btn" class="button_dialog " type="button" tabindex="">
+				
+				<table border="0" cellpadding="0" cellspacing="0" class="sms_table sms_page_tools" width="300">
+									<tr>
+										<td colspan="4">
+										<div class="sms_pagination" id='sms_pagination'>
+										  <span class="page_tool">
+												<span class="sms_span">
+													<a class="pageBegin" id="pageBegin">&nbsp;</a>
+												</span>
+												<span class="sms_span">
+													<a class="prePage" id="prePage">&nbsp;</a>
+												</span>
+												<span class="page_num clr_bold_a" id="page_num"></span>
+												<span class="sms_span">
+													<a class="nextPage" id="nextPage">&nbsp;</a>
+												</span>
+												<span class="sms_span">
+													<a class="pageLast" id="pageLast">&nbsp;</a>
+												</span>
+											 </span>
+											 <span class="page_list">
+												<label id="curSmsPage">
+												</label>
+											
+											</span>
+											 
+											 </td>
+									</tr>
+				</table>
+				
+            </div>
+        </div>
+        <div id="new_sms_text" style="display:none;">
+        <div style="height:558px;overflow-y:auto;" id="new_sms_text_list_right">
+        	<p id="new_sms_text_title" class="red_color_font"></p>
+            <div class="new_sms_text_botton"></div>
+            <p id="new_sms_text_index" style="display: none"></p>
+            <p id="new_sms_text_data"></p>
+            <p id="new_sms_text_content"></p>
+        </div>
+        <div id="new_sms_text_button">
+            <input id="pop_reply" class="button_dialog"  type="button" tabindex="">
+            <input id="pop_forward" class="button_dialog" type="button" tabindex="">
+         </div>
+         </div>
+		<div id="all_content" class="body_bg">
+			<div id="wrapper" class="wrapper_dim">
+				<div class="wrapper_dim wrapper_filter">
+					<div id="header" class="header">
+					</div>
+					<div class="content">
+						<div class="main_left" id="left_menu_div">
+							<div id="sms_menu">
+							</div>
+						</div>
+						<div class="content_right_sms">
+							<div id="fullMessage_tip_div" style="display:none;">
+								<label id="fullMessage_tip_label">
+									<script type="text/javascript">dw(strid_sms_hint_no_room);</script>
+								</label>
+							</div>
+							<div class="maintitle">
+								<h1 id="cur_box_type"></h1>
+							</div>
+							<div class="sms_main_content">
+								<div class="sms_btn_bg" id="sms_btn">
+									<script type="text/javascript">create_button(sms_label_new_message,'message');</script>
+									<script type="text/javascript">create_button(common_delete,'del_msg_btn');</script>
+									<script type="text/javascript">create_button(strid_sms_label_import,'import_btn');</script>
+								</div>
+								<table border="0" cellpadding="0" cellspacing="0" class="sms_table" id="sms_table">
+									<tr id="boxList_title">
+										<th width="50" align="center">
+										<input type="checkbox" name="checkbox"  id="sms_check_all"/>
+										</th>
+										<th  class="td_pl sms_phone_width">
+										<label>
+											<script type="text/javascript">dw(sms_label_number);</script>
+										</label>
+										</th>
+										<th  class="td_pl sms_content_width">
+										<label>
+											<script type="text/javascript">dw(sms_label_content);</script>
+										</label>
+										</th>
+										<th  class="td_pl sms_date_width">
+										<label>
+											<script type="text/javascript">dw(sms_label_date);</script>
+										</label>
+										</th>
+								    </tr>
+								</table>
+                                <!--table border="0" cellpadding="0" cellspacing="0" class="sms_table sms_page_tools" width="690">
+									<tr>
+										<td colspan="4" bgcolor="#f6f7f6">
+										<div class="sms_pagination" id='sms_pagination'>
+										  <span class="page_tool">
+												<span class="sms_span">
+													<a class="pageBegin" id="pageBegin">&nbsp;</a>
+												</span>
+												<span class="sms_span">
+													<a class="prePage" id="prePage">&nbsp;</a>
+												</span>
+												<span class="page_num clr_bold_a" id="page_num"></span>
+												<span class="sms_span">
+													<a class="nextPage" id="nextPage">&nbsp;</a>
+												</span>
+												<span class="sms_span">
+													<a class="pageLast" id="pageLast">&nbsp;</a>
+												</span>
+											 </span>
+											<span class="page_list">
+												<label id="curSmsPage">
+												</label>
+												<b>
+												<script type="text/javascript">
+													dw(sms_label_page);
+													dw(common_colon);
+												</script>
+												</b>
+											</span>
+												<input type="text" size="6" class="input_page" id="jump_page_index" />
+												<script type="text/javascript">create_button(common_go,'jump_page',"sms_go");</script>
+											</div>
+										</td>
+									</tr>
+								</table-->
+							</div>
+							<!-- sms_main_content end-->
+						</div>
+						<!--content_right end-->
+					</div>
+					<!--content end-->
+					<div id="footer" class="footer">
+					</div>
+				</div>
+			</div>
+		</div>
+		<noscript>
+			<div class="noscript_text">
+				Your browser does not support JavaScript.
+			</div>
+		</noscript>
+	</body>
+</html>

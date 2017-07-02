@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<link rel="stylesheet" href="../css/main.css" type="text/css" />
+<script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../lib/log4javascript_lite.js"></script>
+<script type="text/javascript" src="../lib/jquery.qtip.js"></script>
+<script type="text/javascript" src="../lib/jquery.corner.js"></script>
+<script type="text/javascript" src="../lib/aes.js"></script>
+<script type="text/javascript" src="../lib/hmac-sha256.js"></script>
+<script type="text/javascript" src="../lib/pbkdf2.js"></script>
+<script type="text/javascript" src="../lib/scram.js"></script>
+<script type="text/javascript" src="../js/changelang.js"></script>
+<script type="text/javascript" src="../js/main.js"></script>
+<script type="text/javascript" src="../js/redirect.js"></script>
+<script type="text/javascript" src="../js/checklogin.js"></script>
+<script type="text/javascript" src="../js/validation.js"></script>
+<script type="text/javascript" src="../js/mobilenetworksettings.js"></script>
+</head>
+
+<body>
+<div id="all_content" class="body_bg">	
+<div id="wrapper" class="wrapper_dim">
+	<div  class="wrapper_dim wrapper_filter">
+	    <div id="header" class="header"></div>
+	    <div class="content">
+	        <div class="main_left">
+	            <div id="settings_menu"></div>
+	        </div>
+	        <div class="content_right">
+	            <div class="maintitle">
+	                <h1><script type="text/javascript">dw(dialup_label_mobile_network_settings);</script></h1>
+	            </div>
+	            <div class="main_content">
+	                <h2 class='dialup_label_network'><script type="text/javascript">dw(dialup_label_network);</script></h2>
+	                <table cellpadding="0" cellspacing="0" border="0" class="pincodeset">
+	                    <tbody>
+	                        <tr class='net_mode_select'>
+	                            <td width="200" height="32" headers="30"><label><script type="text/javascript">dw(dialup_label_preferred_mode);dw(common_colon);</script></label></td>
+	                            <td>
+	                            	<select id="preferred_mode_select"></select>
+	                            </td>
+	                        </tr>
+	                        <tr style='display: none;' class='net_lte_enable'>
+	                            <td width="200" height="32">
+	                                <script type="text/javascript">
+                                        dw(IDS_network_lte)+dw(common_colon);
+                                    </script>
+	                            </td>
+	                            <td>
+	                                <input type="checkbox" id='net_lte_enable' onclick="ltenet()" style='vertical-align:middle;'/>&nbsp;&nbsp;
+	                                <span>
+                                        <script type="text/javascript">
+                                            dw(common_on);
+                                        </script>
+                                    </span>
+	                            </td>
+	                        </tr >
+	                        <tr style='display: none;' class='net_3g_enable'>
+                                <td width="200" height="32">
+                                    <script type="text/javascript">
+                                        dw(IDS_network_3g)+dw(common_colon);
+                                    </script>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id='net3gwork' onclick="net3gwork()" style='vertical-align:middle;'/>&nbsp;&nbsp;
+                                    <span>
+                                        <script type="text/javascript">
+                                            dw(common_on);
+                                        </script>
+                                    </span>
+                                </td>
+                            </tr>
+	                        <tr style="display:none;" id='mobile_network_note' >
+                            	<td></td>
+                                <td>
+                                	<script type="text/javascript">
+                                    	dw(IDS_mobile_network_notes);
+                                    </script>
+                                </td>
+                                           
+                            </tr>
+                            <tr>
+                                <td style="padding-top: 8px">
+                                       <label><script type="text/javascript">dw(dialup_label_lte_bands);dw(common_colon);</script></label>
+                                </td>
+                                <td style="padding-top: 8px">
+                                      <label><script type="text/javascript">dw(dialup_label_umts_gsm_bands);dw(common_colon);</script></label>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                        <td>
+                                            <div class="firewall" style="margin-top: 5px">
+
+                                            <div class="radio">
+                                            <input type="checkbox" id="LTE_All" name="LTE_Band"/>
+                                            <span>
+                                                <script type="text/javascript">dw(dialup_label_bands_all)</script>
+                                            </span>
+                                            </div>
+                                         
+                                            <div class="radio">
+                                            <input type="checkbox" id="LTE_B1" name="LTE_Band"/>
+                                            <span>
+                                                <script type="text/javascript">dw("B1 (FDD 2100)")</script>
+                                            </span>
+                                            </div>
+                                            
+                                            <div class="radio">
+                                            <input type="checkbox" id="LTE_B3" name="LTE_Band"/>
+                                            <span>
+                                                <script type="text/javascript">dw("B3 (FDD 1800)")</script>
+                                            </span>
+                                            </div>
+                                            
+					    <div class="radio">
+                                            <input type="checkbox" id="LTE_B7" name="LTE_Band"/>
+                                            <span>
+                                                <script type="text/javascript">dw("B7 (FDD 2600)")</script>
+                                            </span>
+                                            </div>
+
+					    <div class="radio">
+                                            <input type="checkbox" id="LTE_B8" name="LTE_Band"/>
+                                            <span>
+                                                <script type="text/javascript">dw("B8 (FDD 900)")</script>
+                                            </span>
+                                            </div>
+
+					    <div class="radio">
+                                            <input type="checkbox" id="LTE_B20" name="LTE_Band"/>
+                                            <span>
+                                                <script type="text/javascript">dw("B20 (FDD 800)")</script>
+                                            </span>
+                                            </div>
+
+					    <div class="radio">
+                                            <input type="checkbox" id="LTE_B38" name="LTE_Band"/>
+                                            <span>
+                                                <script type="text/javascript">dw("B38 (TDD 2600)")</script>
+                                            </span>
+                                            </div>
+
+					    <div class="radio">
+                                            <input type="checkbox" id="LTE_B40" name="LTE_Band"/>
+                                            <span>
+                                                <script type="text/javascript">dw("B40 (TDD 2300)")</script>
+                                            </span>
+                                            </div>
+
+                                            </div>
+                                       
+                                        </td>
+                                        <td style = "vertical-align: top">
+                                        
+                                            <div class="firewall" style="margin-top: 5px">
+
+                                            <div class="radio">
+                                            <input type="checkbox" id="UMTS_GSM_All" name="UMTS_GSM_Band"/>
+                                            <span>
+                                                <script type="text/javascript">dw(dialup_label_bands_all)</script>
+                                            </span>
+                                            </div>
+                                        
+                                        
+                                            <div class="radio">
+                                            <input type="checkbox" id="UMTS_B1" name="UMTS_GSM_Band"/>
+                                            <span>
+                                                <script type="text/javascript">dw("UMTS B1 (2100)")</script>
+                                            </span>
+                                            </div>
+
+                                            <div class="radio">
+                                            <input type="checkbox" id="UMTS_B8" name="UMTS_GSM_Band"/>
+                                            <span>
+                                                <script type="text/javascript">dw("UMTS B8 (900)")</script>
+                                            </span>
+                                            </div>
+
+                                            <div class="radio">
+                                            <input type="checkbox" id="GSM_850" name="UMTS_GSM_Band"/>
+                                            <span>
+                                                <script type="text/javascript">dw("GSM 850")</script>
+                                            </span>
+                                            </div>
+
+                                            <div class="radio">
+                                            <input type="checkbox" id="GSM_900" name="UMTS_GSM_Band"/>
+                                            <span>
+                                                <script type="text/javascript">dw("GSM 900")</script>
+                                            </span>
+                                            </div>
+
+                                            <div class="radio">
+                                            <input type="checkbox" id="GSM_1800" name="UMTS_GSM_Band"/>
+                                            <span>
+                                                <script type="text/javascript">dw("GSM 1800")</script>
+                                            </span>
+                                            </div>
+
+                                            <div class="radio">
+                                            <input type="checkbox" id="GSM_1900" name="UMTS_GSM_Band"/>
+                                            <span>
+                                                <script type="text/javascript">dw("GSM 1900")</script>
+                                            </span>
+                                            </div>
+
+                                            </div>
+                                        
+                                        </td>
+                            </tr>
+	                        <tr id="band_option">
+	                            <td height="30"><label><script type="text/javascript">dw(dialup_label_band);dw(common_colon);</script></label></td>
+	                            <td><select id="band_select"></select></td>
+                                
+	                        </tr>
+	                    </tbody>
+	                </table>
+	                <div id="networksearch" style="height: 60px;width: 600px;">
+	                <h2><script type="text/javascript">dw(dialup_label_searching_network);</script></h2>
+	                <table cellpadding="0" cellspacing="0" border="0" class="pincodeset">
+	                    <tbody>
+	                        <tr>
+	                            <td width="200" height="32"><label><script type="text/javascript">dw(dialup_label_mode);dw(common_colon);</script></label></td>
+	                            <td>
+	                            	<select id="network_select"></select>
+                                </td>
+                                
+                                <td id="current_plmn"></td>
+	                        </tr>
+	                    </tbody>
+	                </table>
+	                </div>
+	                <p id="set_status" style="color: red; font-size: 12px; margin-top:20px; display:none;">
+	                	<script type="text/javascript">dw(IDS_vsim_set_status);</script>
+	                </p>
+                    <div class="apply_button">
+						<script type="text/javascript">create_button(common_apply, "mobilensetting_apply");</script>
+                    </div>
+	            </div>
+	        </div>
+	    </div>
+	    <div id="footer" class="footer"></div>
+	</div>
+</div>
+</div>
+	<noscript>
+		<div class="noscript_text">
+			Your browser does not support JavaScript.
+		</div>
+	</noscript>
+</body>
+</html>

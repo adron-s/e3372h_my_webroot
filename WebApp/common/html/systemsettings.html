@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <link rel="stylesheet" href="../css/main.css" type="text/css" />
+        <script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="../lib/log4javascript_lite.js"></script>
+        <script type="text/javascript" src="../lib/jquery.qtip.js"></script>
+        <script type="text/javascript" src="../lib/jquery.corner.js"></script>
+        <script type="text/javascript" src="../lib/aes.js"></script>
+        <script type="text/javascript" src="../lib/hmac-sha256.js"></script>
+        <script type="text/javascript" src="../lib/pbkdf2.js"></script>
+        <script type="text/javascript" src="../lib/scram.js"></script>
+        <script type="text/javascript" src="../js/changelang.js"></script>
+        <script type="text/javascript" src="../js/main.js"></script>
+        <script type="text/javascript" src="../js/checklogin.js"></script>
+        <script type="text/javascript" src="../js/systemsettings.js"></script>
+        <title></title>
+    </head>
+    <body>
+        <div id="all_content" class="body_bg">
+            <div id="wrapper" class="wrapper_dim">
+                <div class="wrapper_dim wrapper_filter">
+                    <div id="header" class="header">
+                    </div>
+                    <div class="content">
+                        <div class="main_left">
+                            <div id="settings_menu">
+                            </div>
+                        </div>
+                        <div class="content_right">
+                            <div class="maintitle">
+                                <h1>
+                                <script type="text/javascript">dw(IDS_systemsettings_topic);</script>
+                                </h1>
+                            </div>
+                            <div class="main_content">
+                                <div class="systemsettings">
+                                    <div class="diviceInfo_table " width="90%">
+                                        <div class = "power_save_mode" style = "display:none">
+                                            <input type="checkbox" id="checkbox_powersavemode" name="powersavemode" class="checkbox_middle"/>
+                                            <span>
+                                                <script type="text/javascript">dw(IDS_systemsettings_power_save_mode)</script>
+                                            </span>
+                                            <div class = "power_save_mode_border" >
+                                            </div>
+                                        </div>
+                                        <div class = "fast_boot" style = "display:none">
+                                            <input type="checkbox" id="checkbox_fastboot" name="fastboot" class="checkbox_middle"/>
+                                            <span>
+                                                <script type="text/javascript">dw(IDS_systemsettings_fast_boot)</script>
+                                            </span>
+                                            <div>
+                                                <script type="text/javascript">dw(IDS_systemsettings_power_save_mode_description)</script>
+                                            </div>
+                                            <div class = "fast_boot_border" >
+                                            </div>
+                                        </div>
+                                        <div class = "sntp_operation" style = "display:none">
+                                            <input type="checkbox" id="checkbox_sntpoperation" name="sntpoperation" class="checkbox_middle"/>
+                                            <span>
+                                                <script type="text/javascript">dw(IDS_systemsettings_sntp_operation)</script>
+                                            </span>
+                                            <div>
+                                                <script type="text/javascript">dw(IDS_sntp_explanation)</script>
+                                            </div>
+                                            <div  class = "sntp_operation_border" >
+                                            </div>
+                                        </div>
+                                        <div class = "usb_tethering" style = "display:none">
+                                            <input type="checkbox" id="checkbox_usb" name="usbtether" class="checkbox_middle"/>
+                                            <span>
+                                                <script type="text/javascript">dw(IDS_system_label_usbtethering)</script>
+                                            </span>
+                                            <div>
+                                                <script type="text/javascript">dw(IDS_system_help_usb_tethering)</script>
+                                            </div>
+                                            <div  class = "usb_tethering_border" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--content end-->
+                <div id="footer" class="footer">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

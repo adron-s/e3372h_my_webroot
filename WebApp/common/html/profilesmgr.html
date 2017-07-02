@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <link rel="stylesheet" href="../css/main.css" type="text/css" />
+        <script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="../lib/log4javascript_lite.js"></script>
+        <script type="text/javascript" src="../js/changelang.js"></script>
+        <script type="text/javascript" src="../lib/jquery.qtip.js"></script>
+        <script type="text/javascript" src="../lib/jquery.corner.js"></script>
+        <script type="text/javascript" src="../lib/aes.js"></script>
+        <script type="text/javascript" src="../lib/hmac-sha256.js"></script>
+        <script type="text/javascript" src="../lib/pbkdf2.js"></script>
+        <script type="text/javascript" src="../lib/scram.js"></script>
+        <script type="text/javascript" src="../js/main.js"></script>
+        <script type="text/javascript" src="../js/redirect.js"></script>
+        <script type="text/javascript" src="../js/validation.js"></script>
+        <script type="text/javascript" src="../js/checklogin.js"></script>
+        <script type="text/javascript" src="../js/profilesmgr.js"></script>
+        <title></title>
+    </head>
+    <body>
+        <div id="all_content" class="body_bg">
+            <div id="wrapper" class="wrapper_dim">
+                <div class="wrapper_dim wrapper_filter">
+                    <div id="header" class="header">
+                    </div>
+                    <div class="content">
+                        <div class="main_left">
+                            <div id="settings_menu">
+                            </div>
+                        </div>
+                        <div class="content_right">
+                            <div class="maintitle">
+                                <h1>
+                                <script type="text/javascript">dw(dialup_label_profile_management);</script>
+                                </h1>
+                            </div>
+                            <div class="main_content">
+                                <table width="580" cellpadding="0" cellspacing="0" id="profiles_info">
+                                    <tr id="tr_profile_autoapn">
+                                        <td height="32">
+                                        <script type="text/javascript">
+                                            dw(dialup_label_autoapn);
+                                            dw(common_colon);
+                                        </script>
+                                        </td>
+                                        <td class="display_info_rows">
+                                        <input class='radio' type='radio' value='0' name='redio_autoapn'/>
+                                        <script type="text/javascript">dw(common_enabled);</script>
+                                        <input class='radio' type='radio' value='1' name='redio_autoapn'/>
+                                        <script type="text/javascript">dw(common_disabled);</script>
+                                        </td>
+                                    </tr>
+                                    <tr class="pro_content_hr" >
+                                        <td width="216" height="48">
+                                        <script type="text/javascript">
+                                            dw(dialup_label_profile_name);
+                                            dw(common_colon);
+                                        </script>
+                                        </td>
+                                        <td width="362">
+                                        <select id="profilelist">
+                                        </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" class="cut_off_rule"></td>
+                                    </tr>
+                                    <tr id="tr_dialup_number">
+                                        <td height="32">
+                                        <script type="text/javascript">
+                                            dw(dialup_label_dialup_number);
+                                            dw(common_colon);
+                                        </script>
+                                        </td>
+                                        <td id="ddialup_number" class="display_info_rows  Arabic_dialupNumber">
+                                        <input id="input_dialup_number" type="text" class="apn_input_style Arabic_dialupNumber" maxlength="32">
+                                        </td>
+                                    </tr>
+                                    <tr id="profile_username">
+                                        <td height="32">
+                                        <script type="text/javascript">
+                                            dw(dialup_label_user_name);
+                                            dw(common_colon);
+                                        </script>
+                                        </td>
+                                        <td id="duser_name" class="display_info_rows">
+                                        <input id="input_user_name" type="text" class="apn_input_style Arabic_dialupNumber"  maxlength="32">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="32">
+                                        <script type="text/javascript">
+                                            dw(common_password);
+                                            dw(common_colon);
+                                        </script>
+                                        </td>
+                                        <td id="dpassword" class="display_info_rows">
+                                        <input id="input_password" type="password" autocomplete="off" class="apn_input_style Arabic_dialupNumber" maxlength="32">
+                                        </td>
+                                    </tr>
+                                    <tr id="authentication_info">
+                                        <td height="32">
+                                        <script type="text/javascript">
+                                            dw(wlan_label_authentication);
+                                            dw(common_colon);
+                                        </script>
+                                        </td>
+                                        <td>
+                                        <select id="authentication" class="input_select">
+                                            <option value="0">
+                                                <script type="text/javascript">dw(common_auto);</script>
+                                            </option>
+                                            <option value="1">
+                                                <script type="text/javascript">dw(dialup_label_pap);</script>
+                                            </option>
+                                            <option value="2">
+                                                <script type="text/javascript">dw(dialup_label_chap);</script>
+                                            </option>
+                                        </select>
+                                        </td>
+                                    </tr>
+                                    <tr id="ip_type">
+                                        <td height="32">
+                                        <script type="text/javascript">
+                                            dw(IDS_dialup_label_ip_type);
+                                            dw(common_colon);
+                                        </script>
+                                        </td>
+                                        <td>
+                                        <select id="ip_type_value" class="input_select">
+										    <option value="2">
+                                                <script type="text/javascript">dw(IDS_common_IPV4V6);</script>
+                                            </option>
+                                            <option value="0">
+                                                <script type="text/javascript">dw(IDS_common_IPV4);</script>
+                                            </option>
+                                            <option value="1">
+                                                <script type="text/javascript">dw(IDS_common_IPV6);</script>
+                                            </option>
+                                        </select>
+                                        </td>
+                                    </tr>
+                                    <tr class="apn_name">
+                                        <td height="32">
+                                        <script type="text/javascript">
+                                            dw(dialup_label_apn);
+                                            dw(common_colon);
+                                        </script>
+                                        </td>
+                                        <td>
+                  						<input name="apn" id="apn" type="text"  class="profile_input  apn_input_style" maxlength="32"/>
+                                        </td>
+                                    </tr>
+<tr id="profile_primary_dns">
+<td height="32">
+<script type="text/javascript">
+dw(IDS_advanced_settings_primary_dns_server);
+dw(common_colon);
+</script>
+</td>
+<td id="dprimary_dns" class="display_info_rows">
+<input id="input_primary_dns" type="text" class="apn_input_style Arabic_dialupNumber"  maxlength="15">
+</td>
+</tr>
+<tr id="profile_secondary_dns">
+<td height="32">
+<script type="text/javascript">
+dw(IDS_advanced_settings_secondary_dns_server);
+dw(common_colon);
+</script>
+</td>
+<td id="dsecondary_dns" class="display_info_rows">
+<input id="input_secondary_dns" type="text" class="apn_input_style Arabic_dialupNumber"  maxlength="15">
+</td>
+</tr>
+
+                                </table>
+                                <div class="apply_button">
+                                    <!--footer_btn-->
+                                    <script type="text/javascript">
+                                        create_button(dialup_button_newprofile, "new_profile");
+                                        document.write("<span class='button_space'></span>");
+                                        create_button(common_delete, "delete_profile", "disable_btn clr_gray_disable_btn_center");
+                                        document.write("<span class='button_space'></span>");
+                                        create_button(common_apply, "select_apply", "disable_btn clr_gray_disable_btn_center");
+                                    </script>
+                                </div>
+                            </div>
+                            <!--main_content end-->
+                        </div>
+                        <!--content_right end-->
+                    </div>
+                    <div id="footer" class="footer">
+                    </div>
+                </div>
+                <!--content end-->
+            </div>
+        </div>
+        <noscript>
+            <div class="noscript_text">
+                Your browser does not support JavaScript.
+            </div>
+        </noscript>
+    </body>
+</html>

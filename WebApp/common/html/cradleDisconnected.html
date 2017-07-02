@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <link type="text/css" rel="stylesheet" href="../css/main.css" />
+        <script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="../lib/log4javascript_lite.js"></script>
+        <script type="text/javascript" src="../lib/jquery.qtip.js"></script>
+        <script type="text/javascript" src="../lib/jquery.corner.js"></script>
+        <script type="text/javascript" src="../lib/aes.js"></script>
+        <script type="text/javascript" src="../lib/hmac-sha256.js"></script>
+        <script type="text/javascript" src="../lib/pbkdf2.js"></script>
+        <script type="text/javascript" src="../lib/scram.js"></script>
+        <script type="text/javascript" src="../js/validation.js"></script>
+		<script type="text/javascript" src="../js/changelang.js"></script>
+		<script type="text/javascript" src="../js/main.js"></script>
+        <script type="text/javascript" src="../js/redirect.js"></script>
+        <script type="text/javascript" src="../js/cradleDisconnected.js"></script>  
+        <title></title>
+    
+    </head>
+
+    <body>
+        <div id="all_content" class="body_bg">
+            <div class="login_head_div login_head_dim">
+                <div class="login_head_dim login_head_filter">
+                    <div id="header" class="header" >
+                    </div>
+                </div>
+            </div>
+            <div class="cradle_content_box">
+                <div id="cradleDisconnection_message" class="cradleDisconnection_message">
+
+                    <div id="cradleDisconnection_content" class="cradleDisconnection_content">
+                        <table>
+                            <tr>
+                                <td   id="crandle_notes">
+
+                                </td>
+                            </tr>
+                            
+                        </table>
+                        <table>
+                            <tr>
+                                <td width="200" height="28" class="up_nodite">
+                                <script type="text/javascript">
+                                    dw(dialup_label_user_name);
+                                    dw(common_colon);
+                                </script>
+                                </td>
+                                <td width="390">
+                                    <input id="cradleusername" name="cradleusername" type="text" class="cradle_input_style" maxlength="63" size="30" />
+                                </td>
+                            
+                            </tr>
+                            <tr >
+                                <td width="200" height="20"></td>
+                                <td >
+                                <label id="crandleUsername_error" >
+                                </label>
+                        	    </td>
+                            </tr>
+                            <tr>
+                                <td width="200" height="28" class="up_nodite">
+                                <script type="text/javascript">
+                                    dw(common_password);
+                                    dw(common_colon);
+                                </script>
+                                </td>
+                                <td width="390">
+                                <input id="cradlepassword" name="cradlepassword" type="password" autocomplete="off" class="cradle_input_style" maxlength="63" size="30" />
+                                </td>
+                            
+                            </tr>
+                            <tr >
+                                <td width="200" height="20"></td>
+                                <td >
+                                <label id="crandlePassword_error" >
+                                </label>
+                        	    </td>
+                            </tr>
+                        </table>              
+                  
+                    <div class="apply_button">
+                        <script type="text/javascript">create_button(common_ok, "link_connetcioncradle");</script>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <script type="text/javascript">create_button(IDS_pinrequired_btn_gohome, "link_login_cradleDisconnection");</script>
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+            <div id="footer"  class="footer">
+            </div>
+        </div>
+        <noscript>
+            <div class="noscript_text">
+                Your browser does not support JavaScript.
+            </div>
+        </noscript>
+    </body>
+</html>

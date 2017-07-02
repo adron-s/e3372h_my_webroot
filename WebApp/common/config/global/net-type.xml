@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<networktypes><index>001</index><networktype>GSM</networktype></networktypes>
+	<networktypes><index>002</index><networktype>GPRS</networktype></networktypes>
+	<networktypes><index>003</index><networktype>EDGE</networktype></networktypes>
+	<networktypes><index>004</index><networktype>UMTS</networktype></networktypes>
+	<networktypes><index>005</index><networktype>HSDPA</networktype></networktypes>
+	<networktypes><index>006</index><networktype>HSUPA</networktype></networktypes>
+	<networktypes><index>007</index><networktype>HSPA</networktype></networktypes>
+	<networktypes><index>008</index><networktype></networktype></networktypes>
+	<networktypes><index>009</index><networktype>HSPA+</networktype></networktypes>
+	<networktypes><index>010</index><networktype></networktype></networktypes>
+	<networktypes><index>011</index><networktype></networktype></networktypes>
+	<networktypes><index>012</index><networktype></networktype></networktypes>
+	<networktypes><index>013</index><networktype></networktype></networktypes>
+	<networktypes><index>015</index><networktype></networktype></networktypes>
+	<networktypes><index>017</index><networktype></networktype></networktypes>
+	<networktypes><index>018</index><networktype></networktype></networktypes>
+	<networktypes><index>019</index><networktype>LTE</networktype></networktypes>	
+    <networktypes><index>021</index><networktype></networktype></networktypes>
+    <networktypes><index>022</index><networktype></networktype></networktypes>
+    <networktypes><index>023</index><networktype></networktype></networktypes>
+    <networktypes><index>024</index><networktype></networktype></networktypes>
+    <networktypes><index>025</index><networktype></networktype></networktypes>
+    <networktypes><index>026</index><networktype></networktype></networktypes>
+    <networktypes><index>027</index><networktype></networktype></networktypes>
+    <networktypes><index>028</index><networktype></networktype></networktypes>
+    <networktypes><index>029</index><networktype></networktype></networktypes>
+    <networktypes><index>030</index><networktype></networktype></networktypes>
+    <networktypes><index>031</index><networktype></networktype></networktypes>
+    <networktypes><index>032</index><networktype></networktype></networktypes>
+    <networktypes><index>033</index><networktype></networktype></networktypes>
+    <networktypes><index>034</index><networktype></networktype></networktypes>
+    <networktypes><index>035</index><networktype></networktype></networktypes>
+    <networktypes><index>036</index><networktype></networktype></networktypes>
+    <networktypes><index>041</index><networktype>UMTS</networktype></networktypes>
+    <networktypes><index>042</index><networktype>HSDPA</networktype></networktypes>
+    <networktypes><index>043</index><networktype>HSUPA</networktype></networktypes>
+    <networktypes><index>044</index><networktype>HSPA</networktype></networktypes>
+    <networktypes><index>045</index><networktype>HSPA+</networktype></networktypes>
+    <networktypes><index>046</index><networktype>DC-HSPA+</networktype></networktypes>
+    <networktypes><index>061</index><networktype>TD-SCDMA</networktype></networktypes>
+    <networktypes><index>062</index><networktype>TD-HSDPA</networktype></networktypes>
+    <networktypes><index>063</index><networktype>TD-HSUPA</networktype></networktypes>
+    <networktypes><index>064</index><networktype>TD-HSPA</networktype></networktypes>
+    <networktypes><index>065</index><networktype>TD-HSPA+</networktype></networktypes>
+	<networktypes><index>101</index><networktype>LTE</networktype></networktypes>	
+</config>
+    
+

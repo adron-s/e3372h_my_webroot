@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <link rel="stylesheet" href="../css/main.css" type="text/css" />
+        <script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="../lib/log4javascript_lite.js"></script>
+        <script type="text/javascript" src="../lib/jquery.qtip.js"></script>
+        <script type="text/javascript" src="../lib/jquery.corner.js"></script>
+        <script type="text/javascript" src="../lib/aes.js"></script>
+        <script type="text/javascript" src="../lib/hmac-sha256.js"></script>
+        <script type="text/javascript" src="../lib/pbkdf2.js"></script>
+        <script type="text/javascript" src="../lib/scram.js"></script>
+        <script type="text/javascript" src="../js/changelang.js"></script>
+        <script type="text/javascript" src="../js/main.js"></script>
+        <script type="text/javascript" src="../js/checklogin.js"></script>
+        <script type="text/javascript" src="../js/validation.js"></script>
+        <script type="text/javascript" src="../js/updatesettings.js"></script>
+        <title></title>
+    </head>
+
+    <body>
+        <div id="all_content" class="body_bg">
+            <div id="wrapper" class="wrapper_dim">
+                <div class="wrapper_dim wrapper_filter">
+                    <div id="header" class="header">
+                    </div>
+                    <div class="content">
+                        <div class="main_left">
+                            <div id="settings_menu">
+                            </div>
+                        </div>
+                        <div class="content_right">
+                            <div class="maintitle">
+                                <h1>
+                                <script type="text/javascript">dw(IDS_update_settings);</script>
+                                </h1>
+                            </div>
+                            <div class="main_content">
+                                <table class="notlogin_update_switch" width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                    <tr id="notlogin_update_enable">
+                                        <td height="22px" valign="top" width="174px">
+                                        <script type="text/javascript">
+                                            dw(IDS_update_settings);
+                                            dw(common_colon);
+                                        </script>
+                                        </td>
+                                        <td valign="top" height="22px">
+                                            <input class="radio" type="radio" value='1' name="notlogin_report"/>
+                                            <script type="text/javascript">dw(common_enable);</script>
+                                            <input class="radio" type="radio" value='0' name="notlogin_report" checked="true"/>
+                                            <script type="text/javascript">dw(common_disable);</script>
+                                        </td>
+                                        <td height="22px" valign="top">&nbsp;</td>
+                                    </tr>
+                                    <tr id="notlogin_update_label">
+                                        <td height="22px" valign="top">
+                                        </td>
+                                        <td height="22px" valign="top">
+                                             <script type="text/javascript">
+                                                dw(system_label_content);
+                                            </script>
+                                        </td>
+                                        <td height="22px" valign="top">&nbsp;</td>
+                                    </tr>
+                                </table>
+                                <table class="forced_update_switch" width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                    <tr id="forced_update_enable">
+                                        <td height="22px" valign="top" width="174px">
+                                        <script type="text/javascript">
+                                            dw(IDS_server_update_settings);
+                                            dw(common_colon);
+                                        </script>
+                                        </td>
+                                        <td valign="top" height="22px">
+                                            <input class="radio" type="radio" value='1' name="forced_usesreport"/>
+                                            <script type="text/javascript">dw(common_enable);</script>
+                                            <input class="radio" type="radio" value='0' name="forced_usesreport" checked="true"/>
+                                            <script type="text/javascript">dw(common_disable);</script>
+                                        </td>
+                                        <td height="22px" valign="top">&nbsp;</td>
+                                    </tr>
+                                    <tr id="forced_update_label">
+                                        <td height="22px" valign="top">
+                                        </td>
+                                        <td height="22px" valign="top">
+                                             <script type="text/javascript">
+                                                dw(IDS_server_update_info);
+                                            </script>
+                                        </td>
+                                        <td height="22px" valign="top">&nbsp;</td>
+                                    </tr>
+                                </table>
+                                <table class="auto_update_switch" width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                    <tr id="auto_update_enable">
+                                        <td height="22px" valign="top" width="174px">
+                                        <script type="text/javascript">
+                                            dw(IDS_common_autoUpdate);
+                                            dw(common_colon);
+                                        </script>
+                                        </td>
+                                        <td valign="top" height="22px">
+                                            <input class="radio" type="radio" value='1' name="auto_usesreport"/>
+                                            <script type="text/javascript">dw(common_enable);</script>
+                                            <input class="radio" type="radio" value='0' name="auto_usesreport" checked="true"/>
+                                            <script type="text/javascript">dw(common_disable);</script>
+                                        </td>
+                                        <td height="22px" valign="top">&nbsp;</td>
+                                    </tr>
+                                    <tr id="auto_update_label">
+                                        <td height="22px" valign="top">
+                                        </td>
+                                        <td height="22px" valign="top">
+                                             <script type="text/javascript">
+                                                dw(IDS_common_updateDialog_radioE5);
+                                            </script>
+                                        </td>
+                                        <td height="22px" valign="top">&nbsp;</td>
+                                    </tr>
+                                </table>
+                                <div  class = "update_settins_border">
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="footer" class="footer">
+                </div>
+            </div>
+        </div>
+        <noscript>
+            <div class="noscript_text">
+                Your browser does not support JavaScript.
+            </div>
+        </noscript>
+    </body>
+</html>

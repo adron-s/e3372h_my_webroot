@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<link rel="stylesheet" href="../css/main.css" type="text/css" />
+		<script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="../lib/log4javascript_lite.js"></script>
+		<script type="text/javascript" src="../lib/jquery.qtip.js"></script>
+		<script type="text/javascript" src="../lib/jquery.corner.js"></script>
+        <script type="text/javascript" src="../lib/aes.js"></script>
+        <script type="text/javascript" src="../lib/hmac-sha256.js"></script>
+        <script type="text/javascript" src="../lib/pbkdf2.js"></script>
+        <script type="text/javascript" src="../lib/scram.js"></script>
+		<script type="text/javascript" src="../js/changelang.js"></script>
+		<script type="text/javascript" src="../js/main.js"></script>
+		<script type="text/javascript" src="../js/checklogin.js"></script>
+		<script type="text/javascript" src="../js/validation.js"></script>
+		<script type="text/javascript" src="../js/diagnosis.js"></script>
+		<title></title>
+	</head>
+
+	<body>
+		<div id="all_content" class="body_bg">
+			<div id="wrapper" class="wrapper_dim">
+				<div class="wrapper_dim wrapper_filter">
+					<div id="header" class="header">
+					</div>
+					<div class="content">
+						<div class="main_left">
+							<div id="settings_menu">
+							</div>
+						</div>
+						<div class="content_right">
+							<div class="maintitle">
+								<h1>
+								<script>dw(system_label_diagnosis);</script>
+								</h1>
+							</div>
+							<div class="main_content">
+								<p>
+									<script type="text/javascript">dw(IDS_diagnosis_label_infomation);</script>
+								</p>
+								<table cellpadding="0" cellspacing="0"  class="diagnosis_list">
+									</tr>
+									<tr height="45">
+										<td width="200" height="32" class="diagnosis_td">
+										<script>dw(IDS_system_diagnosis_method_name+common_colon);</script>
+										</td>
+										<td>
+										<select id="select_diagnosis_mode" class="input_select">
+											<option value="ping"><script type="text/javascript">dw(IDS_system_label_diagnosis_method_ping);</script></option>
+											<option value="traceroute"><script type="text/javascript">dw(IDS_system_label_diagnosis_method_traceroute);</script></option>
+										</select>
+										</td>
+									</tr>
+								</table>
+								<div class="cut_off_rule" style="margin-bottom:10px;">
+								</div>
+								<div id = "id_ping">
+									<table cellpadding="0" cellspacing="0"  class="ping">
+										<tr id="ping_target_ip_tr">
+											<td width="200" height="32" class="ping">
+											<script type="text/javascript">dw(IDS_system_label_diagnosis_targetip_domain+common_colon);</script>
+											</td>
+											<td>
+											<input type="text" id="ping_target_ip" class="input_style"/>
+											</td>
+										</tr>
+										<tr id="ping_packetsize_tr">
+											<td width="200" height="32" class="ping">
+											<script type="text/javascript">dw(IDS_system_label_diagnosis_packetsize+common_colon);</script>
+											</td>
+											<td>
+											<input type="text" id="ping_packetsize" class="input_style"/>
+											<span  style="margin:5px;">
+												<script type="text/javascript">dw(IDS_diagnosis_ping_packetsize_range);</script>
+											</span>
+											</td>
+										</tr>
+										<tr id="ping_timeout_tr">
+											<td width="200" height="32" class="ping">
+											<script type="text/javascript">dw(IDS_system_label_diagnosis_timeout+common_colon);</script>
+											</td>
+											<td>
+											<input type="text" id="ping_timeout" class="input_style"/>
+											<span  style="margin:5px;">
+												<script type="text/javascript">dw(IDS_diagnosis_ping_timeout_range);</script>
+											</span>
+											</td>
+										</tr>
+										<tr>
+											<td width="200" height="32" class="ping">
+											<input type="checkbox" id="ping_fragment" name="donotfragment" style='vertical-align:middle;'/>
+											<span>
+												<script type="text/javascript">dw(IDS_system_label_diagnosis_fragment_remind)</script>
+											</span>
+											</td>
+										</tr>
+									</table>
+								</div>
+								<div id = "id_traceroute">
+									<table cellpadding="0" cellspacing="0"  class="traceroute">
+										<tr id="traceroute_target_ip_tr">
+											<td width="200" height="32" class="traceroute">
+											<script type="text/javascript">dw(IDS_system_label_diagnosis_targetip_domain+common_colon);</script>
+											</td>
+											<td>
+											<input type="text" id="traceroute_target_ip" class="input_style"/>
+											</td>
+										</tr>
+										<tr id="trace_maxhops_tr">
+											<td width="200" height="32" class="traceroute">
+											<script type="text/javascript">dw(IDS_system_label_diagnosis_maximum_hops+common_colon);</script>
+											</td>
+											<td>
+											<input type="text" id="trace_maxhops" class="input_style"/>
+											<span  style="margin:5px;">
+												<script type="text/javascript">dw(IDS_diagnosis_traceroute_maxhops_range);</script>
+											</span>
+											</td>
+										</tr>
+										<tr id="trace_timeout_tr">
+											<td width="200" height="32" class="traceroute">
+											<script type="text/javascript">dw(IDS_system_label_diagnosis_timeout+common_colon);</script>
+											</td>
+											<td>
+											<input type="text" id="trace_timeout" class="input_style"/>
+											<span  style="margin:5px;">
+												<script type="text/javascript">dw(IDS_diagnosis_traceroute_timeout_range);</script>
+											</span>
+											</td>
+										</tr>
+									</table>
+								</div>
+								<div class="apply_button" id="button_apply">
+                                    <script type="text/javascript">create_button(common_apply, "apply");</script>
+                                </div>
+								<div id = "id_diagnosis_result">
+									<div id = "id_diagnosis_result_title" class="subtitile">
+										<h2>
+										<script>dw(IDS_diagnosis_result_title);</script>
+										</h2>
+										<div class="cut_off_rule" style="margin-bottom:10px;">
+										</div>
+									</div>
+									<table id = "id_diagnosis_result_done" cellpadding="0" cellspacing="0" border="0">
+										<tr>
+											<td height="32" width="200px">
+											<script type="text/javascript">dw(IDS_diagnosis_result_title);
+												dw(common_colon);</script>
+											</td>
+											<td>
+											<span id = "id_pass_or_fail">
+												<script type="text/javascript">dw(IDS_diagnosis_result_passed);</script>
+											</span>
+											</td>
+										</tr>
+									</table>
+									<div id = "cut_line" class="cut_off_rule" style="margin-bottom:10px;">
+									</div>
+									<div id = "id_ping_result_detail">
+										<table cellpadding="0" cellspacing="0" style="width:560px" class="diagnosis_list">
+											<tr height="45">
+												<td width="200" height="32" class="diagnosis_td">
+												<script>dw(IDS_diagnosis_result_detail+common_colon);</script>
+												</td>
+												<td>
+												<textarea id='id_result_Detail' style="width:99%;overflow: auto;white-space: pre-wrap;word-wrap: break-word;" cols="60" rows="10" readonly='readonly'>
+												</textarea>
+												</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div><!--content end-->
+					<div id="footer" class="footer">
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

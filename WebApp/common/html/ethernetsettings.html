@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <link type="text/css" rel="stylesheet" href="../css/main.css" />
+        <script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="../lib/log4javascript_lite.js"></script>
+        <script type="text/javascript" src="../lib/jquery.qtip.js"></script>
+        <script type="text/javascript" src="../lib/jquery.corner.js"></script>
+        <script type="text/javascript" src="../lib/aes.js"></script>
+        <script type="text/javascript" src="../lib/hmac-sha256.js"></script>
+        <script type="text/javascript" src="../lib/pbkdf2.js"></script>
+        <script type="text/javascript" src="../lib/scram.js"></script>
+        <script type="text/javascript" src="../js/changelang.js"></script>
+        <script type="text/javascript" src="../js/main.js"></script>
+        <script type="text/javascript" src="../js/redirect.js"></script>
+        <script type="text/javascript" src="../js/validation.js"></script>
+        <script type="text/javascript" src="../js/checklogin.js"></script>
+        <script type="text/javascript" src="../js/ethernetsettings.js"></script>
+        <title></title>
+    </head>
+
+    <body>
+        <div id="all_content" class="body_bg">
+            <div class="wrapper_dim wrapper_filter">
+                <div id="header" class="header">
+                </div>
+                <div class="content">
+                    <div class="main_left">
+                        <div id="settings_menu">
+                        </div>
+                    </div>
+                    <div class="content_right">
+                        <div class="maintitle">
+                            <h1>
+                            <script type="text/javascript">dw(IDS_ethernet_label_setting );</script>
+                            </h1>
+                        </div>
+                        <div class="main_content">
+                        	<p style="font-size: 14px;">
+                        		<script type="text/javascript">
+                                	dw(IDS_crable_net_remark);
+								</script>
+                        	</p>
+                            <div id="option_table" >
+                            <table id="conn_table" width="600" border="0" cellspacing="0" cellpadding="0" >
+                                <tr valign="top" height="42">
+                                    <td valign="middle" width="220" height="28">
+                                        <script type="text/javascript">
+                                        dw(dialup_label_connection_mode);
+                                        dw(common_colon);
+                                        </script>
+                                    </td>
+                                    <td valign="middle" >
+                                        <select  id="select_wan_connection_mode" class="input_select" style="width:200px;">
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table  width="600" border="0" cellspacing="0" cellpadding="0" >
+                                <tr valign="top" >
+                                    <td valign="middle" colspan="2" height="28"  id="option_change_showinfo">
+                                    </td>
+                                </tr>
+                            </table>
+                            <table id="pppoe_cut_line" width="600" border="0" cellspacing="0" cellpadding="0" >	
+                                <tr id="PPPoE_id">
+                                    <td valign="middle" class="padding_title" height="28" width="220">
+                                        <h3><script type="text/javascript">
+                                        dw(IDS_wan_setting_pppoe);
+                                    </script></h3>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr >
+                                   <td colspan="2" class="cut_off_rule"></td>
+                                </tr>
+                                <tr><td></td><td></td></tr>
+                            </table>
+                            <table id="user_table" width="600" border="0" cellspacing="0" cellpadding="0" class="connection_pppoe_list">
+                                <tr valign="middle" id="ondemand_username" height="42">
+                                    <td valign="middle" class="padding_title" height="28" width="220">
+                                    <script type="text/javascript">
+                                        dw(dialup_label_user_name);
+                                        dw(common_colon);
+                                    </script>
+                                    </td>
+                                    <td valign="middle">
+                                    <input type="text"  class="input_style Arabic_dialupNumber" id="input_ethernet_username" maxlength="63"  />
+                                    </td>
+                                </tr>
+                                <tr valign="middle" id="ondemand_password" height="42">
+                                    <td valign="middle" class="padding_title" height="28" width="220">
+                                    <script type="text/javascript">
+                                        dw(common_password);
+                                        dw(common_colon);
+                                    </script>
+                                    </td>
+                                    <td valign="middle">
+                                    <input type="password" autocomplete="off" class="input_style Arabic_dialupNumber" id="input_ethernet_password" maxlength="63"  />
+                                    </td>
+                                </tr>                                
+                                <tr valign="top" height="42" id="dial">
+                                    <td  valign="middle" width="220" height="28">
+                                        <script type="text/javascript">
+                                        dw(IDS_dialup_label_dialing_mode);
+                                        dw(common_colon);
+                                        </script>
+                                    </td>
+                                    <td valign="middle" >
+                                        <select id="select_wan_dialing_mode" class="input_select" >
+                                        </select> 
+                                    </td>
+                                </tr>
+                                <tr valign="middle" id="auto_disconnect" height="42" style="display:none">
+                                    <td valign="middle" class="padding_title" height="28" width="220">
+                                    <script type="text/javascript">
+                                        dw(dialup_label_max_idle_time_s_s);
+                                        dw(common_colon);
+                                    </script>
+                                    </td>
+                                    <td valign="middle">
+                                        <input type="text" class="input_style" id="input_disconn_time" maxlength="4"  />
+                                    </td>
+                                </tr>
+                                <tr valign="middle" id="ondemand_mtusize" height="42">
+                                    <td valign="middle" class="padding_title" height="28" width="220">
+                                    <script type="text/javascript">
+                                        dw(IDS_advanced_settings_mtu_internet_port);
+                                        dw(common_colon);
+                                    </script>
+                                    </td>
+                                    <td valign="middle">
+                                    <input type="text"  class="input_style" id="input_mtu_size"  maxlength="4"  />
+                                    <label id="pppoe_default_mtu"></label>
+                                    </td>
+                                    </tr>
+                                    <tr valign="middle" id="ondemand_mtuinfo" >
+                                    <td valign="middle" class="padding_title"  width="220">
+                                    </td>
+                                    <td valign="middle">
+                                        <script type="text/javascript">
+                                        dw(IDS_ethernet_mtu_size_clew_msg);
+                                        </script>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table id="static_table" width="600" border="0" cellspacing="0" cellpadding="0" >
+                                <tr valign="middle" id="ip_address" height="42">
+                                    <td valign="middle" class="padding_title" height="28" width="220">
+                                        <script type="text/javascript">
+                                        dw(IDS_mac_setting_ip_address);
+                                        dw(common_colon);
+                                        </script>
+                                    </td>
+                                    <td valign="middle" height="28" >
+                                        <input type="text"  class="input_style Arabic_dialupNumber" maxlength="15" id="input_ip_address" />
+                                    </td>
+                                </tr>
+                                <tr valign="middle" id="subnet_mask" height="42">
+                                    <td valign="middle" class="padding_title" height="28" width="220">
+                                        <script type="text/javascript">
+                                        dw(IDS_mac_setting_subnet_mask);
+                                        dw(common_colon);
+                                        </script>
+                                    </td>
+                                    <td valign="middle" height="28" >
+                                       <input type="text"  class="input_style Arabic_dialupNumber" maxlength="15" id="input_subnet_mask" />
+                                    </td>
+                                </tr>
+                                <tr valign="middle" id="gate_way" height="42">
+                                    <td valign="middle" class="padding_title" height="28" width="220">
+                                        <script type="text/javascript">
+                                        dw(IDS_advanced_settings_default_gateway);
+                                        dw(common_colon);
+                                        </script>
+                                    </td>
+                                    <td valign="middle" >
+                                        <input type="text"  class="input_style Arabic_dialupNumber" maxlength="15" id="input_gate_way" />
+                                    </td>
+                                </tr>
+                                <tr valign="middle" id="dns_server" height="42">
+                                    <td valign="middle" class="padding_title" height="28" width="220">
+                                        <script type="text/javascript">
+                                        dw(IDS_advanced_settings_primary_dns_server);
+                                        dw(common_colon);
+                                        </script>
+                                    </td>
+                                    <td valign="middle" >
+                                        <input type="text"  class="input_style Arabic_dialupNumber" maxlength="15" id="input_dns_server" />
+                                        <label id="">
+                                            <script type="text/javascript">dw(IDS_ethernet_setup_optional);</script>
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr valign="middle" id="spare_dns_server" height="42">
+                                    <td valign="middle" class="padding_title" height="28" width="220">
+                                    <script type="text/javascript">
+                                        dw(IDS_advanced_settings_secondary_dns_server);
+                                        dw(common_colon);
+                                    </script>
+                                    </td>
+                                    <td valign="middle" >
+                                    <input type="text"  class="input_style Arabic_dialupNumber" maxlength="15" id="input_spare_server" />
+                                        <label id="">
+                                            <script type="text/javascript">dw(IDS_ethernet_setup_optional);</script>
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr valign="middle" id="static_mtusize" height="42">
+                                    <td valign="middle" class="padding_title" height="28" width="220">
+                                    <script type="text/javascript">
+                                        dw(IDS_advanced_settings_mtu_internet_port);
+                                        dw(common_colon);
+                                    </script>
+                                    </td>
+                                    <td valign="middle">
+                                    <input type="text"  class="input_style" id="static_mtu_size"  maxlength="4" />
+                                    <label id="static_default_mtu"></label>
+                                    </td>
+                                </tr>
+                                <tr valign="middle" id="static_mtuinfo" >
+                                    <td valign="middle" class="padding_title"  width="220">
+                                    </td>
+                                    <td valign="middle">
+                                        <script type="text/javascript">
+                                        dw(IDS_ethernet_mtu_size_clew_msg);
+                                        </script>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table id="dynamic_mtu_line" width="600" border="0" cellspacing="0" cellpadding="0">
+                                <tr id="Dynamic_id">
+                                    <td valign="middle" class="padding_title" height="28" width="220">
+                                        <h3><script type="text/javascript">
+                                        dw(IDS_wan_setting_dynamicip);
+                                        </script></h3>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr >
+                                   <td colspan="2" class="cut_off_rule"></td>
+                                </tr>
+                                <tr><td></td><td></td></tr>
+                            </table>
+                            <table id="dynamic_mtu_table" width="600" border="0" cellspacing="0" cellpadding="0">
+                                <tr valign="middle" id="dynamic_mtusize" height="42">
+                                    <td valign="middle" class="padding_title" height="28" width="220">
+                                    <script type="text/javascript">
+                                        dw(IDS_advanced_settings_mtu_internet_port);
+                                        dw(common_colon);
+                                    </script>
+                                    </td>
+                                    <td valign="middle">
+                                    <input type="text"  class="input_style" id="dynamic_mtu_size"  maxlength="4" />
+                                    <label id="dynamic_default_mtu"></label>
+                                    </td>
+                                </tr>
+                                <tr valign="middle" id="dynamic_mtuinfo" >
+                                    <td valign="middle" class="padding_title"  width="220">
+                                    </td>
+                                    <td valign="middle">
+                                        <script type="text/javascript">dw(IDS_ethernet_mtu_size_clew_msg);</script>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table class="set_dns_manual">
+                                    <tr>
+                                        <td valign="middle" class="padding_title"  colspan="2">
+                                        <input id="dynamic_manual" type="checkbox" style='vertical-align:middle;'/>
+                                        <script type="text/javascript">dw(IDS_ethernet_dynamicip_manual);</script>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table class="set_dns_manual">
+                                    <tr valign="middle" id="set_primary_dns" height="42">
+                                        <td valign="middle" class="padding_title" height="28" width="220">
+                                        <script type="text/javascript">
+                                            dw(IDS_advanced_settings_primary_dns_server);
+                                            dw(common_colon);
+                                        </script>
+                                    </td>
+                                        <td valign="middle" >
+                                        <input type="text"  class="input_style Arabic_dialupNumber" maxlength="15" id="dynamic_dns_server" />
+                                        </td>
+                                </tr>
+                                    <tr valign="middle" id="set_spare_dns" height="42">
+                                        <td valign="middle" class="padding_title" height="28" width="220">
+                                        <script type="text/javascript">
+                                            dw(IDS_advanced_settings_secondary_dns_server);
+                                            dw(common_colon);
+                                        </script>
+                                        </td>
+                                        <td valign="middle" >
+                                        <input type="text"  class="input_style Arabic_dialupNumber" maxlength="15" id="dynamic_spare_server" />
+                                        <label id="">
+                                            <script type="text/javascript">dw(IDS_ethernet_setup_optional);</script>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            </div>
+                            <div class="apply_button">
+                                <script type="text/javascript">create_button(common_apply,"apply_button");</script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="footer" class="footer">
+            </div>
+        </div>
+        <noscript>
+            <div class="noscript_text">
+                Your browser does not support JavaScript.
+            </div>
+        </noscript>
+    </body>
+</html>

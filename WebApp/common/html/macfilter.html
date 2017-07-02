@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<link rel="stylesheet" href="../css/main.css" type="text/css" />
+<title></title>
+<script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../lib/log4javascript_lite.js"></script>
+<script type="text/javascript" src="../lib/jquery.qtip.js"></script>
+<script type="text/javascript" src="../lib/jquery.corner.js"></script>
+<script type="text/javascript" src="../lib/aes.js"></script>
+<script type="text/javascript" src="../lib/hmac-sha256.js"></script>
+<script type="text/javascript" src="../lib/pbkdf2.js"></script>
+<script type="text/javascript" src="../lib/scram.js"></script>
+<script type="text/javascript" src="../js/changelang.js"></script>
+<script type="text/javascript" src="../js/main.js"></script>
+<script type="text/javascript" src="../js/checklogin.js"></script>
+<script type="text/javascript" src="../js/validation.js"></script>
+<script type="text/javascript" src="../js/macfilter.js"></script>
+</head>
+<body >
+<div id="all_content" class="body_bg">
+<div id="wrapper" class="wrapper_dim">
+    <div class="wrapper_dim wrapper_filter">
+        <div id="header" class="header"></div>
+        <div class="content">
+            <div class="main_left">
+                <div id="settings_menu"></div>
+            </div>
+            <div class="content_right">
+                <div class="maintitle">
+                    <h1><script>dw(IDS_security_macfilter_label);</script></h1>
+                </div>
+                <div class="main_content">
+                    <p>
+                        <script type="text/javascript">dw(IDS_security_macfilter_help_info_3);</script><br />
+                        <script type="text/javascript">dw(IDS_security_macfilter_help_info_4);</script><br />
+                        <script type="text/javascript">dw(IDS_security_macfilter_help_info_5);</script><br />
+                        <script type="text/javascript">dw(IDS_security_macfilter_help_info_6);</script>
+                    </p>
+                    <div class="title3" style="margin-bottom: 10px;">
+                        <span>
+                            <script type="text/javascript">
+                                dw(IDS_security_macfilter_lbl_filter_mode);
+                            </script>
+                        </span>
+                        <span>
+                            <select id="fw_mac_policy">
+                                <option value="0"><script type="text/javascript">dw(common_disable);</script></option>
+                                <option value="1"><script type="text/javascript">dw(wlan_label_allow);</script></option>
+                                <option value="2"><script type="text/javascript">dw(wlan_label_deny);</script></option>
+                            </select>
+                        </span>
+                    </div>
+                    <table cellpadding="0" cellspacing="0" border="0" id="fw_mac_list">
+                        <tr valign="top" height="42">
+                            <td>
+                            <input type="text" id="input_fwMacFilterMac0" class="success_phone_number" maxlength="17"/>
+                            </td>
+                            <td width="60"> </td>
+                            <td>
+                            <input type="text" id="input_fwMacFilterMac1" class="success_phone_number" maxlength="17"/>
+                            </td>
+                        </tr>
+                        <tr valign="top" height="42">
+                            <td>
+                            <input type="text" id="input_fwMacFilterMac2" class="success_phone_number" maxlength="17"/>
+                            </td>
+                            <td width="60"> </td>
+                            <td>
+                            <input type="text" id="input_fwMacFilterMac3" class="success_phone_number" maxlength="17"/>
+                            </td>
+                        </tr>
+                        <tr valign="top" height="42">
+                            <td>
+                            <input type="text" id="input_fwMacFilterMac4" class="success_phone_number" maxlength="17"/>
+                            </td>
+                            <td width="60"></td>
+                            <td>
+                            <input type="text" id="input_fwMacFilterMac5" class="success_phone_number" maxlength="17"/>
+                            </td>
+                        </tr>
+                        <tr valign="top" height="42">
+                            <td>
+                            <input type="text" id="input_fwMacFilterMac6" class="success_phone_number" maxlength="17"/>
+                            </td>
+                            <td width="60"></td>
+                            <td>
+                            <input type="text" id="input_fwMacFilterMac7" class="success_phone_number" maxlength="17"/>
+                            </td>
+                        </tr>
+                        <tr valign="top" height="42">
+                            <td>
+                            <input type="text" id="input_fwMacFilterMac8" class="success_phone_number" maxlength="17"/>
+                            </td>
+                            <td width="60"></td>
+                            <td>
+                            <input type="text" id="input_fwMacFilterMac9" class="success_phone_number" maxlength="17"/>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="apply_button"> 
+                        <script type="text/javascript">
+							create_button(common_apply, "apply");
+						</script>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer" class="footer"></div>
+    </div>
+</div>
+</div>
+</body>
+</html>

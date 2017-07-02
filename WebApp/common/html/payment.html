@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <link rel="stylesheet" href="../css/main.css" type="text/css" />
+    <script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../lib/log4javascript_lite.js"></script>
+    <script type="text/javascript" src="../lib/jquery.qtip.js"></script>
+    <script type="text/javascript" src="../lib/jquery.corner.js"></script>
+    <script type="text/javascript" src="../js/changelang.js"></script>
+    <script type="text/javascript" src="../js/main.js"></script>
+    <script type="text/javascript" src="../js/checklogin.js"></script>
+    <script type="text/javascript" src="../js/validation.js"></script>
+    <script type="text/javascript" src="../js/ping.js"></script>
+    <script type="text/javascript" src="../js/payment.js"></script>
+    <script type="text/javascript">
+    </script>
+    <title></title>
+    </head>
+    <body>
+        <div id="all_content" class="body_bg">
+            <div id="wrapper" class="wrapper_dim">
+                <div class="wrapper_dim wrapper_filter">
+                    <div id="header"></div>
+                    <div class="content">
+					<div id="app_payment_content">
+					    	<form id="myForm" target="_blank" method="get">				    
+	                        <div class="app_payment_format" style="text-align:center;"> 							  
+							    <table id="app_payment_format1" style="margin:0 auto;margin-top:25px">
+								    <tr style="display:block">
+									<td height="52" width="160"><script type="text/javascript">dw(IDS_payment_number);</script></td>
+									<!--<td><label class="payment_label">+7</label><input value="9162552525" type="text" id="input_payment_number" size="38" onfocus="if(value=='9162552525'){value=''}" onblur="if(value==''){value='9162552525'}"/></td>-->
+									<td><label class="payment_label">+7</label><input value="" type="text" id="input_payment_number" name="phone" size="38"/></td>
+									</tr>
+									<tr style="display:block;margin-top:12px">
+									<td height="52" width="160"><script type="text/javascript">dw(IDS_payment_amount);</script></td>
+									<!--<td><input value="500" type="text" id="input_payment_amount"  name="phone_pay" size="13" onfocus="if(value=='500'){value=''}" onblur="if(value==''){value='500'}"/></td>-->
+									<td><input value="" type="text" id="input_payment_amount" name="amount"  size="13"/></td>
+									<td><input value="6" type="hidden" name="channel"/></td>
+									</tr>
+								</table>
+																
+							    <div class="payment_button" style="line-height:38px;margin-top:20px">
+								
+								
+								<div style="line-height:48px">
+								    <input type="button" id="button_pay"/>
+                                </div>
+                                <!--<script type="text/javascript">
+                                create_button('Pay', 'button_pay');
+                                </script>-->
+                                </div>
+								   
+                               
+							</div>
+							</form>
+						
+						<div id="payment_method_explain">
+                            <script type="text/javascript">
+                            dw(payment_balance_explain);
+                            </script>
+                        </div>
+					<div style="text-align:center;margin-top:34px;">
+					<div id="pay_pic_div" style="width:34%;">
+					<a href="http://www.mts.ru/bankovskiye_uslugi/autopayment/usluga_avtoplatezh/?channel=16" target="_blank">
+					<img class="pay_pic" src="../res/auto_pay.png"><br/><span class="payment_pic_explain"><script type="text/javascript">dw(Configure_automatic_payment);</script></span>
+					</a>
+					</div>
+					<div id="pay_pic_div" style="width:33%;">
+					<a href="http://oplata.mts.ru/" target="_blank">
+					<img class="pay_pic" src="../res/card_pay.png"><br/><span class="payment_pic_explain"><script type="text/javascript">dw(Configure_card_payment);</script></span>
+					</a>
+					</div>
+					<div id="pay_pic_div" style="width:33%;">
+				    <a href="http://www.mts.ru/mob_connect/services/opportunity/promised_payment/" target="_blank">
+					<img class="pay_pic" src="../res/user_pay.png"><br/><span class="payment_pic_explain"><script type="text/javascript">dw(Configure_deferred_payment);</script></span>
+					</a>
+					</div>
+					</div>
+                    </div>
+					</div>
+				</div>
+			</div>
+		        <div id="footer" class="footer"></div>
+	        </div>
+			</div>
+		</div>
+		<noscript>
+            <div class="noscript_text">
+                Your browser does not support JavaScript.
+            </div>
+        </noscript>
+    </body>	
+</html>

@@ -1,0 +1,38 @@
+legend { color: #000000; }
+a{ color:#000000;}
+.menu_settings ul li, .menu_settings ul li a,.menu_sharingsamba ul li, .menu_sharingsamba ul li a{
+	color:#000000;
+}
+body, input, select, textarea, .clr_bold, .clr_bold_setting_hover ul li.click ul li a:hover span, .clr_bold_main_content_h2 h2, .clr_bold_maintitle_step .step,
+.clr_bold_label_left, .clr_bold_td td, .clr_bold_tr tr, .clr_bold_a a, .clr_bold_main_content_p p, .clr_bold_tr tr, .clr_bold_tr_rootstyle ul .sub .rootstyle,
+.clr_bold_login_box_info_table .connection table, .clr_bold_login_box_info_table table,  .clr_bold_th th, .clr_bold_li li, .clr_bold_option option,
+.clr_bold_quicksetup3_label label, .clr_bold_right_info_h2 h2, .clr_bold_p p, .clr_bold_sd_folder_name li a.folder_name,.menu_settings ul li.click ul li.subClick a:hover span  {
+	color: #000000;
+}
+.submenu > li > div > a {
+	color: #000000;
+}
+#new_all_sms, #new_ussd {
+	color: #000000;
+}
+.new_sms_menu li {
+	color: #000000;
+}
+#new_sms_number {
+	color: #000000;;
+}
+#new_sms_text_data{
+	color: #000000;
+}
+#new_ussd_receive_content > div {
+	color: #000000;
+}
+.not-net-title {
+	color: #000000;
+}
+.not-net-tiptitle {
+	color: #000000;
+}
+.not-net-tips {
+	color: #000000;
+}

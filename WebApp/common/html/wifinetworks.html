@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta http-equiv='Pragma' content='no-cache'/>
+        <link rel="stylesheet" href="../css/main.css" type="text/css" />
+        <script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="../lib/log4javascript_lite.js"></script>
+        <script type="text/javascript" src="../lib/jquery.qtip.js"></script>
+        <script type="text/javascript" src="../lib/jquery.corner.js"></script>
+        <script type="text/javascript" src="../lib/aes.js"></script>
+        <script type="text/javascript" src="../lib/hmac-sha256.js"></script>
+        <script type="text/javascript" src="../lib/pbkdf2.js"></script>
+        <script type="text/javascript" src="../lib/scram.js"></script>
+        <script type="text/javascript" src="../js/changelang.js"></script>
+        <script type="text/javascript" src="../js/main.js"></script>
+        <script type="text/javascript" src="../js/checklogin.js"></script>
+        <script type="text/javascript" src="../js/validation.js"></script>
+        <script type="text/javascript" src="../js/redirect.js"></script>
+        <script type="text/javascript" src="../js/wifinetworks.js"></script>
+        <title></title>
+    </head>
+
+    <body>
+        <div id="all_content" class="body_bg">
+            <div id="wrapper" class="wrapper_dim">
+                <div class="wrapper_dim wrapper_filter">
+                    <div id="header" class="header">
+                    </div>
+                    <div class="content">
+                        <div class="main_left">
+                            <div id="settings_menu">
+                            </div>
+                        </div>
+                        <div class="content_right">
+                            <div class="maintitle">
+                                <h1>
+                                <script type="text/javascript">dw(wlan_lable_Interntet_wlan);</script>
+                                </h1>
+                            </div>
+                            <div class="main_content">
+                                <div>
+                                    <table width="600">
+                                        <tr>
+                                            <td id="wifi_lable">
+                                            <script type="text/javascript">dw(dialup_label_wifi);</script>
+                                            </td>
+                                            <td id="wifi_switch_button"></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <p>
+                                    <script type="text/javascript">dw(wifi_label_networks_notes);</script>
+                                </p>
+
+                                <div class="scan_div" id='scan_div' style="display:none;">
+                                    <label >
+                                        <script type="text/javascript">create_button(wifi_label_scan,"scan_button");</script>
+                                    </label>
+                                </div>
+
+                                <div id='wifi_content' style='display:none'>
+                                    <div class="addwifi" >
+                                        <label>
+                                            <script type="text/javascript">create_button(wifi_label_addwifi_network,"addWiFI_button");</script>
+                                        </label>
+                                    </div>
+                                    <p id="wifi_scan" style='display:none'>
+                                        <script type="text/javascript">dw(wifi_label_scaning);</script>
+                                    </p>
+
+                                    <p id="wifi_no_ap" style='display:none'>
+                                        <script type="text/javascript">dw(wifi_label_no_ap_notice);</script>
+                                    </p>
+                                    <table class="wifioffload_settings" id="wifioffload_setting">
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!--main_content end-->
+                    </div>
+                    <!--content end-->
+                    <div id="footer" class="footer">
+                    </div>
+                </div>
+            </div>
+            <noscript>
+                <div class="noscript_text">
+                    Your browser does not support JavaScript.
+                </div>
+            </noscript>
+        </div>
+    </body>
+</html>

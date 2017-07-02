@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<link rel="stylesheet" href="../css/main.css" type="text/css" />
+		<script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="../lib/log4javascript_lite.js"></script>
+		<script type="text/javascript" src="../lib/jquery.qtip.js"></script>
+		<script type="text/javascript" src="../lib/jquery.corner.js"></script>
+		<script type="text/javascript" src="../lib/aes.js"></script>
+		<script type="text/javascript" src="../lib/hmac-sha256.js"></script>
+		<script type="text/javascript" src="../lib/pbkdf2.js"></script>
+		<script type="text/javascript" src="../lib/scram.js"></script>
+		<script type="text/javascript" src="../js/changelang.js"></script>
+		<script type="text/javascript" src="../js/main.js"></script>
+		<script type="text/javascript" src="../js/checklogin.js"></script>
+		<script type="text/javascript" src="../js/validation.js"></script>
+        <script type="text/javascript" src="../js/appmanagement.js"></script>
+        <title></title>
+    </head>
+
+    <body>
+        <div id="all_content" class="body_bg">
+            <div id="wrapper" class="wrapper_dim">
+                <div class="wrapper_dim wrapper_filter">
+                    <div id="header"></div>
+                    <div class="content">
+                    	<div id="app_wifi_all">
+	             			<div class="app_title clr_blue_title_h2">
+	                            <h2>
+	                            	<script type="text/javascript">dw(IDS_huawei_hilink_Mobile_WiFi);</script>
+	                            </h2>
+	                        </div>
+	                        <div class="app_font_format"> 
+	                        	<script type="text/javascript">dw(IDS_MOBILE_WIFI_EXPLAIN);</script>	
+	                        </div>
+	                        <div id="app_info" class="app_info">
+	                            <div class="app_info_left">
+	                                <h2>
+	                                	<script type="text/javascript">dw(ID_LOCK_SIM);</script>
+	                                </h2> 
+	                                <div id="app_img_code">
+	                                	<table class="app_img_table">
+	                                		<tr>	                                			
+	                                			<td>
+	                                				<div id="domestic_address" style="display:none">	                                					
+	                                					<div class="app_img">
+	                                						<img width = "87px" height = "87px" src="../res/domestic.png">
+	                                					</div>
+	                                				</div>	
+	                                			</td>
+	                                			<td>
+                                                    <div id="foreign_address" style="display:none">                                                        
+                                                        <div class="app_img">
+                                                            <img width = "87px" height = "87px" src="../res/foreign.png">
+                                                        </div>
+                                                    </div>  
+                                                </td>	
+	                                		</tr>
+	                                	</table>
+	                                </div>
+	                            </div>
+	                            
+	                            <div class="app_info_right">
+	                                <h2>
+	                                	<script type="text/javascript">dw(IDS_DOWNLOAD_LINK);</script>
+	                                </h2>
+	                				<div class="app_wifi_href">
+	      								<table class="href_table">	      									
+	      									<tr>	                								
+                								<td class="href_content">
+                									<div class="href_td_div">
+	                									<a id="app_href_address" class='app_href_style' target='_blank' href="#">
+	                										<span id="app_span"></span>
+	                						 			</a>
+                						 			</div>		
+                								</td>             									
+	      									</tr>	      									
+	      								</table>
+	      							</div>	                				
+	                            </div>
+	                        </div>	                   
+                    </div>
+                    	
+                 	<div id="app_doctor_all">
+                 		<div class="app_title clr_blue_title_h2">
+                            <h2>
+                            	Mobile Doctor    
+                            </h2>
+                        </div>
+                        <div class="app_font_format">
+                        	<script type="text/javascript">dw(IDS_MOBILE_DOCTOR_EXPLAIN);</script>	                        	                       	
+	                    </div>
+	                    <div class="app_doctor">
+	                            	<h2>
+	                                	<script type="text/javascript">dw(IDS_DOWNLOAD_LINK);</script>
+	                                </h2>
+	                                <table>
+	                                	<tr id="app_doctor_linux"  style="display:none">
+	                						<td class="href_name">Linux
+	                							<script type="text/javascript">dw(common_colon);</script>	
+	                						</td>
+	                						<td class="href_doctor_content">
+	                							<div class="href_doctor_div">
+			                					 	<a id="Linux_href_address" class='app_href_style' target='_blank' href="#">
+			                							<span id="Linux_span"></span>
+			                						</a>
+		                						</div>
+	                						</td>
+	                					</tr>
+		                				<tr id="app_doctor_mac" style="display:none">
+		                					<td class="href_name">MAC
+		                						<script type="text/javascript">dw(common_colon);</script>	
+		                					</td>
+		                					<td class="href_doctor_content">
+		                						<div class="href_doctor_div">
+			                						<a id="MAC_href_address" class='app_href_style' target='_blank' href="#">
+			                							<span id="MAC_span"></span>
+			                						</a>
+			                					</div>
+		                					</td>
+		                				</tr>
+		                				<tr id="app_doctor_windows" style="display:none">
+		                					<td class="href_name">Windows
+		                						<script type="text/javascript">dw(common_colon);</script>	
+		                					</td>
+		                					<td class="href_doctor_content">
+		                						<div class="href_doctor_div">
+			                						<a id="Windows_href_address" class='app_href_style' target='_blank' href="#">
+			                							<span id="Windows_span" ></span>
+			                						</a>
+		                						<div>	
+		                					</td>	 
+		                				</tr>	
+	                              </table >                				
+	                     </div>	                    
+                 	</div>  
+                    
+                </div>
+                <div id="footer" class="footer">
+                </div>
+            </div>
+        </div>
+        <noscript>
+            <div class="noscript_text">
+                Your browser does not support JavaScript.
+            </div>
+        </noscript>
+    </body>
+</html>

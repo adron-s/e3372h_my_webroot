@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<link type="text/css" rel="stylesheet" href="../css/main.css" />
+<script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../lib/log4javascript_lite.js"></script>
+<script type="text/javascript" src="../lib/jquery.qtip.js"></script>
+<script type="text/javascript" src="../lib/jquery.corner.js"></script>
+<script type="text/javascript" src="../lib/aes.js"></script>
+<script type="text/javascript" src="../lib/hmac-sha256.js"></script>
+<script type="text/javascript" src="../lib/pbkdf2.js"></script>
+<script type="text/javascript" src="../lib/scram.js"></script>
+<script type="text/javascript" src="../js/changelang.js"></script>
+<script type="text/javascript" src="../js/main.js"></script>
+<script type="text/javascript" src="../js/checklogin.js"></script>
+<script type="text/javascript" src="../js/validation.js"></script>
+<script type="text/javascript" src="../js/quicksetup.js"></script>
+</head>
+
+<body>
+<div id="all_content" class="body_bg">
+<div id="wrapper" class="wrapper_dim">
+    <div class="wrapper_dim wrapper_filter">
+        <div id="header" class="header"></div>
+        <div class="content">
+            <div class="main_left">
+                <div id="settings_menu"></div>
+            </div>
+            <div class="content_right">
+                <!-- Wlan setup -->
+                <div id="quicksetup1" style="display:block;">
+                    <div class="maintitle clr_blue_maintitle_h1">
+                        <h1><script type="text/javascript">dw(wizard_label_configure_wlan_settings);</script></h1>
+                        <span class="step" id="step_1"></span> 
+                    </div>
+                    <div class="main_content">
+                        <div class="quicksetup">
+                            <p>
+                                <label><b><script type="text/javascript">dw(wizard_label_name_ssid+common_colon);</script></b></label>
+                                <label><script type="text/javascript">dw(wizard_help_name_ssid);</script></label>
+                            </p>
+                            <div id='ssid_settings_base'>
+                                <table width="580" border="0" cellpadding="0" cellspacing="0"  class="wlan_list">
+                                    <tbody>
+                                        <tr id="ssid_wifiName_error_msg">
+                                            <td width="230" height="32"><label><script type="text/javascript">dw(wlan_label_ssid+common_colon);</script></label></td>
+                                            <td ><input type="text" id="ssid_wifiName" class="input_style Arabic_dialupNumber editordisable" maxlength="32" /></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div id="div_ssid_encrypt_way1" style="display:none">
+                                <table width="580" border="0" cellpadding="0" cellspacing="0" id="ssid_network_key"> 
+                                    <tr id="ssid_neworkKey1_error" class="hidden">
+                                        <td width="230" height="32"><script>dw(wlan_label_network_key_1+common_colon);</script></td>
+                                        <td>
+                                            <input  id="ssid_neworkKey1" type="password" autocomplete="off" class="input_style editordisable" maxlength="26" />
+                                            <input type="checkbox" id="showPswForW1">
+                                            <span>
+                                                <script type="text/javascript">dw(common_show_password)</script>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr id="modifyWlanPswOption_w1" style="position:relative;">
+                                        <td width="230" height="32" style="position:relative;display:block;">
+                                        <input type="checkbox" style="position:absolute;left:0;top:8px;" class="editordisable">
+                                        <span style="position:absolute;left:18px;top:8px;">
+                                            <script type="text/javascript">dw(system_label_modify_password);</script>
+                                        </span>
+                                    </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div id="div_ssid_encrypt_way2" style="display:none">
+                                <table width="580" border="0" cellspacing="0" cellpadding="0">
+                                    <tr id="ssid_wpa_key_error" class="hidden">
+                                        <td width="230" height="32"><script type="text/javascript">dw(wlan_label_wpa_preshared_key+common_colon);</script></td>
+                                        <td>
+                                            <input name="wpa_key" id="ssid_wpa_key" type="password" autocomplete="off" class="input_style editordisable" maxlength="63" />
+                                            <input type="checkbox" id="showPswForW2">
+                                            <span>
+                                                <script type="text/javascript">dw(common_show_password)</script>
+                                            </span>
+                                        </td>
+                                        <td  align="left" class="code_key"></td>
+                                    </tr>
+                                    <tr id="modifyWlanPswOption_w2" style="position:relative;">
+                                        <td width="230" height="32" style="position:relative;display:block;">
+                                        <input type="checkbox" style="position:absolute;left:0;top:8px;" class="editordisable">
+                                        <span style="position:absolute;left:18px;top:8px;">
+                                            <script type="text/javascript">dw(system_label_modify_password);</script>
+                                        </span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="button_continer" style="display:none;" id="Wlan_no_finish_button">
+                                <script type="text/javascript">create_button(common_next, "step1_next");</script>
+                            </div>
+                            <div class="button_continer" style="display:none;" id="Wlan_finish_button">
+                                <script type="text/javascript">create_button(common_finish, "step_Wlan_finish");</script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Update setup -->
+                <div id="quicksetup2" style="display:none;">
+                    <div class="maintitle clr_blue_maintitle_h1">
+                        <h1>
+                        <script type="text/javascript">dw(IDS_update_quick_setup);</script>
+                        </h1>
+                        <span class="step" id="step_2">
+                        </span>
+                    </div>
+                    <div class="main_content">
+                        <div class="quicksetup">
+                            <p style="font-size: 14px;">
+                            <script type="text/javascript">dw(IDS_update_setup_notes);</script>
+                            </p>
+                            <table width="580" cellpadding="0" cellspacing="0">
+                                <tr height="42">
+                                    <td>
+                                    <input type="radio" value="1" name="update_selection" id="auto_update">
+                                    </td>
+                                    <td id="auto_update_notes">
+                                    </td>
+                                </tr>
+                                <tr height="42">
+                                    <td>
+                                    <input type="radio" value="0" name="update_selection" id="manual_update">
+                                    </td>
+                                    <td>
+                                    <script type="text/javascript">dw(IDS_manual_update_notes);</script>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="button_continer" style="display:none;" id="Update_no_finish_button">
+                                <script type="text/javascript">create_button(common_back, "step2_back");</script>
+                                <span>&nbsp;&nbsp;</span>
+                                <script type="text/javascript">create_button(common_next, "step2_next");</script>
+                            </div>
+                            <div class="button_continer" style="display:none;" id="Update_finish_button">
+                                <script type="text/javascript">create_button(common_back, "step2_back_new");</script>
+                                <span>&nbsp;&nbsp;</span>
+                                <script type="text/javascript">create_button(common_finish, "step_Update_finish");</script>
+                            </div>
+                        </div>
+                </div> 
+                </div>
+                <!-- Password setup -->
+                <div id="quicksetup3" style="display:none;">
+                    <div class="maintitle clr_blue_maintitle_h1">
+                        <h1>
+                        <script type="text/javascript">dw(system_label_modify_password);</script>
+                        </h1>
+                        <span class="step" id="step_3"></span>
+                    </div>
+                    <div class="main_content">
+                        <div class="quicksetup">
+                            <ul class="text_list_note">
+                                <li>
+                                    <script type="text/javascript">dw(IDS_password_strength_prompt);</script>
+                                    <br />
+                                </li>
+                                <li>
+                                    <script type="text/javascript">dw(IDS_low_password_prompt);</script>
+                                    <br />
+                                </li>
+                                <li>
+                                    <script type="text/javascript">dw(IDS_general_password_prompt);</script>
+                                    <br />
+                                </li>
+                                <li>
+                                    <script type="text/javascript">dw(IDS_hig_password_prompt);</script>
+                                    <br />
+                                </li>
+                                <li>
+                                    <script type="text/javascript">dw(IDS_duplicate_password_prompt);</script>
+                                </li>
+                            </ul>
+                            <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                <tr id="tr_current_passwd">
+                                    <td width="218" height="42" valign="top">
+                                    <script type="text/javascript">
+                                        dw(system_label_current_password);
+                                        dw(common_colon);
+                                    </script>
+                                    </td>
+                                    <td width="238" height="42" valign="top">
+                                    <input id="current_password" type="password" autocomplete="off" size="25" class="pw_click" maxlength="15"/>
+                                    </td>
+                                    <td width="144" height="42" valign="top">&nbsp;</td>
+                                </tr>
+                                <tr id="tr_new_passwd">
+                                    <td height="42" valign="top">
+                                    <script type="text/javascript">
+                                        dw(system_label_new_password);
+                                        dw(common_colon);
+                                    </script>
+                                    </td>
+                                    <td height="42" valign="top">
+                                    <input id="new_password" type="password" autocomplete="off" size="25" class="pw_click" maxlength="15"/>
+                                    </td>
+                                    <td height="42" valign="top">&nbsp;</td>
+                                </tr>
+                                <tr id="tr_psw_strength">
+                                    <td height="42" valign="top">
+                                    <script type="text/javascript">
+                                        dw(IDS_psw_strength_label);
+                                        dw(common_colon);
+                                    </script>
+                                    </td>
+                                    <td height="42" valign="top">
+                                    <table class="psw_strength_tb" width="180" border="0" align="left" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td align="center" id="psw_strength_low" width="33.3%">
+                                            <script type="text/javascript">dw(IDS_psw_strength_low);</script>
+                                            </td>
+                                            <td align="center" id="psw_strength_mid" width="33.3%">
+                                            <script type="text/javascript">dw(IDS_psw_strength_mid);</script>
+                                            </td>
+                                            <td align="center" id="psw_strength_hig" width="33.3%">
+                                            <script type="text/javascript">dw(IDS_psw_strength_hig);</script>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    </td>
+                                    <td height="42" valign="top">&nbsp;</td>
+                                </tr>
+                                <tr id="tr_confirm_password">
+                                    <td height="42" valign="top">
+                                    <script type="text/javascript">
+                                        dw(system_label_confirm_password);
+                                        dw(common_colon);
+                                    </script>
+                                    </td>
+                                    <td height="42" valign="top">
+                                    <input id="confirm_password" type="password" autocomplete="off" size="25" class="pw_click" maxlength="15"/>
+                                    </td>
+                                    <td height="42" valign="top">&nbsp;</td>
+                                </tr>
+                            </table>
+                            <div class="button_continer">
+                                <script type="text/javascript">create_button(common_back, "step3_back");</script>
+                                <span>&nbsp;&nbsp;</span>
+                                <script type="text/javascript">create_button(common_finish, "step_finish");</script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer" class="footer"></div>
+    </div>
+</div>
+</div>
+</body>
+</html>

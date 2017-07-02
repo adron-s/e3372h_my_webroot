@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<link rel="stylesheet" href="../css/main.css" type="text/css" />
+		<script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="../lib/log4javascript_lite.js"></script>
+		<script type="text/javascript" src="../lib/jquery.qtip.js"></script>
+		<script type="text/javascript" src="../lib/jquery.corner.js"></script>
+		<script type="text/javascript" src="../lib/aes.js"></script>
+		<script type="text/javascript" src="../lib/hmac-sha256.js"></script>
+		<script type="text/javascript" src="../lib/pbkdf2.js"></script>
+		<script type="text/javascript" src="../lib/scram.js"></script>
+		<script type="text/javascript" src="../js/changelang.js"></script>
+		<script type="text/javascript" src="../js/main.js"></script>
+		<script type="text/javascript" src="../js/checklogin.js"></script>
+		<script type="text/javascript" src="../js/wps.js"></script>
+		<title></title>
+	</head>
+
+	<body>
+		<div id="all_content" class="body_bg">
+			<div id="wrapper" class="wrapper_dim">
+				<div class="wrapper_dim wrapper_filter">
+					<div id="header" class="header">
+					</div>
+					<div class="content">
+						<div class="main_left">
+							<div id="settings_menu">
+							</div>
+						</div>
+						<div class="content_right">
+							<div class="maintitle">
+								<h1>
+								<script type="text/javascript">dw(wlan_label_wps_settings);</script>
+								</h1>
+							</div>
+							<div class="main_content">
+							    <div class='appin_off_no'>
+    							    <table>
+    							        <tr>
+    							            <td width="120" height="40">
+    							                <script type="text/javascript">dw(IDS_wps_function_isenable);</script>
+    							            </td>
+    							            <td width="480">
+    							                <div class="radio">
+                                                    <input type="radio"  name="radio"  id="appinenable"/>
+                                                    <span>
+                                                        <script>dw(common_enable);</script>
+                                                    </span>
+                                                    &nbsp;&nbsp;
+                                                    <input type="radio"  name="radio" id="appindisable"/>
+                                                    <span>
+                                                        <script>dw(common_disable);</script>
+                                                    </span>
+                                                </div>
+    							            </td>
+    							        </tr>
+    							    </table>
+							    </div>
+							    <div class="appin_show">
+    							    <table cellspacing="0" cellpadding="0" style="table-layout:fixed;word-wrap:break-word;">
+    							        <tr>
+    							            <td width="120" height="40">
+    							                <script type="text/javascript">dw(IDS_wps_current_pin);</script>
+    							            </td>
+    							            <td width="480">
+    							                <label id="wps_appin_code"></label>
+    							            </td>
+    							        </tr>
+    							        <tr class="appin_button">
+    							            <td width="120" height="40"></td>
+    							            <td>
+    							                <div class="button_continer">
+        							                <span class="default_button" onclick="default_wps()">
+                                                        <script type="text/javascript">create_button(wps_initial_pin,"default_button");</script>
+                                                    </span>
+                                                    &nbsp;&nbsp;
+                                                    <span class="rand_button" onclick="rand_wps()">
+                                                        <script type="text/javascript">create_button(wps_random_pin,"rand_button");</script>
+                                                    </span>
+                                                </div>
+    							            </td>
+    							        </tr>
+    							        <tr>
+    							            <td width="120" height="40"></td>
+    							            <td>
+    							                <script type="text/javascript">dw(IDS_wps_current_pinshow);</script>
+    							            </td>
+    							        </tr>
+    							    </table>
+							    </div>
+							    <div class="pbc_pin">
+    							    <table cellspacing="0" cellpadding="0" style="table-layout:fixed;word-wrap:break-word;">
+    							        <tr>
+    							            <td width="120" rowspan="3" valign="top">
+    							                <script type="text/javascript">dw(IDS_wps_add_device);</script>
+    							            </td>
+    							            <td width="480">
+    							                <div class="work_frequency">
+    							                    <script type="text/javascript">dw(wlan_label_working_band);</script>&nbsp;&nbsp;
+    							                    <select id="select_frequency" class="input_select"></select>
+    							                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>                                            
+                                            <td>    							               
+    							                <div class="pbc_block">
+    							                    <input type="radio" name="connect_mode" id="pbc_mode" style='vertical-align:middle;'/>
+    							                    <script type="text/javascript">dw(IDS_common_pbc);</script>
+    							                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>                                                                                         
+                                            <td>
+    							                <div class="pin_block">
+    							                    <input type="radio" name="connect_mode" id="pin_mode" style='vertical-align:middle;'/>
+    							                    <script type="text/javascript">dw(IDS_wps_input_pin);</script>
+    							                    <br />
+    							                    <br />
+    							                    <div class="pin_input">
+    							                    <script type="text/javascript">dw(IDS_common_pin);</script>
+    							                    &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="input_WPSPin"  class="input_style" maxlength="8" size="20"/>
+    							                    <label id="wps_pin_error" style="display:none;"></label>
+    							                    </div>
+    							                </div>
+    							            </td>
+    							        </tr>
+    							        <tr>
+    							            <td width="120" height="40"></td>
+    							            <td>
+    							                <div>
+                                                    <label>
+                                                        <script type="text/javascript">create_button(dialup_label_mobile_connection,"apply_button");</script>
+                                                    </label>
+                                                </div>
+    							            </td>
+    							        </tr>
+    							        <tr class="pbc_show">
+    							            <td width="120" height="30"></td>
+    							            <td>
+    							                <script type="text/javascript">dw(IDS_wps_pbc_show);</script>
+    							            </td>
+    							        </tr>
+    							        <tr class="pin_show">
+    							            <td width="120" height="30"></td>
+    							            <td>
+    							                <script type="text/javascript">dw(IDS_wps_pin_show);</script>
+    							            </td>
+    							        </tr>
+    							        <tr></tr>
+    							    </table>
+							    </div>
+                            </div>
+
+						</div>
+
+					</div>
+					<!--main_content end-->
+				</div>
+				<!--content end-->
+				<div id="footer" class="footer">
+				</div>
+			</div>
+		  <noscript>
+			<div class="noscript_text">
+				Your browser does not support JavaScript.
+			</div>
+		  </noscript>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <link type="text/css" rel="stylesheet" href="../css/main.css" />
+        <script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="../lib/log4javascript_lite.js"></script>
+        <script type="text/javascript" src="../lib/jquery.qtip.js"></script>
+        <script type="text/javascript" src="../lib/jquery.corner.js"></script>
+        <script type="text/javascript" src="../lib/aes.js"></script>
+        <script type="text/javascript" src="../lib/hmac-sha256.js"></script>
+        <script type="text/javascript" src="../lib/pbkdf2.js"></script>
+        <script type="text/javascript" src="../lib/scram.js"></script>
+        <script type="text/javascript" src="../js/changelang.js"></script>
+        <script type="text/javascript" src="../js/main.js"></script>
+        <!--script type="text/javascript" src="../js/redirect.js"></script-->
+        <script type="text/javascript" src="../js/checklogin.js"></script>
+        <script type="text/javascript" src="../js/connectionless.js"></script>
+        <title></title>
+    </head>
+
+    <body>
+        <div id="all_content" class="body_bg">
+            <div id="wrapper" class="wrapper_dim">
+                <div class="wrapper_dim wrapper_filter">
+                    <div id="header">
+                    </div>
+                    <div class="content">
+                        <div class="status clr_gray_table">
+                            <div class="status_title clr_blue_title_h2">
+                                <h2>
+                                <script type="text/javascript">dw(dialup_label_connection_status);</script>
+                                </h2>
+                            </div>
+                            <div id="no_server_description">
+                                <h3></h3>
+                            </div>
+                            <table cellpadding="0" cellspacing="0" style="position:relative;">
+                                <!--<tr>
+                                <td id="no_server_description" colspan="2"></td>
+                                </tr>-->
+                                <tr>
+                                    <td class="font_bold clr_bold">
+                                    <script type="text/javascript">
+                                        dw(dialup_label_network_type);
+                                        dw(common_colon);
+                                    </script>
+                                    </td>
+                                    <td class="clr_gray" width="200" id="wan_network_type"></td>
+                                </tr>
+                                <tr>
+                                    <td class="font_bold clr_bold">
+                                    <script type="text/javascript">
+                                        dw(dialup_label_connection_status);
+                                        dw(common_colon);
+                                    </script>
+                                    </td>
+                                    <td class="clr_gray" id="connection_status"></td>
+                                    <td id="connected_disconnected" width="120"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <USSD>
+        <ActivateInternetService>
+            <Title>ussd_label_ActivateInternetService_title</Title>
+            <Description>ussd_label_ActivateInternetService_description</Description>
+            <Items>
+                <Item>
+                    <Subject>common_day</Subject>
+                    <Action>ussd_label_ActivateInternetService_action</Action>
+                    <Command></Command>
+                </Item>
+                <Item>
+                    <Subject>common_week</Subject>
+                    <Action>ussd_label_ActivateInternetService_action</Action>
+                    <Command></Command>
+                </Item>
+            </Items>
+        </ActivateInternetService>
+        <BalanceInquiry>
+            <Title>ussd_label_BalanceInquiry_title</Title>
+            <Items>
+                <Item>
+			<Description>ussd_label_BalanceInquiry_description.replace(/\./g, '')+' ('+$.trim('USSD '+$.trim(value.Command))+').'</Description>
+                    <Action>ussd_label_BalanceInquiry_action</Action>
+		    <Command>*100#</Command>
+                </Item>
+            </Items>
+        </BalanceInquiry>
+        <Charge>
+            <Title>ussd_label_Charge_title</Title>
+            <Items>
+                <Item>
+			<Description>ussd_label_Charge_description.replace(/\./g, '')+' ('+$.trim('USSD '+$.trim(value.Command))+').'</Description>
+                    <Action>common_send</Action>
+                    <Command></Command>
+                    <LimitText></LimitText>
+                </Item>
+            </Items>
+        </Charge>
+        <General>
+            <Title>ussd_label_Universal_title</Title>
+            <Description>ussd_label_Universal_description</Description>
+            <LimitText></LimitText>
+	    <Menu>
+                <MenuItem>
+                    <Name>Balance</Name>
+                    <Command>*100#</Command>
+                </MenuItem>
+                <MenuItem>
+                    <Name>MTS Balance Without SMS</Name>
+                    <Command>#100#</Command>
+                </MenuItem>
+                <MenuItem>
+                    <Name>MTS Available Limit</Name>
+                    <Command>*217#</Command>
+                </MenuItem>
+                <MenuItem>
+                    <Name>MTS My Number</Name>
+                    <Command>*111*0887#</Command>
+                </MenuItem>
+            </Menu>
+	    <NewMenu>
+                <MenuItem>
+                    <Name>check the balance</Name>
+                    <Command>*100#</Command>
+                </MenuItem>
+                <MenuItem>
+                    <Name>check MTS balance w/o SMS</Name>
+                    <Command>#100#</Command>
+                </MenuItem>
+                <MenuItem>
+                    <Name>check MTS available limit</Name>
+                    <Command>*217#</Command>
+                </MenuItem>
+                <MenuItem>
+                    <Name>show MTS my number</Name>
+                    <Command>*111*0887#</Command>
+                </MenuItem>
+            </NewMenu>
+	    <RussianMenu>
+                <MenuItem>
+                    <Name>Баланс</Name>
+                    <Command>*100#</Command>
+                </MenuItem>
+                <MenuItem>
+                    <Name>Баланс МТС без SMS</Name>
+                    <Command>#100#</Command>
+                </MenuItem>
+                <MenuItem>
+                    <Name>Остаток МТС</Name>
+                    <Command>*217#</Command>
+                </MenuItem>
+                <MenuItem>
+                    <Name>Свой номер МТС</Name>
+                    <Command>*111*0887#</Command>
+                </MenuItem>
+            </RussianMenu>
+	    <RussianNewMenu>
+                <MenuItem>
+                    <Name>узнать баланс</Name>
+                    <Command>*100#</Command>
+                </MenuItem>
+                <MenuItem>
+                    <Name>узнать баланс МТС без SMS</Name>
+                    <Command>#100#</Command>
+                </MenuItem>
+                <MenuItem>
+                    <Name>узнать остаток МТС</Name>
+                    <Command>*217#</Command>
+                </MenuItem>
+                <MenuItem>
+                    <Name>узнать свой номер МТС</Name>
+                    <Command>*111*0887#</Command>
+                </MenuItem>
+            </RussianNewMenu>
+            <Action>common_send</Action> 
+        </General>
+    </USSD>
+</config>
