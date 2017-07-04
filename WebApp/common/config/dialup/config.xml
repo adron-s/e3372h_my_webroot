@@ -3,12 +3,12 @@
     <data_enable>1</data_enable>
     <apn_retry>0</apn_retry>
     <!--apn_retry_interval>300</apn_retry_interval-->
-    <connect_mode>1</connect_mode>
+    <connect_mode>0</connect_mode>
     <roam_connect>1</roam_connect>
     <max_idle_time>0</max_idle_time>
     <mtu_size>1500</mtu_size>
     <dataswitch>1</dataswitch>
-    <auto_dial_enabled>0</auto_dial_enabled>
+    <auto_dial_enabled>1</auto_dial_enabled>
     <auto_dial_switch>1</auto_dial_switch>
     <!-- 页面上是否显示dialup number-->
     <dialup_number_enabled>0</dialup_number_enabled>
