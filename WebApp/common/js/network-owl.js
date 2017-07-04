@@ -257,11 +257,11 @@ function calc_network_limits(s_ipaddr, s_mask){
 		maxip = gw - 4; //4 штуки^
 		minip++;
 	}else{
-		//для /25 и выше: первый(шлюз)..клиенты..последний(терминал/модем)
+		//для /25 и выше: первый(шлюз)..клиенты..предпоследний - резерв, последний(терминал/модем)
 		gw = minip;
 		modem_ip = maxip;
 		minip++;
-		maxip--;
+		maxip -= 2;
 	}
 
 	//console.log(dig2hex(ipaddr));
